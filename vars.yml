@@ -1,0 +1,7 @@
+# Common commands
+ps_regcheck: 'powershell -noprofile -noninteractive -command'
+gpo_lookup: 'something here'
+
+# Reg_paths
+# CurrentControlSet
+HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/')
