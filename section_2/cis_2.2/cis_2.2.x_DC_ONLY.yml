@@ -1,0 +1,30 @@
+{{ if .Vars.is_domain_controller }}  
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  access_dc_admins:
+    {{ if .Vars.win2016cis_2.2.2 }}
+    title: 2.2.2 | L1 | Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - {{ .Vars.win2016cis_DC_access_from_network}}
+    {{ end }}
+  add_workstations_to_domain:
+    {{ if .Vars.win2016cis_2.2.5 }}
+    title: 2.2.5 | L1 | Ensure 'Add workstations to domain' is set to 'Administrators' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Administrators'
+    {{ end }}
+  allow_logon_locally_DC:
+    {{ if .Vars.win2016cis_2.2.7 }}
+    title: 2.2.7 | L1 |  Ensure 'Allow log on locally' is set to 'Administrators' | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Administrators'
+    - {{ .Vars.win2016cis_DC_allow_logon_local_users }}
+    {{ end }}
+  {{ end }}
+{{ end }}

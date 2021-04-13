@@ -1,0 +1,22 @@
+{{ if .Vars.is_domain_member_server }}
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  access_dc_admins:
+    {{ if .Vars.win2016cis_2.2.3 }}
+    title: 2.2.3 | L1 | Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users' (MS only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - {{ .Vars.win2016cis_MS_access_from_network}}
+    {{ end }}
+  allow_logon_locally_MS:
+    {{ if .Vars.win2016cis_2.2.7 }}
+    title: 2.2.7 | L1 |  Ensure 'Allow log on locally' is set to 'Administrators' (MS) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Administrators'
+    - {{ .Vars.win2016cis_MS_allow_logon_local_users }}
+    {{ end }}
+  {{ end }}
+{{ end }}

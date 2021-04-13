@@ -1,26 +1,13 @@
-file:
-  test-goss.txt:
-    title: Test file contents
-    exists: true
-    contains:
-    - Mark
-
-command:
-  anon_disabled:
-    title: Test anon logins regkey
-    exec: powershell -noprofile -noninteractive -command "(get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/').restrictanonymous"
-    exit-status: 0
-    stdout:
-    - '0'
-  anon_disabled_vars:
-    title: testing vars
-    exec: {{ .Vars.ps_regcheck }} "(get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/').restrictanonymous"
-    exit-status: 0
-    stdout:
-    - '0'
-  anon_CCS:
-    title: blah
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.restrictanonymous"
-    exit-status: 0
-    stdout:
-    - '0'
+gossfile:
+  {{ if .Vars.win2016cis_section_1 }}
+  section_1/cis_*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.win2016cis_section_2 }}
+  section_2/cis_*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.win2016cis_section_9 }}
+  section_9/cis_*/*.yml: {}
+  {{ end }}
+  {{ if .Vars.win2016cis_section_17 }}
+  section_17/cis_*/*.yml: {}
+  {{ end }}

@@ -1,7 +1,73 @@
-# Common commands
+## Variables file
+
+######################
+## Server Variables ##
+######################
+is_domain_controller: false
+is_domain_member_server: false
+is_standalone_host: true
+reboot_required: false
+
+##############
+# CIS Levels #
+##############
+win2016cis_level_1: true
+win2016cis_level_2: true
+
+###############
+# CIS Section #
+###############
+win2016cis_section_1: true
+win2016cis_section_2: true
+win2016cis_section_9: true
+win2016cis_section_17: true
+
+
+########################
+## Section_1_Controls ##
+########################
+win2016cis_1.1.1: true
+win2016cis_1.1.2: true
+win2016cis_1.1.3: true
+win2016cis_1.1.4: true
+win2016cis_1.1.5: true
+win2016cis_1.1.6: true
+win2016cis_1.2.1: true
+win2016cis_1.2.2: true
+win2016cis_1.2.3: true
+
+########################
+## Section_2_Controls ##
+########################
+win2016cis_2.2.1: true
+win2016cis_2.2.2: true # DC_ONLY
+win2016cis_2.2.2: true # MS_ONLY
+win2016cis_2.2.4: true
+win2016cis_2.2.5: true # DC_ONLY
+win2016cis_2.2.6: true 
+win2016cis_2.2.7: true # DC & MS seperate controls (see Section_2_Vars)
+
+
+##################
+# Section_2_Vars #
+##################
+win2016cis_DC_access_from_network: Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS
+win2016cis_MS_access_from_network: Administrators, Authenticated Users
+win2016cis_DC_allow_logon_local_users: Administrators
+win2016cis_MS_allow_logon_local_users: Administrators
+
+
+
+
+
+
+##############################
+## Global command Variables ##
+##############################
+# powershell commands
 ps_regcheck: 'powershell -noprofile -noninteractive -command'
 gpo_lookup: 'something here'
 
-# Reg_paths
-# CurrentControlSet
+# Registry_paths
+# CurrentControlSet/Lsa
 HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/')
