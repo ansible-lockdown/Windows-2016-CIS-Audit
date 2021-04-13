@@ -4,8 +4,6 @@
 ## Server Variables ##
 ######################
 is_domain_controller: false
-is_domain_member_server: false
-is_standalone_host: true
 reboot_required: false
 
 ##############
