@@ -4,6 +4,8 @@
 
 Goss to be on the host running the audit
 Permissions to run all the commands may need admin to run this
+top of vars file to state the type of server
+if reboots are outstanding on the host this may change results
 
 ### Overview
 
@@ -18,6 +20,8 @@ Its has the following setup
 - Try to reuse as much as possible
 - use variables where you can to shorten and be more efficient in the code
 - Build variables up
+- Some control only work on DC or MS - settings in Vars to determine (will be populated by ansible when run from task)
+- some controls written twice (due to different vars for a DC or MS)e.g. 2.2.7
 
 ## To be done
 
