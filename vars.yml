@@ -6,20 +6,23 @@
 is_domain_controller: false
 reboot_required: false
 
+#########
+## CIS ##
+#########
+
 ##############
 # CIS Levels #
 ##############
 win2016cis_level_1: true
 win2016cis_level_2: true
 
-###############
-# CIS Section #
-###############
+################
+# CIS Sections #
+################
 win2016cis_section_1: true
 win2016cis_section_2: true
 win2016cis_section_9: true
 win2016cis_section_17: true
-
 
 ########################
 ## Section_1_Controls ##
@@ -44,7 +47,6 @@ win2016cis_2.2.4: true
 win2016cis_2.2.5: true # DC_ONLY
 win2016cis_2.2.6: true 
 win2016cis_2.2.7: true # DC & MS seperate controls (see Section_2_Vars)
-
 
 ##################
 # Section_2_Vars #
