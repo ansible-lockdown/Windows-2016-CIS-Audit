@@ -19,12 +19,97 @@ command:
     {{ end }}
   allow_logon_locally_DC:
     {{ if .Vars.win2016cis_2.2.7 }}
-    title: 2.2.7 | L1 |  Ensure 'Allow log on locally' is set to 'Administrators' | SCORED
+    title: 2.2.7 | L1 |  Ensure 'Allow log on locally' is set to 'Administrators' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - {{ .Vars.win2016cis_DC_allow_logon_local_users }}
+    {{ end }}
+  allow_logon_RDP_DC:
+    {{ if .Vars.win2016cis_2.2.8 }}
+    title: 2.2.8 | L1 |  Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - {{ .Vars.win2016cis_DC_allow_logon_RDP_users }}
+    {{ end }}
+  symlink_users_DC:
+    {{ if .Vars.win2016cis_2.2.17 }}
+    title: 2.2.17 | L1 | Ensure 'Create symbolic links' is set to 'Administrators' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'No One'
+    - '!/./'
+    {{ end }}
+  deny_network_access_DC:
+    {{ if .Vars.win2016cis_2.2.20 }}
+    title: 2.2.20 | L1 | Ensure 'Deny access to this computer from the network' to include 'Guests' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Guests'
+    - '!/./'
+    {{ end }}
+  deny_login_RDP_users_DC:
+    {{ if .Vars.win2016cis_2.2.25 }}
+    title: 2.2.25 | L1 | Ensure 'Deny log on through Remote Desktop Services' to include 'Guests' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Guests'
+    - '!/./'
+    {{ end }}
+  trusted_deleg_DC:
+    {{ if .Vars.win2016cis_2.2.27 }}
+    title: 2.2.27 | L1 | Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'Administrators'  (DC only) | SCORED
     exec:
     exit-status: 0
     stdout:
     - 'Administrators'
-    - {{ .Vars.win2016cis_DC_allow_logon_local_users }}
+    - '!/./'
+    {{ end }}
+  impersonate_client_DC:
+    {{ if .Vars.win2016cis_2.2.31 }}
+    title: 2.2.31 | L1 | Ensure 'Impersonate a client after authentication' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'  (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
+    - '!/./'
+    {{ end }}
+  manage_audit_log_DC:
+    {{ if .Vars.win2016cis_2.2.37 }}
+    title: 2.2.37 | L1 | Ensure 'Manage auditing and security log' is set to 'Administrators' and (when Exchange is running in the environment) 'Exchange Servers' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Administrators'
+      {{ if .Vars.exchange_server_group }}
+    - 'Exchange Servers'
+      {{ end }}
+    {{ end }}
+  sync_dir_service_data_DC:
+    {{ if .Vars.win2016cis_2.2.47 }}
+    title: 2.2.47 | L1 | Ensure 'Synchronize directory service data' is set to 'No One' (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'No One'
+    {{ end }}
+  {{ end }}
+
+#### Level 2 Controls ####
+  
+  {{ if .Vars.win2016cis_level_2 }}
+  logon_as_batch_job_DC:
+    {{ if .Vars.win2016cis_2.2.36 }}
+    title: 2.2.36 | L2 | Ensure 'Log on as a batch job' is set to 'Administrators'  (DC only) | SCORED
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Administrators'
+    - '!/./'
     {{ end }}
   {{ end }}
 {{ end }}

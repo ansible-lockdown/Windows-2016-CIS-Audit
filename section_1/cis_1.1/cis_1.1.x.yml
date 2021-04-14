@@ -41,7 +41,7 @@ command:
     stdout:
     - '/[14:100]/'
     {{ end }}
-  passwd_rev_encrpyt:
+  passwd_rev_encrypt:
     {{ if .Vars.win2016cis_1.1.6 }}
     title: 1.1.6 | L1 | Ensure 'Store passwords using reversible encryption' is set to 'Disabled' | SCORED
     exec:

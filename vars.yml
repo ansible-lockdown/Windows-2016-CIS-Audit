@@ -5,6 +5,8 @@
 ######################
 is_domain_controller: false
 reboot_required: false
+win2016cis_use_iis: false
+exchange_server_group: false
 
 #########
 ## CIS ##
@@ -46,7 +48,49 @@ win2016cis_2.2.2: true # MS_ONLY
 win2016cis_2.2.4: true
 win2016cis_2.2.5: true # DC_ONLY
 win2016cis_2.2.6: true 
-win2016cis_2.2.7: true # DC & MS seperate controls (see Section_2_Vars)
+win2016cis_2.2.7: true # DC & MS separate controls (see Section_2_Vars)
+win2016cis_2.2.8: true # DC_ONLY
+win2016cis_2.2.9: true # MS_ONLY
+win2016cis_2.2.10: true
+win2016cis_2.2.11: true
+win2016cis_2.2.12: true
+win2016cis_2.2.13: true
+win2016cis_2.2.14: true
+win2016cis_2.2.15: true
+win2016cis_2.2.16: true
+win2016cis_2.2.17: true # DC ONLY
+win2016cis_2.2.18: true # MS ONLY
+win2016cis_2.2.19: true
+win2016cis_2.2.20: true # DC ONLY
+win2016cis_2.2.21: true
+win2016cis_2.2.22: true
+win2016cis_2.2.23: true
+win2016cis_2.2.24: true
+win2016cis_2.2.25: true # DC ONLY
+win2016cis_2.2.26: true # MS ONLY
+win2016cis_2.2.27: true # DC ONLY
+win2016cis_2.2.28: true # MS ONLY
+win2016cis_2.2.29: true
+win2016cis_2.2.30: true
+win2016cis_2.2.31: true # DC ONLY
+win2016cis_2.2.32: true # MS ONLY
+win2016cis_2.2.33: true
+win2016cis_2.2.34: true
+win2016cis_2.2.35: true
+win2016cis_2.2.36: true # DC ONLY
+win2016cis_2.2.37: true # DC ONLY
+win2016cis_2.2.38: true # MS ONLY
+win2016cis_2.2.39: true
+win2016cis_2.2.40: true
+win2016cis_2.2.41: true
+win2016cis_2.2.42: true
+win2016cis_2.2.43: true
+win2016cis_2.2.44: true
+win2016cis_2.2.45: true
+win2016cis_2.2.46: true
+win2016cis_2.2.47: true # DC ONLY
+win2016cis_2.2.48: true
+
 
 ##################
 # Section_2_Vars #
@@ -55,9 +99,8 @@ win2016cis_DC_access_from_network: Administrators, Authenticated Users, ENTERPRI
 win2016cis_MS_access_from_network: Administrators, Authenticated Users
 win2016cis_DC_allow_logon_local_users: Administrators
 win2016cis_MS_allow_logon_local_users: Administrators
-
-
-
+win2016cis_DC_allow_logon_RDP_users: Administrators
+win2016cis_MS_allow_logon_RDP_users: Administrators, Remote Desktop Users
 
 
 
