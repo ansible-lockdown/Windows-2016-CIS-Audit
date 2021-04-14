@@ -1,0 +1,50 @@
+{{ if not .Vars.is_domain_controller}}
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  block_ms_accounts_GP:
+    {{ if .Vars.win2016cis_2.3.1.2 }}
+    title: 2.3.1.2 | L1 | Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts' | SCORED | GPO
+    exec:
+    exit-status: 0
+    stdout:
+    - 'Users can't add or log on with Microsoft accounts.'
+    - '!/./'
+  block_ms_accounts_regkey:
+  title: 2.3.1.2 | L1 | Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts' | SCORED | reg_check
+    exec:  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\NoConnectedUser
+    exit-status: 0
+    stdout:
+    - '3'
+    {{ end }}
+  Limit_ac_blank_pw_console_GP:
+    {{ if .Vars.win2016cis_2.3.1.4 }}
+    title: 2.3.1.4 | L1 |  Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'  | SCORED | GPO
+    exec:  
+    exit-status: 0
+    stdout:
+    - 'Enabled'
+    title: 2.3.1.4 | L1 |  Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'  | SCORED | reg_check
+    exec:  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa:LimitBlankPasswordUse
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  rename_administrator_act:
+    {{ if .Vars.win2016cis_2.3.1.5 }}
+    title: 2.3.1.5 | L1 |  Configure 'Accounts: Rename administrator account'  | SCORED 
+    exec:  
+    exit-status: 0
+    stdout:
+    - '!/Administrator/'
+    {{ end }}
+  rename_guest_act:
+    {{ if .Vars.win2016cis_2.3.1.6 }}
+    title: 2.3.1.6 | L1 |  Configure 'Accounts: Rename guest account'  | SCORED 
+    exec:  
+    exit-status: 0
+    stdout:
+    - '!/guest/'
+    {{ end }}
+  
+  {{ end }}
+{{ end }}

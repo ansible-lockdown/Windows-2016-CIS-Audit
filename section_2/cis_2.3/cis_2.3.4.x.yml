@@ -1,0 +1,34 @@
+{{ if not .Vars.is_domain_controller}}
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  format_eject_media_GP:
+    {{ if .Vars.win2016cis_2.3.4.1 }}
+    title: 2.3.4.1 | L1 | Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators' | SCORED | GP
+    exec:
+    exit-status: 0
+    std-out:
+    - 'Administrators'
+  format_eject_media_reg:
+    {{ if .Vars.win2016cis_2.3.4.1 }}
+    title: 2.3.4.1 | L1 | Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators' | SCORED | reg_check
+    exec:  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon:AllocateDASD
+    exit-status: 0
+    std-out:
+    - '1'
+    {{ end }}
+  user_add_print_drivers_GP:
+    {{ if .Vars.win2016cis_2.3.4.2 }}
+    title: 2.3.4.2 | L1 | Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | GP
+    exec:
+    exit-status: 0
+    std-out:
+    - 'Enabled'
+  user_add_print_drivers_reg:
+    title: 2.3.4.2 | L1 | Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | reg_check
+    exec:  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers:AddPrinterDrivers
+    exit-status: 0
+    std-out:
+    - '0'
+    {{ end }}
+  {{ end }}
+{{ end }}
