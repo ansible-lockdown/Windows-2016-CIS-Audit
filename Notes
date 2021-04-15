@@ -26,6 +26,12 @@ PasswordHistorySize                  24
 ResetLockoutCount                    15  
 
 
+
+----
+Do we use gpresult instead?
+e.g.
+gpresult /x {filename}.xml
+
 ISSUES
 1/ Only looks at one GPO
 - need to cycle over all applied GPOs
