@@ -1,4 +1,4 @@
-1. Capture current GPO settings output to file
+1. Capture current GPO settings output to file - If set via one GPO e.g. cis
 2. Parse file for each section
 3. Using goss to parse the data
 
@@ -25,16 +25,56 @@ PasswordComplexity    true
 PasswordHistorySize                  24           
 ResetLockoutCount                    15  
 
+PROS:
+Keeps inline with CIS rules - one policy for CIS?
+one file 
+Ability to seperate by section - debugging easier
 
+CONS:
+Only one GPO searched
+Doesnt mean policy setting are live on host?? (to confirm)
+parsing xml which may change?
 
-----
+------
+
 Do we use gpresult instead?
 e.g.
 gpresult /x {filename}.xml
 
-or
 
-gpresult /r /v > {filemname.txt} - captures over three lines? - manipulate out and join lines? K:v pair
+PROS:
+captures all GPOs
+
+
+CONS:
+This file could get very big on large enterprise setups with multiple GPOs 
+if a big forest access is needed to query all
+May get resource intensive if above and loops
+xml get more complex to debug.
+Need to distinguish applicable rules 
+
+------
+
+gpresult /r /v > {filename.txt} - captures over three lines? - manipulate out and join lines? K:v pair
+e.g. 
+Get-Content .\win2016.txt | Select-String GPO: -Context 0,2
+(read file )   (filename)   (grep       string) (add context 0 + 2 lines after) 
+or exact GPO policy name
+Get-Content .\win2016.txt | Select-String MaxRenewAge -Context 1,1
+(read file )   (filename)   (grep       string) (add context 1 line before & 1 line after) 
+
+PROS:
+captures all GPOs
+only shows valid active settings
+
+CONS:
+This file could get very big on large enterprise setups with multiple GPOs 
+if a big forest access is needed to query all
+May get resource intensive if above and loops
+xml get more complex to debug.
+
+
+
 ISSUES
 1/ Only looks at one GPO
 - need to cycle over all applied GPOs
