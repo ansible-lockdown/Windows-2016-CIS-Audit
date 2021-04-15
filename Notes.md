@@ -1,10 +1,10 @@
 # Approach for GPO output and goss parsing
 
-## Option 1 
-1. Capture current GPO settings output to file - If set via one GPO e.g. cis
-2. Parse file for each section
-3. Using goss to parse the data
+## Option 1
 
+- Capture current GPO settings output to file - If set via one GPO e.g. cis
+- Parse file for each section
+- Using goss to parse the data
 
 e.g. ps script
 i)create report - if name of GPO is CIS?
