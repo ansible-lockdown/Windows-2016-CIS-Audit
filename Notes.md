@@ -1,14 +1,18 @@
 # Approach for GPO output and goss parsing
 
-## Option 1
-
 - Capture current GPO settings output to file - If set via one GPO e.g. cis
 - Parse file for each section
 - Using goss to parse the data
+- capture data rather than keep querying controllers
+
+## Option 1
 
 e.g. ps script
-i)create report - if name of GPO is CIS?
-Get-GPOReport -Name "CIS" -ReportType xml -path "c:\goss\cis_gpo_report.xml"
+i)create report - if name of GPO is CIS? 
+
+```ps
+Get-GPOReport -Name "CIS" -ReportType xml -path "c:\goss\cis_gpo_report.xml" 
+ ```
 
 ii) Work on section to pull data (PS script example)
 
