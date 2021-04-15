@@ -63,13 +63,23 @@ Need to distinguish applicable rules (also a pro)
 
 ## Option 3
 
+```shell
 gpresult /r /v > {filename.txt} - captures over three lines? - manipulate out and join lines? K:v pair
+```
+
 e.g.
+
+```shell
 Get-Content .\win2016.txt | Select-String GPO: -Context 0,2
 (read file )   (filename)   (grep       string) (add context 0 + 2 lines after) 
+```
+
 or exact GPO policy name
+
+```shell
 Get-Content .\win2016.txt | Select-String MaxRenewAge -Context 1,1
 (read file )   (filename)   (grep       string) (add context 1 line before & 1 line after) 
+```
 
 ```shell
               GPO: Default Domain Policy
