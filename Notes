@@ -32,6 +32,9 @@ Do we use gpresult instead?
 e.g.
 gpresult /x {filename}.xml
 
+or
+
+gpresult /r /v > {filemname.txt} - captures over three lines? - manipulate out and join lines? K:v pair
 ISSUES
 1/ Only looks at one GPO
 - need to cycle over all applied GPOs
