@@ -62,6 +62,11 @@ Get-Content .\win2016.txt | Select-String GPO: -Context 0,2
 or exact GPO policy name
 Get-Content .\win2016.txt | Select-String MaxRenewAge -Context 1,1
 (read file )   (filename)   (grep       string) (add context 1 line before & 1 line after) 
+```
+              GPO: Default Domain Policy
+>                 Policy:            MaxRenewAge
+                  Computer Setting:  7
+```
 
 PROS:
 captures all GPOs
