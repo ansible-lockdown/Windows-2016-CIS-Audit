@@ -107,6 +107,17 @@ win2016cis_2.3.2.2: true
 # 2.3.4 Devices
 win2016cis_2.3.4.1: true
 win2016cis_2.3.4.2: true
+# 2.3.8 Microsoft network client
+win2016cis_2.3.8.1: true
+win2016cis_2.3.8.2: true
+win2016cis_2.3.8.3: true
+# 2.3.9 Microsoft network server
+win2016cis_2.3.9.1: true
+win2016cis_2.3.9.2: true
+win2016cis_2.3.9.3: true
+win2016cis_2.3.9.4: true
+win2016cis_2.3.9.5: true
+# 2.3.10 Network Access
 
 ##################
 # Section_2_Vars #
@@ -129,4 +140,8 @@ gpo_lookup: 'something here'
 
 # Registry_paths
 # CurrentControlSet/Lsa
+# Get key
 HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/')
+# Get Parameter
+HKLM_CCS_LANWORK: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanWorkStation/Parameters'
+HKLM_CCS_LANSERVER: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanServer/Parameters'
