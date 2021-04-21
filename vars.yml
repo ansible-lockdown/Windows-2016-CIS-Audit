@@ -19,6 +19,17 @@ win2016cis_level_1: true
 win2016cis_level_2: true
 
 ################
+# Server Roles #
+################
+# If a Server uses the following set to true
+# certification Authority role
+win2016cis_cert_auth_role: false
+# WINS server Feature Installed
+win2016cis_WINS_server: false
+
+
+
+################
 # CIS Sections #
 ################
 win2016cis_section_1: true
@@ -107,17 +118,31 @@ win2016cis_2.3.2.2: true
 # 2.3.4 Devices
 win2016cis_2.3.4.1: true
 win2016cis_2.3.4.2: true
-# 2.3.8 Microsoft network client
+# 2.3.8 Microsoft network client SMB
 win2016cis_2.3.8.1: true
 win2016cis_2.3.8.2: true
 win2016cis_2.3.8.3: true
-# 2.3.9 Microsoft network server
+# 2.3.9 Microsoft network server SMB
 win2016cis_2.3.9.1: true
 win2016cis_2.3.9.2: true
 win2016cis_2.3.9.3: true
 win2016cis_2.3.9.4: true
 win2016cis_2.3.9.5: true
 # 2.3.10 Network Access
+win2016cis_2.3.10.1: true
+win2016cis_2.3.10.2: true
+win2016cis_2.3.10.3: true
+win2016cis_2.3.10.4: true
+win2016cis_2.3.10.5: true
+win2016cis_2.3.10.6: true
+win2016cis_2.3.10.7: true
+win2016cis_2.3.10.8: true
+win2016cis_2.3.10.9: true
+win2016cis_2.3.10.10: true
+win2016cis_2.3.10.11: true
+win2016cis_2.3.10.12: true
+win2016cis_2.3.10.13: true
+
 
 ##################
 # Section_2_Vars #
