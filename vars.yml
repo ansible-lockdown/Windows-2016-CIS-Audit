@@ -41,107 +41,135 @@ win2016cis_section_17: true
 ## Section_1_Controls ##
 ########################
 # 1.1 Password Policy
-win2016cis_1.1.1: true
-win2016cis_1.1.2: true
-win2016cis_1.1.3: true
-win2016cis_1.1.4: true
-win2016cis_1.1.5: true
-win2016cis_1.1.6: true
+win2016cis_1_1_1: true
+win2016cis_1_1_2: true
+win2016cis_1_1_3: true
+win2016cis_1_1_4: true
+win2016cis_1_1_5: true
+win2016cis_1_1_6: true
 # 1.2 Account Lockout Policy
-win2016cis_1.2.1: true
-win2016cis_1.2.2: true
-win2016cis_1.2.3: true
+win2016cis_1_2_1: true
+win2016cis_1_2_2: true
+win2016cis_1_2_3: true
 
 ########################
 ## Section_2_Controls ##
 ########################
 # 2.2 User Rights Assignment
-win2016cis_2.2.1: true
-win2016cis_2.2.2: true # DC_ONLY
-win2016cis_2.2.2: true # MS_ONLY
-win2016cis_2.2.4: true
-win2016cis_2.2.5: true # DC_ONLY
-win2016cis_2.2.6: true 
-win2016cis_2.2.7: true # DC & MS separate controls (see Section_2_Vars)
-win2016cis_2.2.8: true # DC_ONLY
-win2016cis_2.2.9: true # MS_ONLY
-win2016cis_2.2.10: true
-win2016cis_2.2.11: true
-win2016cis_2.2.12: true
-win2016cis_2.2.13: true
-win2016cis_2.2.14: true
-win2016cis_2.2.15: true
-win2016cis_2.2.16: true
-win2016cis_2.2.17: true # DC ONLY
-win2016cis_2.2.18: true # MS ONLY
-win2016cis_2.2.19: true
-win2016cis_2.2.20: true # DC ONLY
-win2016cis_2.2.21: true
-win2016cis_2.2.22: true
-win2016cis_2.2.23: true
-win2016cis_2.2.24: true
-win2016cis_2.2.25: true # DC ONLY
-win2016cis_2.2.26: true # MS ONLY
-win2016cis_2.2.27: true # DC ONLY
-win2016cis_2.2.28: true # MS ONLY
-win2016cis_2.2.29: true
-win2016cis_2.2.30: true
-win2016cis_2.2.31: true # DC ONLY
-win2016cis_2.2.32: true # MS ONLY
-win2016cis_2.2.33: true
-win2016cis_2.2.34: true
-win2016cis_2.2.35: true
-win2016cis_2.2.36: true # DC ONLY
-win2016cis_2.2.37: true # DC ONLY
-win2016cis_2.2.38: true # MS ONLY
-win2016cis_2.2.39: true
-win2016cis_2.2.40: true
-win2016cis_2.2.41: true
-win2016cis_2.2.42: true
-win2016cis_2.2.43: true
-win2016cis_2.2.44: true
-win2016cis_2.2.45: true
-win2016cis_2.2.46: true
-win2016cis_2.2.47: true # DC ONLY
-win2016cis_2.2.48: true
+win2016cis_2_2_1: true
+win2016cis_2_2_2: true # DC_ONLY
+win2016cis_2_2_2: true # MS_ONLY
+win2016cis_2_2_4: true
+win2016cis_2_2_5: true # DC_ONLY
+win2016cis_2_2_6: true 
+win2016cis_2_2_7: true # DC & MS separate controls (see Section_2_Vars)
+win2016cis_2_2_8: true # DC_ONLY
+win2016cis_2_2_9: true # MS_ONLY
+win2016cis_2_2_10: true
+win2016cis_2_2_11: true
+win2016cis_2_2_12: true
+win2016cis_2_2_13: true
+win2016cis_2_2_14: true
+win2016cis_2_2_15: true
+win2016cis_2_2_16: true
+win2016cis_2_2_17: true # DC ONLY
+win2016cis_2_2_18: true # MS ONLY
+win2016cis_2_2_19: true
+win2016cis_2_2_20: true # DC ONLY
+win2016cis_2_2_21: true
+win2016cis_2_2_22: true
+win2016cis_2_2_23: true
+win2016cis_2_2_24: true
+win2016cis_2_2_25: true # DC ONLY
+win2016cis_2_2_26: true # MS ONLY
+win2016cis_2_2_27: true # DC ONLY
+win2016cis_2_2_28: true # MS ONLY
+win2016cis_2_2_29: true
+win2016cis_2_2_30: true
+win2016cis_2_2_31: true # DC ONLY
+win2016cis_2_2_32: true # MS ONLY
+win2016cis_2_2_33: true
+win2016cis_2_2_34: true
+win2016cis_2_2_35: true
+win2016cis_2_2_36: true # DC ONLY
+win2016cis_2_2_37: true # DC ONLY
+win2016cis_2_2_38: true # MS ONLY
+win2016cis_2_2_39: true
+win2016cis_2_2_40: true
+win2016cis_2_2_41: true
+win2016cis_2_2_42: true
+win2016cis_2_2_43: true
+win2016cis_2_2_44: true
+win2016cis_2_2_45: true
+win2016cis_2_2_46: true
+win2016cis_2_2_47: true # DC ONLY
+win2016cis_2_2_48: true
 # 2.3.1 Accounts
-win2016cis_2.3.1.1: true # MS Only
-win2016cis_2.3.1.2: true 
-win2016cis_2.3.1.3: true # MS Only
-win2016cis_2.3.1.4: true
-win2016cis_2.3.1.5: true
-win2016cis_2.3.1.6: true
+win2016cis_2_3_1_1: true # MS Only
+win2016cis_2_3_1_2: true 
+win2016cis_2_3_1_3: true # MS Only
+win2016cis_2_3_1_4: true
+win2016cis_2_3_1_5: true
+win2016cis_2_3_1_6: true
 #A 2.3.2 udit
-win2016cis_2.3.2.1: true
-win2016cis_2.3.2.2: true
+win2016cis_2_3_2_1: true
+win2016cis_2_3_2_2: true
 # 2.3.3 DCOM
 # 2.3.4 Devices
-win2016cis_2.3.4.1: true
-win2016cis_2.3.4.2: true
+win2016cis_2_3_4_1: true
+win2016cis_2_3_4_2: true
 # 2.3.8 Microsoft network client SMB
-win2016cis_2.3.8.1: true
-win2016cis_2.3.8.2: true
-win2016cis_2.3.8.3: true
+win2016cis_2_3_8_1: true
+win2016cis_2_3_8_2: true
+win2016cis_2_3_8_3: true
 # 2.3.9 Microsoft network server SMB
-win2016cis_2.3.9.1: true
-win2016cis_2.3.9.2: true
-win2016cis_2.3.9.3: true
-win2016cis_2.3.9.4: true
-win2016cis_2.3.9.5: true
+win2016cis_2_3_9_1: true
+win2016cis_2_3_9_2: true
+win2016cis_2_3_9_3: true
+win2016cis_2_3_9_4: true
+win2016cis_2_3_9_5: true
 # 2.3.10 Network Access
-win2016cis_2.3.10.1: true
-win2016cis_2.3.10.2: true
-win2016cis_2.3.10.3: true
-win2016cis_2.3.10.4: true
-win2016cis_2.3.10.5: true
-win2016cis_2.3.10.6: true
-win2016cis_2.3.10.7: true
-win2016cis_2.3.10.8: true
-win2016cis_2.3.10.9: true
-win2016cis_2.3.10.10: true
-win2016cis_2.3.10.11: true
-win2016cis_2.3.10.12: true
-win2016cis_2.3.10.13: true
+win2016cis_2_3_10.1: true
+win2016cis_2_3_10.2: true
+win2016cis_2_3_10.3: true
+win2016cis_2_3_10.4: true
+win2016cis_2_3_10.5: true
+win2016cis_2_3_10.6: true
+win2016cis_2_3_10.7: true
+win2016cis_2_3_10.8: true
+win2016cis_2_3_10.9: true
+win2016cis_2_3_10.10: true
+win2016cis_2_3_10.11: true
+win2016cis_2_3_10.12: true
+win2016cis_2_3_10.13: true
+# 2.3.10 Network Security
+win2016cis_2_3_11.1: true
+win2016cis_2_3_11.2: true
+win2016cis_2_3_11.3: true
+win2016cis_2_3_11.4: true
+win2016cis_2_3_11.5: true
+win2016cis_2_3_11.6: true
+win2016cis_2_3_11.7: true
+win2016cis_2_3_11.8: true
+win2016cis_2_3_11.9: true
+win2016cis_2_3_11.10: true
+# 2.2.12 Recovery Console
+# 2.3.13 Shutdown
+win2016cis_2_3_13.1: true
+#2.3.14 Cryptography
+# 2.3.15 System Objects
+win2016cis_2_3_15.1: true
+win2016cis_2_3_15.2: true
+# 2.3.16 System Settings
+# 2.3.17 User Account Control
+win2016cis_2_3_17.1: true
+win2016cis_2_3_17.2: true
+win2016cis_2_3_17.3: true
+win2016cis_2_3_17.4: true
+win2016cis_2_3_17.5: true
+win2016cis_2_3_17.6: true
+win2016cis_2_3_17.7: true
+win2016cis_2_3_17.8: true
 
 
 ##################
@@ -167,6 +195,9 @@ gpo_lookup: 'something here'
 # CurrentControlSet/Lsa
 # Get key
 HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/')
+HKLM_CCS_LDAP: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LDAP/')
+HKLM_CV_SYSTEM: (get-itemproperty -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/')
 # Get Parameter
 HKLM_CCS_LANWORK: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanWorkStation/Parameters'
 HKLM_CCS_LANSERVER: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanServer/Parameters'
+HKLM_KERB: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/Kerberos/Parameters'

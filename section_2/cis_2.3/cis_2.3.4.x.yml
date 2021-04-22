@@ -2,32 +2,31 @@
   {{ if .Vars.win2016cis_level_1 }}
 command:
   format_eject_media_GP:
-    {{ if .Vars.win2016cis_2.3.4.1 }}
-    title: 2.3.4.1 | L1 | Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators' | SCORED | GP
-    exec:
+    {{ if .Vars.win2016cis_2_3_4_1 }}
+    title: 2.3.4.1 | L1 | Ensure 'Devices - Allowed to format and eject removable media' is set to 'Administrators' | SCORED | GP
+    exec: echo GPO
     exit-status: 0
-    std-out:
+    stdout:
     - 'Administrators'
   format_eject_media_reg:
-    {{ if .Vars.win2016cis_2.3.4.1 }}
-    title: 2.3.4.1 | L1 | Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators' | SCORED | reg_check
-    exec:  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon:AllocateDASD
+    title: 2.3.4.1 | L1 | Ensure 'Devices - Allowed to format and eject removable media' is set to 'Administrators' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} (get-itemproperty - path 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon').AllocateDASD
     exit-status: 0
-    std-out:
+    stdout:
     - '1'
     {{ end }}
   user_add_print_drivers_GP:
-    {{ if .Vars.win2016cis_2.3.4.2 }}
-    title: 2.3.4.2 | L1 | Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | GP
-    exec:
+    {{ if .Vars.win2016cis_2_3_4_2 }}
+    title: 2.3.4.2 | L1 | Ensure 'Devices - Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | GP
+    exec: echo GPO
     exit-status: 0
-    std-out:
+    stdout:
     - 'Enabled'
   user_add_print_drivers_reg:
-    title: 2.3.4.2 | L1 | Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | reg_check
-    exec:  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers:AddPrinterDrivers
+    title: 2.3.4.2 | L1 | Ensure 'Devices - Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} (get-itemproperty - path 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers').AddPrinterDrivers
     exit-status: 0
-    std-out:
+    stdout:
     - '0'
     {{ end }}
   {{ end }}

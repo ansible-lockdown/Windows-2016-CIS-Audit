@@ -2,7 +2,7 @@
   {{ if .Vars.win2016cis_level_1 }}
 command:
   access_dc_admins:
-    {{ if .Vars.win2016cis_2.2.2 }}
+    {{ if .Vars.win2016cis_2_2_2 }}
     title: 2.2.2 | L1 | Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -10,7 +10,7 @@ command:
     - {{ .Vars.win2016cis_DC_access_from_network}}
     {{ end }}
   add_workstations_to_domain:
-    {{ if .Vars.win2016cis_2.2.5 }}
+    {{ if .Vars.win2016cis_2_2_5 }}
     title: 2.2.5 | L1 | Ensure 'Add workstations to domain' is set to 'Administrators' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -18,7 +18,7 @@ command:
     - 'Administrators'
     {{ end }}
   allow_logon_locally_DC:
-    {{ if .Vars.win2016cis_2.2.7 }}
+    {{ if .Vars.win2016cis_2_2_7 }}
     title: 2.2.7 | L1 |  Ensure 'Allow log on locally' is set to 'Administrators' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -26,7 +26,7 @@ command:
     - {{ .Vars.win2016cis_DC_allow_logon_local_users }}
     {{ end }}
   allow_logon_RDP_DC:
-    {{ if .Vars.win2016cis_2.2.8 }}
+    {{ if .Vars.win2016cis_2_2_8 }}
     title: 2.2.8 | L1 |  Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -34,7 +34,7 @@ command:
     - {{ .Vars.win2016cis_DC_allow_logon_RDP_users }}
     {{ end }}
   symlink_users_DC:
-    {{ if .Vars.win2016cis_2.2.17 }}
+    {{ if .Vars.win2016cis_2_2_17 }}
     title: 2.2.17 | L1 | Ensure 'Create symbolic links' is set to 'Administrators' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -43,7 +43,7 @@ command:
     - '!/./'
     {{ end }}
   deny_network_access_DC:
-    {{ if .Vars.win2016cis_2.2.20 }}
+    {{ if .Vars.win2016cis_2_2_20 }}
     title: 2.2.20 | L1 | Ensure 'Deny access to this computer from the network' to include 'Guests' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -52,7 +52,7 @@ command:
     - '!/./'
     {{ end }}
   deny_login_RDP_users_DC:
-    {{ if .Vars.win2016cis_2.2.25 }}
+    {{ if .Vars.win2016cis_2_2_25 }}
     title: 2.2.25 | L1 | Ensure 'Deny log on through Remote Desktop Services' to include 'Guests' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -61,7 +61,7 @@ command:
     - '!/./'
     {{ end }}
   trusted_deleg_DC:
-    {{ if .Vars.win2016cis_2.2.27 }}
+    {{ if .Vars.win2016cis_2_2_27 }}
     title: 2.2.27 | L1 | Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'Administrators'  (DC only) | SCORED
     exec:
     exit-status: 0
@@ -70,7 +70,7 @@ command:
     - '!/./'
     {{ end }}
   impersonate_client_DC:
-    {{ if .Vars.win2016cis_2.2.31 }}
+    {{ if .Vars.win2016cis_2_2_31 }}
     title: 2.2.31 | L1 | Ensure 'Impersonate a client after authentication' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'  (DC only) | SCORED
     exec:
     exit-status: 0
@@ -79,7 +79,7 @@ command:
     - '!/./'
     {{ end }}
   manage_audit_log_DC:
-    {{ if .Vars.win2016cis_2.2.37 }}
+    {{ if .Vars.win2016cis_2_2_37 }}
     title: 2.2.37 | L1 | Ensure 'Manage auditing and security log' is set to 'Administrators' and (when Exchange is running in the environment) 'Exchange Servers' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -90,7 +90,7 @@ command:
       {{ end }}
     {{ end }}
   sync_dir_service_data_DC:
-    {{ if .Vars.win2016cis_2.2.47 }}
+    {{ if .Vars.win2016cis_2_2_47 }}
     title: 2.2.47 | L1 | Ensure 'Synchronize directory service data' is set to 'No One' (DC only) | SCORED
     exec:
     exit-status: 0
@@ -103,7 +103,7 @@ command:
   
   {{ if .Vars.win2016cis_level_2 }}
   logon_as_batch_job_DC:
-    {{ if .Vars.win2016cis_2.2.36 }}
+    {{ if .Vars.win2016cis_2_2_36 }}
     title: 2.2.36 | L2 | Ensure 'Log on as a batch job' is set to 'Administrators'  (DC only) | SCORED
     exec:
     exit-status: 0

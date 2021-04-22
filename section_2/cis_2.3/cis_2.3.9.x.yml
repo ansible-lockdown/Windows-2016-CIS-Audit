@@ -1,7 +1,7 @@
 {{ if .Vars.win2016cis_level_1 }}
 command:
   time_before_suspend:
-    {{ if .Vars.win2016cis_2.3.9.1 }}
+    {{ if .Vars.win2016cis_2_3_9_1 }}
     title: 2.3.9.1 | L1 | Ensure 'Microsoft network server: Amount of idle time required before suspending session' is set to '15 or fewer minute(s) | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER}} -Name AutoDisconnect
     exit-status: 0
@@ -9,7 +9,7 @@ command:
     - '/[1:15]/'
     {{ end }}
   digi_sign_always_server:
-    {{ if .Vars.win2016cis_2.3.9.2 }}
+    {{ if .Vars.win2016cis_2_3_9_2 }}
     title: 2.3.9.2 | L1 | Ensure 'Microsoft network server: Digitally sign communications (always)' is set to 'Enabled' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name RequireSecuritySignature
     exit-status: 0
@@ -17,7 +17,7 @@ command:
     - '1'
     {{ end }}
   digi_sign_enable_server:
-    {{ if .Vars.win2016cis_2.3.9.3 }}
+    {{ if .Vars.win2016cis_2_3_9_3 }}
     title: 2.3.9.3 | L1 |  Ensure 'Microsoft network server: Digitally sign communications (if client agrees)' is set to 'Enabled' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name EnableSecuritySignature
     exit-status: 0
@@ -25,7 +25,7 @@ command:
     - '1'
     {{ end }}
   disconnect_client_hrs_expire:
-    {{ if .Vars.win2016cis_2.3.9.4 }}
+    {{ if .Vars.win2016cis_2_3_9_4 }}
     title: 2.3.9.4 | L1 |  Ensure 'Microsoft network server: Disconnect clients when logon hours expire' is set to 'Enabled' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name enableforcelogoff
     exit-status: 0

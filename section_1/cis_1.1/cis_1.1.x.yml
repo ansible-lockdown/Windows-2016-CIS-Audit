@@ -1,7 +1,7 @@
 {{ if .Vars.win2016cis_level_1 }}
 command:
   passwd_history:
-    {{ if .Vars.win2016cis_1.1.1 }}
+    {{ if .Vars.win2016cis_1_1_1 }}
     title: 1.1.1 | L1 | Ensure 'Enforce password history' is set to '24 or more passwords | SCORED
     exec:
     exit-status: 0
@@ -9,7 +9,7 @@ command:
     - '0'
     {{ end }}
   passwd_age_max:
-    {{ if .Vars.win2016cis_1.1.2 }}
+    {{ if .Vars.win2016cis_1_1_2 }}
     title: 1.1.2 | L1 | Ensure 'Maximum password age' is set to '60 or fewer days, but not 0' | SCORED
     exec:
     exit-status: 0
@@ -18,7 +18,7 @@ command:
     - '!/0/'
     {{ end }}
   passwd_age_min:
-    {{ if .Vars.win2016cis_1.1.3 }}
+    {{ if .Vars.win2016cis_1_1_3 }}
     title: 1.1.3 | L1 | Ensure 'Minimum password age' is set to '1 or more day(s)' | SCORED
     exec:
     exit-status: 0
@@ -26,7 +26,7 @@ command:
     - '/[1:180]/'
     {{ end }}
   passwd_min_length:
-    {{ if .Vars.win2016cis_1.1.4 }}
+    {{ if .Vars.win2016cis_1_1_4 }}
     title: 1.1.4 | L1 |  Ensure 'Minimum password length' is set to '14 or more characters | SCORED
     exec:
     exit-status: 0
@@ -34,7 +34,7 @@ command:
     - '/[14:100]/'
     {{ end }}
   passwd_complex:
-    {{ if .Vars.win2016cis_1.1.5 }}
+    {{ if .Vars.win2016cis_1_1_5 }}
     title: 1.1.5 | L1 |  Ensure 'Password must meet complexity requirements'| SCORED
     exec:
     exit-status: 0
@@ -42,7 +42,7 @@ command:
     - '/[14:100]/'
     {{ end }}
   passwd_rev_encrypt:
-    {{ if .Vars.win2016cis_1.1.6 }}
+    {{ if .Vars.win2016cis_1_1_6 }}
     title: 1.1.6 | L1 | Ensure 'Store passwords using reversible encryption' is set to 'Disabled' | SCORED
     exec:
     exit-status: 0

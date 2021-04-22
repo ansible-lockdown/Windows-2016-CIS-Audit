@@ -1,6 +1,6 @@
 {{ if .Vars.win2016cis_level_1 }}
 command:
-  {{ if .Vars.win2016cis_2.3.10.1 }}
+  {{ if .Vars.win2016cis_2_3_10_1 }}
   disable_anon_sid_name:
     title: 2.3.10.1 | L1 | Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled' | SCORED | reg_check
     exec:  GPO
@@ -8,7 +8,7 @@ command:
     std-out:
     - '/[1:15]/'
   {{ end }}
-  {{ if .Vars.win2016cis_2.3.10.5 }}
+  {{ if .Vars.win2016cis_2_3_10_5 }}
   disable_everyone_inc_anon:
     title: 2.3.10.5 | L1 | Ensure 'Network access: Let Everyone permissions apply to anonymous users' is set to 'Disabled' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.EveryoneIncludesAnonymous"
@@ -16,7 +16,7 @@ command:
     std-out:
     - '1'
   {{ end }}
-  {{ if .Vars.win2016cis_2.3.10.8 }}
+  {{ if .Vars.win2016cis_2_3_10_8 }}
   remote_access_reg_paths:
     title: 2.3.10.8 | L1 | Configure 'Network access: Remotely accessible registry paths' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/SecurePipeServers/winreg/AllowedExactPaths' -Name Machine
@@ -26,7 +26,7 @@ command:
     - 'System\CurrentControlSet\Control\Server Applications'
     - 'Software\Microsoft\Windows NT\CurrentVersion'
   {{ end }}
-  {{ if .Vars.win2016cis_2.3.10.9 }}
+  {{ if .Vars.win2016cis_2_3_10_9 }}
   remote_access_reg_paths_subpaths:
     title: 2.3.10.9 | L1 |  Configure 'Network access: Remotely accessible registry paths and sub-paths' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/SecurePipeServers/winreg/AllowedPaths' -Name Machine
@@ -50,7 +50,7 @@ command:
     - 'System\CurrentControlSet\Services\WINS'
     {{ end }}
   {{ end }}
-  {{ if .Vars.win2016cis_2.3.10.10 }}
+  {{ if .Vars.win2016cis_2_3_10_10 }}
   restrict_anon_names_pipes:
     title: 2.3.10.10 | L1 | Ensure 'Network access: Restrict anonymous access to Named Pipes and Shares' is set to 'Enabled' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name RestrictNullSessAccess"
@@ -58,7 +58,7 @@ command:
     std-out:
     - '1'
   {{ end }}
-  {{ if .Vars.win2016cis_2.3.10.11 }}
+  {{ if .Vars.win2016cis_2_3_10_11 }}
   restrict_client_remote_SAM:
     title: 2.3.10.11 | L1 | Ensure 'Network access: Restrict clients allowed to make remote calls to SAM' is set to 'Administrators: Remote Access: Allow' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.restrictremotesam"
@@ -66,7 +66,7 @@ command:
     std-out:
     - '1'
   {{ end }}
-  {{ if .Vars.win2016cis_2.3.10.12 }}
+  {{ if .Vars.win2016cis_2_3_10_12 }}
   anon_share_access_none:
     title: 2.3.10.12 | L1 | Ensure 'Network access: Shares that can be accessed anonymously' is set to 'None' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name NullSessionShares"
@@ -74,7 +74,7 @@ command:
     std-out:
     - '1'
   {{ end }}
-  {{ if .Vars.win2016cis_2.3.10.13 }}
+  {{ if .Vars.win2016cis_2_3_10_13 }}
   classic_local_users:
     title: 2.3.10.13 | L1 | Ensure 'Network access: Sharing and security model for local accounts' is set to 'Classic - local users authenticate as themselves' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.ForceGuest"
@@ -88,7 +88,7 @@ command:
 ## Level 2
 {{ if .Vars.win2016cis_level_2}}
 no_passwd_store:
-    {{ if .Vars.win2016cis_2.3.10.4 }}
+    {{ if .Vars.win2016cis_2_3_10_4 }}
     title: 2.3.10.4 | L2 | Ensure 'Network access: Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.DisableDomainCreds"
     exit-status: 0
