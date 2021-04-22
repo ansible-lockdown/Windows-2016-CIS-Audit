@@ -129,47 +129,47 @@ win2016cis_2_3_9_3: true
 win2016cis_2_3_9_4: true
 win2016cis_2_3_9_5: true
 # 2.3.10 Network Access
-win2016cis_2_3_10.1: true
-win2016cis_2_3_10.2: true
-win2016cis_2_3_10.3: true
-win2016cis_2_3_10.4: true
-win2016cis_2_3_10.5: true
-win2016cis_2_3_10.6: true
-win2016cis_2_3_10.7: true
-win2016cis_2_3_10.8: true
-win2016cis_2_3_10.9: true
-win2016cis_2_3_10.10: true
-win2016cis_2_3_10.11: true
-win2016cis_2_3_10.12: true
-win2016cis_2_3_10.13: true
+win2016cis_2_3_10_1: true
+win2016cis_2_3_10_2: true
+win2016cis_2_3_10_3: true
+win2016cis_2_3_10_4: true
+win2016cis_2_3_10_5: true
+win2016cis_2_3_10_6: true
+win2016cis_2_3_10_7: true
+win2016cis_2_3_10_8: true
+win2016cis_2_3_10_9: true
+win2016cis_2_3_10_10: true
+win2016cis_2_3_10_11: true
+win2016cis_2_3_10_12: true
+win2016cis_2_3_10_13: true
 # 2.3.10 Network Security
-win2016cis_2_3_11.1: true
-win2016cis_2_3_11.2: true
-win2016cis_2_3_11.3: true
-win2016cis_2_3_11.4: true
-win2016cis_2_3_11.5: true
-win2016cis_2_3_11.6: true
-win2016cis_2_3_11.7: true
-win2016cis_2_3_11.8: true
-win2016cis_2_3_11.9: true
-win2016cis_2_3_11.10: true
+win2016cis_2_3_11_1: true
+win2016cis_2_3_11_2: true
+win2016cis_2_3_11_3: true
+win2016cis_2_3_11_4: true
+win2016cis_2_3_11_5: true
+win2016cis_2_3_11_6: true
+win2016cis_2_3_11_7: true
+win2016cis_2_3_11_8: true
+win2016cis_2_3_11_9: true
+win2016cis_2_3_11_10: true
 # 2.2.12 Recovery Console
 # 2.3.13 Shutdown
-win2016cis_2_3_13.1: true
+win2016cis_2_3_13_1: true
 #2.3.14 Cryptography
 # 2.3.15 System Objects
-win2016cis_2_3_15.1: true
-win2016cis_2_3_15.2: true
+win2016cis_2_3_15_1: true
+win2016cis_2_3_15_2: true
 # 2.3.16 System Settings
 # 2.3.17 User Account Control
-win2016cis_2_3_17.1: true
-win2016cis_2_3_17.2: true
-win2016cis_2_3_17.3: true
-win2016cis_2_3_17.4: true
-win2016cis_2_3_17.5: true
-win2016cis_2_3_17.6: true
-win2016cis_2_3_17.7: true
-win2016cis_2_3_17.8: true
+win2016cis_2_3_17_1: true
+win2016cis_2_3_17_2: true
+win2016cis_2_3_17_3: true
+win2016cis_2_3_17_4: true
+win2016cis_2_3_17_5: true
+win2016cis_2_3_17_6: true
+win2016cis_2_3_17_7: true
+win2016cis_2_3_17_8: true
 
 
 ##################

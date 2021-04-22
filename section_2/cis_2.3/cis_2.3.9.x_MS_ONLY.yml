@@ -3,10 +3,10 @@
 command:
   digi_sign__server:
     {{ if .Vars.win2016cis_2_3_9_5 }}
-    title: 2.3.9.5 | L1 |  Ensure 'Microsoft network server: Server SPN target name validation level' is set to 'Accept if provided by client' or higher (MS only) | SCORED | reg_check
+    title: 2.3.9.5 | L1 |  Ensure 'Microsoft network server - Server SPN target name validation level' is set to 'Accept if provided by client' or higher (MS only) | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name SMBServerNameHardeningLevel
     exit-status: 0
-    std-out:
+    stdout:
     - '1'
     {{ end }}
   {{ end }}
