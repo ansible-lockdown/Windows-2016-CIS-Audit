@@ -58,7 +58,7 @@ win2016cis_1_2_3: true
 # 2.2 User Rights Assignment
 win2016cis_2_2_1: true
 win2016cis_2_2_2: true # DC_ONLY
-win2016cis_2_2_2: true # MS_ONLY
+win2016cis_2_2_3: true # MS_ONLY
 win2016cis_2_2_4: true
 win2016cis_2_2_5: true # DC_ONLY
 win2016cis_2_2_6: true 

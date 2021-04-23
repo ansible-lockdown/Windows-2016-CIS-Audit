@@ -5,6 +5,11 @@
 - Using goss to parse the data
 - capture data rather than keep querying controllers
 
+## common gotchas
+
+- a colon ':' on the line that is not part of a key:value pair
+- using dots '.' instead of '_' in variable name
+
 ## Option 1
 
 e.g. ps script
