@@ -10,6 +10,15 @@
 - a colon ':' on the line that is not part of a key:value pair
 - using dots '.' instead of '_' in variable name
 
+## Capture from ansible role variables
+
+- WINS server
+- cert Authority role applied
+- iis used
+- sql used
+- firewalls domain, private, public
+
+
 ## Option 1
 
 e.g. ps script

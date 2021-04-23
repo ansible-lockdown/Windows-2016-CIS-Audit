@@ -26,6 +26,9 @@ win2016cis_level_2: true
 win2016cis_cert_auth_role: false
 # WINS server Feature Installed
 win2016cis_WINS_server: false
+win2016_use_domain_firewall: false
+win2016_use_private_firewall: false
+win2016_use_public_firewall: false
 
 
 
@@ -185,8 +188,35 @@ win2016cis_MS_allow_logon_RDP_users: Administrators, Remote Desktop Users
 ########################
 ## Section_9_Controls ##
 ########################
-# 9.1 Domain Profile
+# 9.1 Domain Profile Firewall
 win2016cis_9_1_1: true
+win2016cis_9_1_2: true
+win2016cis_9_1_3: true
+win2016cis_9_1_4: true
+win2016cis_9_1_5: true
+win2016cis_9_1_6: true
+win2016cis_9_1_7: true
+win2016cis_9_1_8: true
+# 9.2 Private Profile Firewall
+win2016cis_9_2_1: true
+win2016cis_9_2_2: true
+win2016cis_9_2_3: true
+win2016cis_9_2_4: true
+win2016cis_9_2_5: true
+win2016cis_9_2_6: true
+win2016cis_9_2_7: true
+win2016cis_9_2_8: true
+# 9.3 Public Profile Firewall
+win2016cis_9_3_1: true
+win2016cis_9_3_2: true
+win2016cis_9_3_3: true
+win2016cis_9_3_4: true
+win2016cis_9_3_5: true
+win2016cis_9_3_6: true
+win2016cis_9_3_7: true
+win2016cis_9_3_8: true
+win2016cis_9_3_9: true
+win2016cis_9_3_10: true
 
 
 ##############################
