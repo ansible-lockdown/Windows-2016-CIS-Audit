@@ -14,7 +14,7 @@ command:
     exec: echo GPO
     exit-status: 0
     stdout:
-    - '/[1:60]/'
+    - '/[1-60]/'
     - '!/0/'
     {{ end }}
   passwd_age_min:
@@ -23,7 +23,7 @@ command:
     exec: echo GPO
     exit-status: 0
     stdout:
-    - '/[1:180]/'
+    - '/[1-180]/'
     {{ end }}
   passwd_min_length:
     {{ if .Vars.win2016cis_1_1_4 }}
@@ -31,7 +31,7 @@ command:
     exec: echo GPO
     exit-status: 0
     stdout:
-    - '/[14:100]/'
+    - '/[14-100]/'
     {{ end }}
   passwd_complex:
     {{ if .Vars.win2016cis_1_1_5 }}
@@ -39,7 +39,7 @@ command:
     exec: echo GPO
     exit-status: 0
     stdout:
-    - '/[14:100]/'
+    - '/[14-100]/'
     {{ end }}
   passwd_rev_encrypt:
     {{ if .Vars.win2016cis_1_1_6 }}

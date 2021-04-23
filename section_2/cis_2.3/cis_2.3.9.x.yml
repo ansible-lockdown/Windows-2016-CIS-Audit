@@ -6,7 +6,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER}} -Name AutoDisconnect
     exit-status: 0
     stdout:
-    - '/[1:15]/'
+    - '/[1-15]/'
     {{ end }}
   digi_sign_always_server:
     {{ if .Vars.win2016cis_2_3_9_2 }}

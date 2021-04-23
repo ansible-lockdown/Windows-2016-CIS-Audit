@@ -182,6 +182,11 @@ win2016cis_MS_allow_logon_local_users: Administrators
 win2016cis_DC_allow_logon_RDP_users: Administrators
 win2016cis_MS_allow_logon_RDP_users: Administrators, Remote Desktop Users
 
+########################
+## Section_9_Controls ##
+########################
+# 9.1 Domain Profile
+win2016cis_9_1_1: true
 
 
 ##############################
@@ -197,6 +202,7 @@ gpo_lookup: 'something here'
 HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/')
 HKLM_CCS_LDAP: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LDAP/')
 HKLM_CV_SYSTEM: (get-itemproperty -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/')
+HKLM_POL_FIREWALL: (get-itemproperty -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/')
 # Get Parameter
 HKLM_CCS_LANWORK: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanWorkStation/Parameters'
 HKLM_CCS_LANSERVER: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanServer/Parameters'
