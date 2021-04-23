@@ -2,18 +2,18 @@
 command:
   {{ if .Vars.win2016cis_2_3_15_1 }}
   enable_no_case_sensitive_subsytems:
-    title: 2.3.15.1 | L1 | Ensure 'System objects: Require case insensitivity for non- Windows subsystems' is set to 'Enabled'  | SCORED | reg_check
+    title: 2.3.15.1 | L1 | Ensure 'System objects - Require case insensitivity for non- Windows subsystems' is set to 'Enabled'  | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} "get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Session Manager/kernel/.ObCaseInsensitive"
     exit-status: 0
-    std-out:
+    stdout:
     - '1'
   {{ end }}
   {{ if .Vars.win2016cis_2_3_15_2 }}
   enable_no_case_sensitive_subsytems:
-    title: 2.3.15.2 | L1 | Ensure 'System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)' is set to 'Enabled'  | SCORED | reg_check
+    title: 2.3.15.2 | L1 | Ensure 'System objects - Strengthen default permissions of internal system objects (e.g. Symbolic Links)' is set to 'Enabled'  | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} "get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Session Manager/.ProtectionMode"
     exit-status: 0
-    std-out:
+    stdout:
     - '1'
   {{ end }}
 {{ end }}

@@ -2,10 +2,10 @@
 command:
   {{ if .Vars.win2016cis_2_3_13_1 }}
   disable_shutdown_without_logon:
-    title: 2.3.13.1 | L1 | Ensure 'Shutdown: Allow system to be shut down without having to log on' is set to 'Disabled'  | SCORED | reg_check
+    title: 2.3.13.1 | L1 | Ensure 'Shutdown - Allow system to be shut down without having to log on' is set to 'Disabled'  | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }}.ShutdownWithoutLogon"
     exit-status: 0
-    std-out:
+    stdout:
     - '0'
   {{ end }}
 {{ end }}
