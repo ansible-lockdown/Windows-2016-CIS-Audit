@@ -99,6 +99,18 @@ Get-Content .\win2016.txt | Select-String MaxRenewAge -Context 1,1
 (read file )   (filename)   (grep       string) (add context 1 line before & 1 line after) 
 ```
 
+or
+
+```shell
+$file = "C:\goss\gpresult_r.txt"
+#$pattern = '(?s)\sPolicy:\s+BackupPrivilege(.*?)(?:(?:\r*\n){2}|\s$)'
+#$pattern = "Policy:(\s+)BackupPrivilege(.*?)GPO:"
+$pattern = 'Policy:(\s+)BackupPrivilege(.*?)GPO:'
+$string = Get-Content $file
+$result = [regex]::match($string, $pattern).Value -replace ('\s+', ' ') -replace ('GPO:', ' ')
+$result
+```
+
 ```shell
               GPO: Default Domain Policy
 >                 Policy:            MaxRenewAge
