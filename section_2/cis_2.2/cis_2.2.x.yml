@@ -35,70 +35,63 @@ command:
   time_users:
     {{ if .Vars.win2016cis_2_2_11 }}
     title: 2.2.11 | L1 | Ensure 'Change the system time' is set to 'Administrators, LOCAL SERVICE'  | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname SystemtimePrivilege
     exit-status: 0
     stdout:
-    - 'Administrators, LOCAL SERVICE'
-    - '!/./'
+    - '^Policy:.*:\sAdministrators LOCAL SERVICE/'
     {{ end }}
   timezone_users:
     {{ if .Vars.win2016cis_2_2_12 }}
     title: 2.2.12 | L1 | Ensure 'Change the time Zone' is set to 'Administrators, LOCAL SERVICE'  | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname TimeZonePrivilege
     exit-status: 0
     stdout:
-    - 'Administrators, LOCAL SERVICE'
-    - '!/./'
+    - '^Policy:.*:\sAdministrators LOCAL SERVICE/'
     {{ end }}
   pagefile_users:
     {{ if .Vars.win2016cis_2_2_13 }}
     title: 2.2.13 | L1 | Ensure 'Create a pagefile' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname CreatePagefilePrivilege
     exit-status: 0
     stdout:
-    - 'Administrators'
-    - '!/./'
+    - '/^Policy:.*:\sAdministrators/'
     {{ end }}
   token_object_users:
     {{ if .Vars.win2016cis_2_2_14 }}
     title: 2.2.14 | L1 | Ensure 'Create a token object' is set to 'No One' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname CreateTokenPrivilege
     exit-status: 0
     stdout:
-    - 'No One'
-    - '!/./'
+    - '/./'
     {{ end }}
   global_object_users:
     {{ if .Vars.win2016cis_2_2_15 }}
     title: 2.2.15 | L1 | Ensure 'Create global objects' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname CreateGlobalPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
-    - '!/./'
+    - '/^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE SERVICE'
     {{ end }}
   perm_shared_object_users:
     {{ if .Vars.win2016cis_2_2_16 }}
     title: 2.2.16 | L1 | Ensure 'Create permanent shared objects' is set to 'No One' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname CreatePermanentPrivilege
     exit-status: 0
     stdout:
-    - 'No One'
-    - '!/./'
+    - '/./'
     {{ end }}
   debug_progs_users:
     {{ if .Vars.win2016cis_2_2_19 }}
     title: 2.2.19 | L1 | Ensure 'Debug programs' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname DebugPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators'
-    - '!/./'
+    - '/^Policy:.*:\sAdministrators/'
     {{ end }}
   deny_batch_job_logon_users:
     {{ if .Vars.win2016cis_2_2_22 }}
     title: 2.2.22 | L1 | Ensure 'Deny log on as a batch job' to include 'Guests'| SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Guests'
@@ -107,7 +100,7 @@ command:
   deny_service_logon_users:
     {{ if .Vars.win2016cis_2_2_23 }}
     title: 2.2.23 | L1 | Ensure 'Deny log on as a service' to include 'Guests' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Guests'
@@ -116,7 +109,7 @@ command:
   deny_local_logon_users:
     {{ if .Vars.win2016cis_2_2_24 }}
     title: 2.2.24 | L1 | Ensure 'Deny log on locally' to include 'Guests' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Guests'
@@ -125,7 +118,7 @@ command:
   force_remote_shutdown_users:
     {{ if .Vars.win2016cis_2_2_29 }}
     title: 2.2.29 | L1 | Ensure 'Force shutdown from a remote system' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -134,7 +127,7 @@ command:
   generate_security_audits:
     {{ if .Vars.win2016cis_2_2_30 }}
     title: 2.2.30 | L1 | Ensure 'Generate security audits' is set to 'LOCAL SERVICE, NETWORK SERVICE'| SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'LOCAL SERVICE, NETWORK SERVICE'
@@ -143,7 +136,7 @@ command:
   increase_scheduling:
     {{ if .Vars.win2016cis_2_2_33 }}
     title: 2.2.33 | L1 | Ensure 'Increase scheduling priority' is set to 'Administrators'| SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -152,7 +145,7 @@ command:
   load_unload_drivers:
     {{ if .Vars.win2016cis_2_2_34 }}
     title: 2.2.34 | L1 | Ensure 'Load and unload device drivers' is set to 'Administrators'| SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -161,7 +154,7 @@ command:
   lock_pages_memory:
     {{ if .Vars.win2016cis_2_2_35 }}
     title: 2.2.34 | L1 | Ensure 'Lock pages in memory' is set to 'No One' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'No One'
@@ -170,7 +163,7 @@ command:
   modify_object_label:
     {{ if .Vars.win2016cis_2_2_39 }}
     title: 2.2.39 | L1 | Ensure 'Modify an object label' is set to 'No One' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'No One'
@@ -179,7 +172,7 @@ command:
   modify_fw_values:
     {{ if .Vars.win2016cis_2_2_40 }}
     title: 2.2.40 | L1 | Ensure 'Modify firmware environment values' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -187,7 +180,7 @@ command:
   volume_maintain_tasks:
     {{ if .Vars.win2016cis_2_2_41 }}
     title: 2.2.41 | L1 | Ensure 'Perform volume maintenance tasks' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -195,7 +188,7 @@ command:
   profile_single_process:
     {{ if .Vars.win2016cis_2_2_42 }}
     title: 2.2.42 | L1 | Ensure 'Profile single process' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -203,7 +196,7 @@ command:
   profile_system_performance:
     {{ if .Vars.win2016cis_2_2_43 }}
     title: 2.2.43 | L1 | Ensure 'Profile system performance' is set to 'Administrators, NT SERVICE\WdiServiceHost' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators, NT SERVICE\WdiServiceHost'
@@ -211,7 +204,7 @@ command:
   replace_process_token:
     {{ if .Vars.win2016cis_2_2_44 }}
     title: 2.2.44 | L1 | Ensure 'Replace a process level token' is set to 'LOCAL SERVICE, NETWORK SERVICE' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'LOCAL SERVICE, NETWORK SERVICE'
@@ -219,7 +212,7 @@ command:
   restore_files_dirs:
     {{ if .Vars.win2016cis_2_2_45 }}
     title: 2.2.45 | L1 | Ensure 'Restore files and directories' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -227,7 +220,7 @@ command:
   shutdown_system_users:
     {{ if .Vars.win2016cis_2_2_46 }}
     title: 2.2.46 | L1 | Ensure 'Shut down the system' is set to 'Administrators' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
@@ -235,7 +228,7 @@ command:
   take_file_ownership:
     {{ if .Vars.win2016cis_2_2_48 }}
     title: Ensure 'Take ownership of files or other objects' is set to 'Administrators'| SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname
     exit-status: 0
     stdout:
     - 'Administrators'
