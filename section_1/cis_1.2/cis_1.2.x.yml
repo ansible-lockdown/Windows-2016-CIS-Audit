@@ -7,8 +7,6 @@ command:
     exit-status: 0
     stdout:
     - '/Policy:.*:\s+[15:60]/'
-    - '!/Policy:.*:\s+[0:14]/'
-    
     {{ end }}
   acct_lockout_threshold:
     {{ if .Vars.win2016cis_1_2_2 }}
@@ -17,7 +15,6 @@ command:
     exit-status: 0
     stdout:
     - '/Policy:.*:\s+[1:10]/'
-    - '!/Policy:.*:\s+[0]/'
     {{ end }}
   reset_lockout_after:
     {{ if .Vars.win2016cis_1_2_3 }}
@@ -26,6 +23,5 @@ command:
     exit-status: 0
     stdout:
     - '/Policy:.*:\s+[15:60]/'
-    - '!/Policy:.*:\s+[0:14]/'
     {{ end }}
 {{ end }}
