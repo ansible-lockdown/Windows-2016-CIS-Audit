@@ -18,11 +18,10 @@
 - sql used
 - firewalls domain, private, public
 
-
 ## Option 1
 
 e.g. ps script
-i)create report - if name of GPO is CIS? 
+i)create report - if name of GPO is CIS?
 
 ```ps
 Get-GPOReport -Name "CIS" -ReportType xml -path "c:\goss\cis_gpo_report.xml" 
@@ -73,7 +72,7 @@ captures all GPOs
 captures applied polcies
 
 CONS:
-This file could get very big on large enterprise setups with multiple GPOs 
+This file could get very big on large enterprise setups with multiple GPOs
 if a big forest access is needed to query all
 May get resource intensive if above and loops
 xml get more complex to debug.
@@ -112,9 +111,9 @@ $result
 ```
 
 ```shell
-              GPO: Default Domain Policy
->                 Policy:            MaxRenewAge
-                  Computer Setting:  7
+              
+Policy: BackupPrivilege Computer Setting: Administrators Backup Operators Server Operators  
+
 ```
 
 PROS:
@@ -122,7 +121,7 @@ captures all GPOs
 only shows valid active settings
 
 CONS:
-This file could get very big on large enterprise setups with multiple GPOs 
+This file could get very big on large enterprise setups with multiple GPOs
 if a big forest access is needed to query all
 May get resource intensive if above and loops
 xml get more complex to debug.
