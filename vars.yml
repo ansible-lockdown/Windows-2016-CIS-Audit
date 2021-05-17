@@ -224,7 +224,7 @@ win2016cis_9_3_10: true
 ##############################
 # powershell commands
 ps_regcheck: 'powershell -noprofile -noninteractive -command'
-gpo_regex_script: 'powershell c:\goss\regex_testing\gpo_regex.ps1'
+gpo_regex_script: 'powershell ./scripts/gpo_regex.ps1'
 gpresult_file: 'c:\goss\regex_testing\gpresult.txt'
 
 # Registry_paths
