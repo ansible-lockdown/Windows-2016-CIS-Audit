@@ -15,7 +15,7 @@ command:
     exit-status: 0
     stdout:
     - '/Policy:.*:\s[1-60]/'
-    - '!/0/'
+    - '!/Policy:.*:\s0/'
     {{ end }}
   passwd_age_min:
     {{ if .Vars.win2016cis_1_1_3 }}
@@ -45,10 +45,10 @@ command:
   passwd_rev_encrypt:
     {{ if .Vars.win2016cis_1_1_6 }}
     title: 1.1.6 | L1 | Ensure 'Store passwords using reversible encryption' is set to 'Disabled' | SCORED
-    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ClearTextPassword 
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ClearTextPassword
     exit-status: 0
     stdout:
-    - '/Not\sEnabled/'
-    - '!/Enabled/'
+    - '/Policy:.*:\sNot\sEnabled/'
+    - '!/Policy:.*:\sEnabled/'
     {{ end }}
 {{ end }}
