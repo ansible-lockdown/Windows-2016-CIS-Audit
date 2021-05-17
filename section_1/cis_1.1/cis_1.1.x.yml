@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname PasswordHistorySize
     exit-status: 0
     stdout:
-    - '24'
+    - '/.*: 24'
     {{ end }}
   passwd_age_max:
     {{ if .Vars.win2016cis_1_1_2 }}
