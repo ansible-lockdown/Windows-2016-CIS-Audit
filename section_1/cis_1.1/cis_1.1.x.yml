@@ -40,7 +40,7 @@ command:
     exit-status: 0
     stdout:
     - '/Enabled/'
-    - '!/Not Enabled/'
+    - '!/Not\sEnabled/'
     {{ end }}
   passwd_rev_encrypt:
     {{ if .Vars.win2016cis_1_1_6 }}
@@ -48,7 +48,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ClearTextPassword 
     exit-status: 0
     stdout:
-    - '/Not Enabled/'
+    - '/Not\sEnabled/'
     - '!/Enabled/'
     {{ end }}
 {{ end }}
