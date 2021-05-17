@@ -31,7 +31,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname MinimumPasswordLength
     exit-status: 0
     stdout:
-    - '/Policy:.*:\s[14-100]/'
+    - '/Policy:.*:\s[14:100]/'
     {{ end }}
   passwd_complex:
     {{ if .Vars.win2016cis_1_1_5 }}
