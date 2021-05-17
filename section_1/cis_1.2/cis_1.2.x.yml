@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname LockoutDuration
     exit-status: 0
     stdout:
-    - '/Policy:.*:\s+[15:60]/'
+    - '/Policy:.*:\s[15:60]/'
     {{ end }}
   acct_lockout_threshold:
     {{ if .Vars.win2016cis_1_2_2 }}
@@ -14,7 +14,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname LockoutBadCount
     exit-status: 0
     stdout:
-    - '/Policy:.*:\s+[1:10]/'
+    - '/Policy:.*:\s[1:10]/'
     {{ end }}
   reset_lockout_after:
     {{ if .Vars.win2016cis_1_2_3 }}
@@ -22,6 +22,6 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ResetLockoutCount
     exit-status: 0
     stdout:
-    - '/Policy:.*:\s+[15:60]/'
+    - '/Policy:.*:\s[15:60]/'
     {{ end }}
 {{ end }}
