@@ -178,12 +178,12 @@ win2016cis_2_3_17_8: true
 ##################
 # Section_2_Vars #
 ##################
-win2016cis_DC_access_from_network: Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS
-win2016cis_MS_access_from_network: Administrators, Authenticated Users
+win2016cis_DC_access_from_network: Administrators Authenticated Users ENTERPRISE DOMAIN CONTROLLERS
+win2016cis_MS_access_from_network: Administrators Authenticated Users
 win2016cis_DC_allow_logon_local_users: Administrators
 win2016cis_MS_allow_logon_local_users: Administrators
 win2016cis_DC_allow_logon_RDP_users: Administrators
-win2016cis_MS_allow_logon_RDP_users: Administrators, Remote Desktop Users
+win2016cis_MS_allow_logon_RDP_users: Administrators Remote Desktop Users
 
 ########################
 ## Section_9_Controls ##

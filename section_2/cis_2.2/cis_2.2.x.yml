@@ -3,38 +3,34 @@ command:
   access_cred_mgr:
     {{ if .Vars.win2016cis_2_2_1 }}
     title: 2.2.1 | L1 | Ensure 'Access Credential Manager as a trusted caller' is set to 'No One' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname TrustedCredManAccessPrivilege
     exit-status: 0
     stdout:
-    - 'No one'
-    - '!/./'
+    - '/./'
     {{ end }}
   act_as_OS:
     {{ if .Vars.win2016cis_2_2_4 }}
-    title: 2.2.2 | L1 | Ensure 'Act as part of the operating system' is set to 'No One' | SCORED
-    exec: echo GPO
+    title: 2.2.4 | L1 | Ensure 'Act as part of the operating system' is set to 'No One' | SCORED
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname TcbPrivilege
     exit-status: 0
     stdout:
-    - 'No One'
-    - '!/./'
+    - '/./'
     {{ end }}
   mem_quotas_for_proc:
     {{ if .Vars.win2016cis_2_2_6 }}
     title: 2.2.6 | L1 | Ensure 'Adjust memory quotas for a process' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE'  | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname IncreaseQuotaPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
-    - '!/./'
+    - '^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE/'
     {{ end }}
   backup_users:
     {{ if .Vars.win2016cis_2_2_10 }}
     title: 2.2.10 | L1 | Ensure 'Back up files and directories' is set to 'Administrators'  | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname BackupPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators'
-    - '!/./'
+    - '/^Policy:.*:\sAdministrators/'
     {{ end }}
   time_users:
     {{ if .Vars.win2016cis_2_2_11 }}

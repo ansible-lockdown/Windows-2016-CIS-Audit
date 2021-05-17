@@ -4,26 +4,26 @@ command:
   access_dc_admins:
     {{ if .Vars.win2016cis_2_2_3 }}
     title: 2.2.3 | L1 | Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users' (MS only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname NetworkLogonRight
     exit-status: 0
     stdout:
-    - {{ .Vars.win2016cis_MS_access_from_network}}
+    - '/^Policy:.*:\s{{ .Vars.win2016cis_MS_access_from_network}}/'
     {{ end }}
-  allow_logon_locally_MS:
+  allow_logon_locally:
     {{ if .Vars.win2016cis_2_2_7 }}
     title: 2.2.7 | L1 |  Ensure 'Allow log on locally' is set to 'Administrators' (MS only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname InteractiveLogonRight
     exit-status: 0
     stdout:
-    - {{ .Vars.win2016cis_MS_allow_logon_local_users }}
+    - '/^Policy:.*:\s{{ .Vars.win2016cis_MS_allow_logon_local_users }}/'
     {{ end }}
   allow_logon_RDP_MS:
     {{ if .Vars.win2016cis_2_2_9 }}
     title: 2.2.9 | L1 |  Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators, Remote Desktop Users' (MS only)  | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname RemoteInteractiveLogonRight
     exit-status: 0
     stdout:
-    - {{ .Vars.win2016cis_MS_allow_logon_RDP_users }}
+    - '/Policy:.*:\s{{ .Vars.win2016cis_MS_allow_logon_RDP_users }}/'
     {{ end }}
   symlink_users_MS:
     {{ if .Vars.win2016cis_2_2_18 }}

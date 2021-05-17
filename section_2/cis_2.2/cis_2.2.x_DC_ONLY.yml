@@ -4,18 +4,18 @@ command:
   access_dc_admins:
     {{ if .Vars.win2016cis_2_2_2 }}
     title: 2.2.2 | L1 | Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS' (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname NetworkLogonRight
     exit-status: 0
     stdout:
-    - {{ .Vars.win2016cis_DC_access_from_network}}
+    - '/^Policy:.*:\s{{ .Vars.win2016cis_DC_access_from_network}}/'
     {{ end }}
   add_workstations_to_domain:
     {{ if .Vars.win2016cis_2_2_5 }}
     title: 2.2.5 | L1 | Ensure 'Add workstations to domain' is set to 'Administrators' (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname MachineAccountPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators'
+    - '/^Policy:.*:\sAdministrators/'
     {{ end }}
   allow_logon_locally_DC:
     {{ if .Vars.win2016cis_2_2_7 }}
@@ -28,10 +28,10 @@ command:
   allow_logon_RDP_DC:
     {{ if .Vars.win2016cis_2_2_8 }}
     title: 2.2.8 | L1 |  Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators' (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname RemoteInteractiveLogonRight
     exit-status: 0
     stdout:
-    - {{ .Vars.win2016cis_DC_allow_logon_RDP_users }}
+    - '/Policy:.*:\s{{ .Vars.win2016cis_DC_allow_logon_RDP_users }}/'
     {{ end }}
   symlink_users_DC:
     {{ if .Vars.win2016cis_2_2_17 }}
