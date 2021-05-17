@@ -3,7 +3,7 @@ command:
   passwd_history:
     {{ if .Vars.win2016cis_1_1_1 }}
     title: 1.1.1 | L1 | Ensure 'Enforce password history' is set to '24 or more passwords | SCORED
-    exec: {{ .Vars.gpo_regex_script }} -filename {{ .vars.gpresult_file }} -policyname PasswordHistorySize
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname PasswordHistorySize
     exit-status: 0
     stdout:
     - '24'
