@@ -6,47 +6,49 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname PasswordHistorySize
     exit-status: 0
     stdout:
-    - '/.*: 24/'
+    - '/Policy:.*:\s[24:99]/'
     {{ end }}
   passwd_age_max:
     {{ if .Vars.win2016cis_1_1_2 }}
     title: 1.1.2 | L1 | Ensure 'Maximum password age' is set to '60 or fewer days, but not 0' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname MaximumPasswordAge
     exit-status: 0
     stdout:
-    - '/[1-60]/'
+    - '/Policy:.*:\s[1-60]/'
     - '!/0/'
     {{ end }}
   passwd_age_min:
     {{ if .Vars.win2016cis_1_1_3 }}
     title: 1.1.3 | L1 | Ensure 'Minimum password age' is set to '1 or more day(s)' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname MinimumPasswordAge
     exit-status: 0
     stdout:
-    - '/[1-180]/'
+    - '/Policy:.*:\s[1-180]/'
     {{ end }}
   passwd_min_length:
     {{ if .Vars.win2016cis_1_1_4 }}
     title: 1.1.4 | L1 |  Ensure 'Minimum password length' is set to '14 or more characters | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname MinimumPasswordLength
     exit-status: 0
     stdout:
-    - '/[14-100]/'
+    - '/Policy:.*:\s[14-100]/'
     {{ end }}
   passwd_complex:
     {{ if .Vars.win2016cis_1_1_5 }}
     title: 1.1.5 | L1 |  Ensure 'Password must meet complexity requirements'| SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname PasswordComplexity
     exit-status: 0
     stdout:
-    - '/[14-100]/'
+    - '/Enabled/'
+    - '!/Not Enabled/'
     {{ end }}
   passwd_rev_encrypt:
     {{ if .Vars.win2016cis_1_1_6 }}
     title: 1.1.6 | L1 | Ensure 'Store passwords using reversible encryption' is set to 'Disabled' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ClearTextPassword 
     exit-status: 0
     stdout:
-    - '1'
+    - '/Not Enabled/'
+    - '!/Enabled/'
     {{ end }}
 {{ end }}
