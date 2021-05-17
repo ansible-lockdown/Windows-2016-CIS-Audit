@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname LockoutDuration
     exit-status: 0
     stdout:
-    - '/Policy:.*:\s[15-60]/'
+    - '/Policy:.*:\s[15:60]/'
     - '!/Policy:.*:\s[0:14]/'
     
     {{ end }}
@@ -16,7 +16,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname LockoutBadCount
     exit-status: 0
     stdout:
-    - '/Policy:.*:\s[1-10]/'
+    - '/Policy:.*:\s[1:10]/'
     - '!/Policy:.*:\s[0]/'
     {{ end }}
   reset_lockout_after:
@@ -25,7 +25,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ResetLockoutCount
     exit-status: 0
     stdout:
-    - '/Policy:.*:\s[15-60]/'
+    - '/Policy:.*:\s[15:60]/'
     - '!/Policy:.*:\s[0:14]/'
     {{ end }}
 {{ end }}
