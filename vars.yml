@@ -184,7 +184,7 @@ win2016cis_DC_allow_logon_local_users: Administrators
 win2016cis_MS_allow_logon_local_users: Administrators
 win2016cis_DC_allow_logon_RDP_users: Administrators
 win2016cis_MS_allow_logon_RDP_users: Administrators Remote Desktop Users
-win2016_admin_renamed_as: "renamed_admin"
+win2016_admin_renamed_as: renamed_admin
 win2016_guest_renamed_as: "renamed_guest"
 
 ########################
