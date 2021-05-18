@@ -44,36 +44,35 @@ command:
   deny_login_RDP_users_MS:
     {{ if .Vars.win2016cis_2_2_26 }}
     title: 2.2.26 | L1 | Ensure 'Deny log on through Remote Desktop Services' to include 'Guests, Local account' (MS only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname RemoteInteractiveLogonRight
     exit-status: 0
     stdout:
-    - 'Guests, Local account'
+    - '/^Policy:.*:\sGuests Local account/'
     - '!/./'
     {{ end }}
   trusted_deleg_MS:
     {{ if .Vars.win2016cis_2_2_28 }}
     title: 2.2.28 | L1 | Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'  (MS only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname EnableDelegationPrivilege
     exit-status: 0
     stdout:
-    - 'No One'
-    - '!/./'
-    {{ end }}
+    - 'Not Defined'
+     {{ end }}
   impersonate_client_MS:
     {{ if .Vars.win2016cis_2_2_32 }}
     title: 2.2.32 | L1 | Ensure 'Impersonate a client after authentication' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE' and (when the Web Server (IIS) Role with Web Services Role Service is installed) 'IIS_IUSRS' (MS only)| SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname EnableDelegationPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
+    - '/^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE SERVICE/'
       {{ if .Vars.win2016cis_use_iis }}
-    - 'IIS_IUSRS'
+    - '/^Policy:.*:\s.*IIS_IUSRS/'
       {{ end }}
     {{ end }}
   manage_audit_sec_log_MS:
     {{ if .Vars.win2016cis_2_2_38 }}
     title: 2.2.38 | L1 | Ensure 'Manage auditing and security log' is set to 'Administrators'  (MS only)| SCORED
-    exec: echo GPO
+    exec: { .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname SecurityPrivilege
     exit-status: 0
     stdout:
     - 'Administrators'

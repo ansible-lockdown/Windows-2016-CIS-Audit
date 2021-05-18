@@ -52,48 +52,45 @@ command:
   deny_login_RDP_users_DC:
     {{ if .Vars.win2016cis_2_2_25 }}
     title: 2.2.25 | L1 | Ensure 'Deny log on through Remote Desktop Services' to include 'Guests' (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname RemoteInteractiveLogonRight
     exit-status: 0
     stdout:
-    - 'Guests'
-    - '!/./'
+    - '/^Policy:.*:\sGuests/'
     {{ end }}
   trusted_deleg_DC:
     {{ if .Vars.win2016cis_2_2_27 }}
     title: 2.2.27 | L1 | Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'Administrators'  (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname EnableDelegationPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators'
-    - '!/./'
+    - '/^Policy:.*:\sAdministrators/'
     {{ end }}
   impersonate_client_DC:
     {{ if .Vars.win2016cis_2_2_31 }}
     title: 2.2.31 | L1 | Ensure 'Impersonate a client after authentication' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'  (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ImpersonatePrivilege
     exit-status: 0
     stdout:
-    - 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
-    - '!/./'
+    - '/^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE SERVICE/'
     {{ end }}
   manage_audit_log_DC:
     {{ if .Vars.win2016cis_2_2_37 }}
     title: 2.2.37 | L1 | Ensure 'Manage auditing and security log' is set to 'Administrators' and (when Exchange is running in the environment) 'Exchange Servers' (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname SecurityPrivilege
     exit-status: 0
     stdout:
-    - 'Administrators'
+    - '/^Policy:.*:\sAdministrators/'
       {{ if .Vars.exchange_server_group }}
-    - 'Exchange Servers'
+    - '/^Policy:.*:\s.*Exchange Servers/'
       {{ end }}
     {{ end }}
   sync_dir_service_data_DC:
     {{ if .Vars.win2016cis_2_2_47 }}
     title: 2.2.47 | L1 | Ensure 'Synchronize directory service data' is set to 'No One' (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname SyncAgentPrivilege
     exit-status: 0
     stdout:
-    - 'No One'
+    - 'Not Defined'
     {{ end }}
   {{ end }}
 
@@ -103,11 +100,10 @@ command:
   logon_as_batch_job_DC:
     {{ if .Vars.win2016cis_2_2_36 }}
     title: 2.2.36 | L2 | Ensure 'Log on as a batch job' is set to 'Administrators'  (DC only) | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname BatchLogonRight
     exit-status: 0
     stdout:
-    - 'Administrators'
-    - '!/./'
+    - '/^Policy:.*:\sAdministrators/'
     {{ end }}
   {{ end }}
 {{ end }}
