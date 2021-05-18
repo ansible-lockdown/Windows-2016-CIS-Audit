@@ -214,7 +214,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ShutdownPrivilege
     exit-status: 0
     stdout:
-   - '/^Policy:.*:\sAdministrators/'
+    - '/^Policy:.*:\sAdministrators/'
     {{ end }}
   take_file_ownership:
     {{ if .Vars.win2016cis_2_2_48 }}
