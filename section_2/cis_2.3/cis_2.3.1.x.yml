@@ -19,7 +19,7 @@ command:
   rename_administrator_act:
     {{ if .Vars.win2016cis_2_3_1_5 }}
     title: 2.3.1.5 | L1 |  Configure Accounts- Rename administrator account  | SCORED 
-    exec: powershell -noprofile -noninteractive -command ('Get-LocalUser -Name "{{ .Vars.win2016_admin_renamed_as }}" | select Name,Description')
+    exec: powershell -noprofile -noninteractive -command ('Get-LocalUser -Name \"{{ .Vars.win2016_admin_renamed_as }}\" | select Name,Description')
     exit-status: 0
     stdout:
     - '{{ .Vars.win2016_admin_renamed_as }} Built-in account for administering the computer/domain'
@@ -27,7 +27,7 @@ command:
   rename_guest_act:
     {{ if .Vars.win2016cis_2_3_1_6 }}
     title: 2.3.1.6 | L1 |  Configure Accounts- Rename guest account'  | SCORED 
-    exec:  powershell -noprofile -noninteractive -command ('Get-LocalUser -Name "{{ .Vars.win2016_guest_renamed_as }}" | select Name,Description')
+    exec:  powershell -noprofile -noninteractive -command ('Get-LocalUser -Name "\{{ .Vars.win2016_guest_renamed_as }}\" | select Name,Description')
     exit-status: 0
     stdout:
     - '{{ .Vars.win2016_guest_renamed_as }} renamed_guest Built-in account for guest access to the computer/domain'
