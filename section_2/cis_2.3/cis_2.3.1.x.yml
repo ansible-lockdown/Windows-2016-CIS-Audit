@@ -32,5 +32,4 @@ command:
     stdout:
     - '{{ .Vars.guest_renamed_as }} renamed_guest Built-in account for guest access to the computer/domain'
     {{ end }}
-  {{ end }}
 {{ end }}
