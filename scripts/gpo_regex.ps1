@@ -1,6 +1,3 @@
-## Powershell script must be called via powershell to capture stdout with goss.
-# expects to have a gpresult /r/v (run by admin or able to query GPO) file so it can parse the faile for settings
-
 [CmdletBinding()]
 param (
       [string] $filename,
@@ -17,9 +14,14 @@ if ([string]::isNullorEmpty($filename) -Or [string]::isNullorEmpty($policyname) 
 else
 {
 $pattern = 'Policy:(\s+)' +[regex]::escape($policyname) +'(.*?)GPO:'
-$string = Get-Content $filename
-$result = [regex]::match($string, $pattern).Value -replace ('\s+', ' ') -replace ('GPO:', ' ')
-$result
+$file = Get-Content $filename
+$result = [regex]::match($file, $pattern).Value -replace ('\s+', ' ') -replace ('GPO:', ' ') 2>&1
+    if($result) {
+        $output = echo $result
+        Write-Output $output
+    } Else {
+        "Not Defined"
+    }
 }
 ## How to Use
 ##

@@ -2,10 +2,11 @@
 
 ## Requirements
 
-Goss to be on the host running the audit
-Permissions to run all the commands may need admin to run this
-top of vars file to state the type of server
-if reboots are outstanding on the host this may change results
+- Goss to be on the host running the audit
+- Permissions to run all the commands may need admin to run this
+- top of vars file to state the type of server
+- if reboots are outstanding on the host this may change results
+- gpresult /v /r > file_location.txt need to be created
 
 ### Overview
 
@@ -22,6 +23,14 @@ Its has the following setup
 - Build variables up
 - Some control only work on DC or MS - settings in Vars to determine (will be populated by ansible when run from task)
 - some controls written twice (due to different vars for a DC or MS)e.g. 2.2.7
+
+### How it works
+
+- GPO settings goss runs the powershell script ./scripts/gpo_regex.ps1 with arguments is run to search for the matching policy name
+  - Will output the details if defined
+  - if nothing is found will output "Not Defined"
+
+- Where registry keys can be found and aligned this is run directly in goss to capture output
 
 ## To be done
 
