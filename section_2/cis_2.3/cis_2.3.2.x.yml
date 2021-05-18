@@ -4,18 +4,11 @@ command:
   Force_audit_policy:
     {{ if .Vars.win2016cis_2_3_2_1 }}
     title: 2.3.2.1 | L1 | Ensure 'Audit - Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled' | SCORED
-    exec: echo GPO
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name SCENoApplyLegacyAuditPolicy
     exit-status: 0
     stdout:
-    - 'Enabled'
+    - '1'
     {{ end }}
-  Shutdown_immediate_sec_logs_gpo:
-    {{ if .Vars.win2016cis_2_3_2_2 }}
-    title: 2.3.2.2 | L1 | Ensure 'Audit- Shut down system immediately if unable to log security audits' is set to 'Disabled' | SCORED | GP
-    exec: echo GPO
-    exit-status: 0
-    stdout:
-    - 'Disabled'
   Shutdown_immediate_sec_logs_reg:
     title: 2.3.2.2 | L1 | Ensure 'Audit- Shut down system immediately if unable to log security audits' is set to 'Disabled' | SCORED | reg_check
     exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.CrashOnAuditFail"

@@ -1,33 +1,19 @@
 {{ if not .Vars.is_domain_controller}}
   {{ if .Vars.win2016cis_level_1 }}
 command:
-  format_eject_media_GP:
-    {{ if .Vars.win2016cis_2_3_4_1 }}
-    title: 2.3.4.1 | L1 | Ensure 'Devices - Allowed to format and eject removable media' is set to 'Administrators' | SCORED | GP
-    exec: echo GPO
-    exit-status: 0
-    stdout:
-    - 'Administrators'
   format_eject_media_reg:
     title: 2.3.4.1 | L1 | Ensure 'Devices - Allowed to format and eject removable media' is set to 'Administrators' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} (get-itemproperty - path 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon').AllocateDASD
-    exit-status: 0
-    stdout:
-    - '1'
-    {{ end }}
-  user_add_print_drivers_GP:
-    {{ if .Vars.win2016cis_2_3_4_2 }}
-    title: 2.3.4.2 | L1 | Ensure 'Devices - Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | GP
-    exec: echo GPO
-    exit-status: 0
-    stdout:
-    - 'Enabled'
-  user_add_print_drivers_reg:
-    title: 2.3.4.2 | L1 | Ensure 'Devices - Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} (get-itemproperty - path 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers').AddPrinterDrivers
+    exec:  {{ .Vars.ps_regcheck }} (get-itempropertyvalue -path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') -Name AllocateDASD
     exit-status: 0
     stdout:
     - '0'
+    {{ end }}
+  user_add_print_drivers_reg:
+    title: 2.3.4.2 | L1 | Ensure 'Devices - Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} (get-itempropertyValue -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers') -Name AddPrinterDrivers
+    exit-status: 0
+    stdout:
+    - '1'
     {{ end }}
   {{ end }}
 {{ end }}
