@@ -22,7 +22,7 @@ command:
     exec:  powershell Get-LocalUser -Name {{ .Vars.win2016_admin_renamed_as }} | select Name,Description
     exit-status: 0
     stdout:
-    - '{{ .Vars.win2016_admin_name }} Built-in account for administering the computer/domain'
+    - '{{ .Vars.win2016_admin_renamed_as }} Built-in account for administering the computer/domain'
     {{ end }}
   rename_guest_act:
     {{ if .Vars.win2016cis_2_3_1_6 }}
