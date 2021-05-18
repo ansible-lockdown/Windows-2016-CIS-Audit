@@ -230,11 +230,12 @@ gpresult_file: 'c:\goss\regex_testing\gpresult.txt'
 # Registry_paths
 # CurrentControlSet/Lsa
 # Get key
-HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/')
+
 HKLM_CCS_LDAP: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LDAP/')
-HKLM_CV_SYSTEM: (get-itemproperty -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/')
 HKLM_POL_FIREWALL: (get-itemproperty -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/')
 # Get Parameter
 HKLM_CCS_LANWORK: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanWorkStation/Parameters'
 HKLM_CCS_LANSERVER: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanServer/Parameters'
+HKLM_CV_SYSTEM: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/'
 HKLM_KERB: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/Kerberos/Parameters'
+HKLM_CCS_LSA: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/'
