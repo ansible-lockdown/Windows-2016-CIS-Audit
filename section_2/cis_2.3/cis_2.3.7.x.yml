@@ -1,0 +1,59 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  display_last_user:
+    {{ if .Vars.win2016cis_2_3_7_1}}
+    title: 2.3.7.1 | L1 | Ensure 'Interactive logon - Do not display last user name' is set to 'Enabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name DontDisplayLastUserName
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  dont_req_CAD:
+    {{ if .Vars.win2016cis_2_3_7_2 }}
+    title: 2.3.7.2 | L1 | Ensure 'Interactive logon - Do not require CTRL+ALT+DEL' is set to 'Disabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name DisableCAD
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  inactive_limit:
+    {{ if .Vars.win2016cis_2_3_7_3 }}
+    title: 2.3.7.3 | L1 | Ensure 'Interactive logon - Machine inactivity limit' is set to '900 or fewer second(s), but not 0'  | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name InactivityTimeoutSecs
+    exit-status: 0
+    stdout:
+    - '/\b([1-9][0-9]|[1-8][0-9][0-9]|900)\b/'
+    {{ end }}
+  interactive_logon_text:
+    {{ if .Vars.win2016cis_2_3_7_4 }}
+    title: 2.3.7.4 | L1 | Configure 'Interactive logon - Message text for users attempting to log on'  | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name LegalNoticeText
+    exit-status: 0
+    stdout:
+    - {{ .Vars.win2016_logon_text }}
+    {{ end }}
+  interactive_logon_title:
+    {{ if .Vars.win2016cis_2_3_7_5 }}
+    title: 2.3.7.5 | L1 | Configure 'Interactive logon - Message title for users attempting to log on'  | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name LegalNoticeCaption
+    exit-status: 0
+    stdout:
+    - {{ .Vars.win2016_logon_title }}
+    {{ end }}
+  password_change_warn:
+    {{ if .Vars.win2016cis_2_3_7_7 }}
+    title: 2.3.7.7 | L1 | Ensure 'Interactive logon - Prompt user to change password before expiration' is set to 'between 5 and 14 days'  | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} ('HKLM://SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon') -Name PasswordExpiryWarning
+    exit-status: 0
+    stdout:
+    - '/\b([5-9]|1[0-4])\b/'
+    {{ end }}
+  password_change_warn:
+    {{ if .Vars.win2016cis_2_3_7_9 }}
+    title: 2.3.7.9 | L1 | Ensure 'Interactive logon - Smart card removal behavior' is set to 'Lock Workstation' or higher  | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} ('HKLM://SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon') -Name ScRemoveOption
+    exit-status: 0
+    stdout:
+    - '/[1-3]/'
+    {{ end }}
+{{ end }}

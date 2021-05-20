@@ -121,6 +121,27 @@ win2016cis_2_3_2_2: true
 # 2.3.4 Devices
 win2016cis_2_3_4_1: true
 win2016cis_2_3_4_2: true
+# 2.3.5 Domain Controller
+win2016cis_2_3_5_1: true
+win2016cis_2_3_5_2: true
+win2016cis_2_3_5_3: true
+# 2.3.6 Domain Member
+win2016cis_2_3_6_1: true
+win2016cis_2_3_6_2: true
+win2016cis_2_3_6_3: true
+win2016cis_2_3_6_4: true
+win2016cis_2_3_6_5: true
+win2016cis_2_3_6_6: true
+# 2.3.7 Interactive Login
+win2016cis_2_3_7_1: true
+win2016cis_2_3_7_2: true
+win2016cis_2_3_7_3: true
+win2016cis_2_3_7_4: true
+win2016cis_2_3_7_5: true
+win2016cis_2_3_7_6: true  # MS Only
+win2016cis_2_3_7_7: true
+win2016cis_2_3_7_8: true  # MS Only
+win2016cis_2_3_7_9: true
 # 2.3.8 Microsoft network client SMB
 win2016cis_2_3_8_1: true
 win2016cis_2_3_8_2: true
@@ -145,7 +166,7 @@ win2016cis_2_3_10_10: true
 win2016cis_2_3_10_11: true
 win2016cis_2_3_10_12: true
 win2016cis_2_3_10_13: true
-# 2.3.10 Network Security
+# 2.3.11 Network Security
 win2016cis_2_3_11_1: true
 win2016cis_2_3_11_2: true
 win2016cis_2_3_11_3: true
@@ -174,7 +195,6 @@ win2016cis_2_3_17_6: true
 win2016cis_2_3_17_7: true
 win2016cis_2_3_17_8: true
 
-
 ##################
 # Section_2_Vars #
 ##################
@@ -186,6 +206,8 @@ win2016cis_DC_allow_logon_RDP_users: Administrators
 win2016cis_MS_allow_logon_RDP_users: Administrators Remote Desktop Users
 win2016_admin_renamed_as: renamed_admin
 win2016_guest_renamed_as: renamed_guest
+win2016_logon_text: interactive title
+win2016_logon_title: title for login
 
 ########################
 ## Section_9_Controls ##
@@ -219,6 +241,21 @@ win2016cis_9_3_7: true
 win2016cis_9_3_8: true
 win2016cis_9_3_9: true
 win2016cis_9_3_10: true
+
+##################
+# Section_9_Vars #
+##################
+
+#########################
+## Section_17_Controls ##
+#########################
+# 17.1 Account Logon
+
+
+
+###################
+# Section_17_Vars #
+###################
 
 
 ##############################

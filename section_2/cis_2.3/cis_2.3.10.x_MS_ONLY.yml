@@ -25,5 +25,13 @@ command:
     stdout:
     - '!/.*/'
     {{ end }}
+  {{ if .Vars.win2016cis_2_3_10_11 }}
+  restrict_client_remote_SAM:
+    title: 2.3.10.11 | L1 | Ensure 'Network access - Restrict clients allowed to make remote calls to SAM' is set to 'Administrators - Remote access - Allow' (MS Only)| SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.restrictremotesam"
+    exit-status: 0
+    stdout:
+    - '1'
+  {{ end }}
   {{ end }}
 {{ end }}
