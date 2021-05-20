@@ -1,0 +1,21 @@
+{{ if .Vars.is_domain_controller }}  
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_kerb_auth_service:
+    {{ if .Vars.win2016cis_17_1_2 }}
+    title: 17.1.2 | L1 | Ensure 'Audit Kerberos Authentication Service' is set to 'Success and Failure' (DC Only) | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Kerberos Authentication Service'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_kerb_service_tkt:
+    {{ if .Vars.win2016cis_17_1_3 }}
+    title: 17.1.3 | L1 | Ensure 'Audit Kerberos Service Ticket Operations' is set to 'Success and Failure' (DC Only)  | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Kerberos Service Ticket Operations'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  {{ end }}
+{{ end }}

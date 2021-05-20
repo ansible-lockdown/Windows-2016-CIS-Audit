@@ -6,7 +6,8 @@
 - Permissions to run all the commands may need admin to run this
 - top of vars file to state the type of server
 - if reboots are outstanding on the host this may change results
-- gpresult /v /r > file_location.txt need to be created
+- gpresult /v /r > file_location.txt need to be created (variable gpresult_file  needs to be updated)
+- auditpol.exe /get /category:* > file_location.txt ( the variable auditresults_file needs to be updated)
 
 ### Overview
 

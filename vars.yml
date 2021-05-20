@@ -249,9 +249,22 @@ win2016cis_9_3_10: true
 #########################
 ## Section_17_Controls ##
 #########################
+# Advanced Audit Policy Configuration
 # 17.1 Account Logon
-
-
+win2016cis_17_1_1: true
+win2016cis_17_1_2: true
+win2016cis_17_1_3: true  # DC_Only
+# 17.2 Account Management
+win2016cis_17_2_1: true
+win2016cis_17_2_2: true  # DC_Only
+win2016cis_17_2_3: true  # DC_Only
+win2016cis_17_2_4: true  # DC_Only
+win2016cis_17_2_5: true
+win2016cis_17_2_6: true
+# 17.3 Detailed Tracking
+win2016cis_17_3_1: true
+win2016cis_17_3_2: true
+# 17.4 DS Access
 
 ###################
 # Section_17_Vars #
@@ -264,8 +277,9 @@ win2016cis_9_3_10: true
 # powershell commands
 ps_regcheck: 'powershell -noprofile -noninteractive -command'
 gpo_regex_script: 'powershell ./scripts/gpo_regex.ps1'
+audit_ps_cmd: Select-String -Path
 gpresult_file: 'c:\goss\regex_testing\gpresult.txt'
-
+auditresult_file: 'c:\goss\regex_testing\audit_pol.txt'
 # Registry_paths
 # CurrentControlSet/Lsa
 # Get key
