@@ -3,7 +3,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_1 }}
   enable_local_sys_ntlm:
     title: 2.3.11.1 | L1 | Ensure 'Network security - Allow Local System to use computer identity for NTLM' is set to 'Enabled'  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.UseMachineId"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name UseMachineId
     exit-status: 0
     stdout:
     - '1'
@@ -11,7 +11,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_2 }}
   disable_null_session_fallback:
     title: 2.3.11.2 | L1 | Ensure 'Network security - Allow LocalSystem NULL session fallback' is set to 'Disabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}/MSV1_0.AllowNullSessionFallback"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/MSV1_0 -Name AllowNullSessionFallback
     exit-status: 0
     stdout:
     - '1'
@@ -19,7 +19,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_3 }}
   disable_pku2u_identities:
     title: 2.3.11.3 | L1 | Ensure 'Network security - Allow PKU2U authentication requests to this computer to use online identities' is set to 'Disabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}/pku2u.AllowOnlineID"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/pku2u -Name AllowOnlineID
     exit-status: 0
     stdout:
     - '1'
@@ -35,7 +35,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_5 }}
   enable_no_lan_mgr_hash:
     title: 2.3.11.5 | L1 | Ensure 'Network security - Do not store LAN Manager hash value on next password change' is set to 'Enabled'  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.NoLMHash"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name NoLMHash
     exit-status: 0
     stdout:
     - '1'
@@ -43,15 +43,15 @@ command:
   {{ if .Vars.win2016cis_2_3_11_6 }}
   enable_force_logoff_hrs:
     title: 2.3.11.6 | L1 | Ensure 'Network security - Force logoff when logon hours expire' is set to 'Enabled' | SCORED | reg_check
-    exec:  GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname ForceLogoffWhenHourExpire
     exit-status: 0
     stdout:
-    - '1'
+    - 'Enabled'
   {{ end }}
   {{ if .Vars.win2016cis_2_3_11_7 }}
   NTLMv2_only_response:
     title: 2.3.11.7 | L1 | Ensure 'Network security - LAN Manager authentication level' is set to 'Send NTLMv2 response only. Refuse LM & NTLM'  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.LmCompatibilityLevel"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name LmCompatibilityLevel
     exit-status: 0
     stdout:
     - '5'
@@ -59,15 +59,15 @@ command:
   {{ if .Vars.win2016cis_2_3_11_8 }}
   LDAP_signing:
     title: 2.3.11.8 | L1 | Ensure 'Network security - LDAP client signing requirements' is set to 'Negotiate signing' or higher  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LDAP}}.LDAPClientIntegrity"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LDAP}} -Name LDAPClientIntegrity
     exit-status: 0
     stdout:
-    - '/[1:2]/'
+    - '/\b[1-2]\b/'
   {{ end }}
   {{ if .Vars.win2016cis_2_3_11_9 }}
   NTLM_128bit_client:
     title: 2.3.11.9 | L1 | Ensure 'Network security - Minimum session security for NTLM SSP based (including secure RPC) clients' is set to 'Require NTLMv2 session security, Require 128-bit encryption' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}/MSV1_0.NTLMMinClientSec"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/MSV1_0 -Name NTLMMinClientSec
     exit-status: 0
     stdout:
     - '537395200'
@@ -75,7 +75,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_10 }}
   NTLM_128bit_server:
     title: 2.3.11.10 | L1 | Ensure 'Network security - Minimum session security for NTLM SSP based (including secure RPC) servers' is set to 'Require NTLMv2 session security, Require 128-bit encryption' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}/MSV1_0.NTLMMinServerSec"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/MSV1_0 -Name NTLMMinServerSec
     exit-status: 0
     stdout:
     - '537395200'

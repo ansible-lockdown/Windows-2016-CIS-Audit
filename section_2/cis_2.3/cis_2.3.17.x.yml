@@ -3,7 +3,7 @@ command:
   {{ if .Vars.win2016cis_2_3_17_1 }}
   enable_admin_approval:
     title: 2.3.17.1 | L1 | Ensure 'User Account Control - Admin Approval Mode for the Built-in Administrator account' is set to 'Enabled'  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.FilterAdministratorToken"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name FilterAdministratorToken"
     exit-status: 0
     stdout:
     - '1'
@@ -11,7 +11,7 @@ command:
   {{ if .Vars.win2016cis_2_3_17_2 }}
   UAC_prompt_admins:
     title: 2.3.17.2 | L1 | Ensure 'User Account Control - Behavior of the elevation prompt for administrators in Admin Approval Mode' is set to 'Prompt for consent on the secure desktop | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.ConsentPromptBehaviorAdmin"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name ConsentPromptBehaviorAdmin"
     exit-status: 0
     stdout:
     - '2'
@@ -19,7 +19,7 @@ command:
   {{ if .Vars.win2016cis_2_3_17_3 }}
   UAC_deny_user:
     title: 2.3.17.3 | L1 | Ensure 'User Account Control - Behavior of the elevation prompt for standard users' is set to 'Automatically deny elevation requests' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.ConsentPromptBehaviorUser"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name ConsentPromptBehaviorUser"
     exit-status: 0
     stdout:
     - '0'
@@ -27,7 +27,7 @@ command:
   {{ if .Vars.win2016cis_2_3_17_4 }}
   UAC_enable_app_install_elevate_prompt:
     title: 2.3.17.4 | L1 | Ensure 'User Account Control - Detect application installations and prompt for elevation' is set to 'Enabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.EnableInstallerDetection"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name EnableInstallerDetection"
     exit-status: 0
     stdout:
     - '1'
@@ -35,7 +35,7 @@ command:
   {{ if .Vars.win2016cis_2_3_17_5 }}
   UAC_secure_locations:
     title: 2.3.17.5 | L1 | Ensure 'User Account Control - Only elevate UIAccess applications that are installed in secure locations' is set to 'Enabled'  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.EnableSecureUIAPaths"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name EnableSecureUIAPaths"
     exit-status: 0
     stdout:
     - '1'
@@ -43,7 +43,7 @@ command:
   {{ if .Vars.win2016cis_2_3_17_6 }}
   UAC_enable_admin_approval_mode:
     title: 2.3.17.6 | L1 | Ensure 'User Account Control - Run all administrators in Admin Approval Mode' is set to 'Enabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.EnableLUA"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name EnableLUA"
     exit-status: 0
     stdout:
     - '1'
@@ -51,7 +51,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_7 }}
   UAC_prompt_secure_desktop:
     title: 2.3.11.7 | L1 | Ensure 'User Account Control - Switch to the secure desktop when prompting for elevation' is set to 'Enabled'   | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.PromptOnSecureDesktop"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name PromptOnSecureDesktop"
     exit-status: 0
     stdout:
     - '1'
@@ -59,7 +59,7 @@ command:
   {{ if .Vars.win2016cis_2_3_17_8 }}
   UAC_virt_reg_write_fail:
     title: 2.3.17.8 | L1 | Ensure 'User Account Control - Virtualize file and registry write failures to per-user locations' is set to 'Enabled'  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }}.EnableVirtualization"
+    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CV_SYSTEM }} -name EnableVirtualization"
     exit-status: 0
     stdout:
     - '1'

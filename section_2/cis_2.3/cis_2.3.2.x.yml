@@ -12,7 +12,7 @@ command:
   Shutdown_immediate_sec_logs_reg:
     {{ if .Vars.win2016cis_2_3_2_2 }}
     title: 2.3.2.2 | L1 | Ensure 'Audit- Shut down system immediately if unable to log security audits' is set to 'Disabled' | SCORED | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.CrashOnAuditFail"
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name CrashOnAuditFail"
     exit-status: 0
     stdout:
     - '0'

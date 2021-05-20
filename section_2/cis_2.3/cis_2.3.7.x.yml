@@ -43,7 +43,7 @@ command:
   password_change_warn:
     {{ if .Vars.win2016cis_2_3_7_7 }}
     title: 2.3.7.7 | L1 | Ensure 'Interactive logon - Prompt user to change password before expiration' is set to 'between 5 and 14 days'  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} ('HKLM://SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon') -Name PasswordExpiryWarning
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name PasswordExpiryWarning
     exit-status: 0
     stdout:
     - '/\b([5-9]|1[0-4])\b/'
@@ -51,7 +51,7 @@ command:
   password_change_warn:
     {{ if .Vars.win2016cis_2_3_7_9 }}
     title: 2.3.7.9 | L1 | Ensure 'Interactive logon - Smart card removal behavior' is set to 'Lock Workstation' or higher  | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} ('HKLM://SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon') -Name ScRemoveOption
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name ScRemoveOption
     exit-status: 0
     stdout:
     - '/[1-3]/'

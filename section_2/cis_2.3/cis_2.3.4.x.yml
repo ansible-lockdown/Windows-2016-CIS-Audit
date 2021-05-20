@@ -4,7 +4,7 @@ command:
   format_eject_media_reg:
     {{ if .Vars.win2016cis_2_3_4_1}}
     title: 2.3.4.1 | L1 | Ensure 'Devices - Allowed to format and eject removable media' is set to 'Administrators' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AllocateDASD
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name AllocateDASD
     exit-status: 0
     stdout:
     - '0'

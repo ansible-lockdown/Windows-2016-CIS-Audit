@@ -4,7 +4,7 @@ command:
   dc_req_to_unlock:
     {{ if .Vars.win2016cis_2_3_7_8 }}
     title: 2.3.7.8 | L1 | Ensure 'Interactive logon - Require Domain Controller Authentication to unlock workstation' is set to 'Enabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} ('HKLM://SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon') -Name ForceUnlockLogon
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name ForceUnlockLogon
     exit-status: 0
     stdout:
     - '1'
@@ -14,7 +14,7 @@ command:
   cache_logons_missing_DC:
     {{ if .Vars.win2016cis_2_3_7_6 }}
     title: 2.3.7.6 | L1 | Ensure 'Interactive logon - Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logon(s)' (MS only) | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} ('HKLM://SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon') -Name CachedLogonsCount
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name CachedLogonsCount
     exit-status: 0
     stdout:
     - '/[1-4]/'

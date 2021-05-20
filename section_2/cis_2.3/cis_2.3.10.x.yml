@@ -2,8 +2,8 @@
 command:
   {{ if .Vars.win2016cis_2_3_10_1 }}
   disable_anon_sid_name:
-    title: 2.3.10.1 | L1 | Ensure 'Network access - Allow anonymous SID/Name translation' is set to 'Disabled' | SCORED | reg_check
-    exec:  echo GPO
+    title: 2.3.10.1 | L1 | Ensure 'Network access - Allow anonymous SID/Name translation' is set to 'Disabled' | SCORED | 
+    exec:  {{ .Vars.ps_regcheck }} -filename {{ .Vars.gpresult_file }} -policyname LSAAnonymousNameLookup
     exit-status: 0
     stdout:
     - '/[1:15]/'
@@ -11,7 +11,7 @@ command:
   {{ if .Vars.win2016cis_2_3_10_5 }}
   disable_everyone_inc_anon:
     title: 2.3.10.5 | L1 | Ensure 'Network access - Let Everyone permissions apply to anonymous users' is set to 'Disabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.EveryoneIncludesAnonymous"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name EveryoneIncludesAnonymous
     exit-status: 0
     stdout:
     - '1'
@@ -70,7 +70,7 @@ command:
   {{ if .Vars.win2016cis_2_3_10_13 }}
   classic_local_users:
     title: 2.3.10.13 | L1 | Ensure 'Network access - Sharing and security model for local accounts' is set to 'Classic - local users authenticate as themselves' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.ForceGuest"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name ForceGuest
     exit-status: 0
     stdout:
     - '1'
@@ -82,7 +82,7 @@ command:
 no_passwd_store:
     {{ if .Vars.win2016cis_2_3_10_4 }}
     title: 2.3.10.4 | L2 | Ensure 'Network access - Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.DisableDomainCreds"
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name DisableDomainCreds
     exit-status: 0
     stdout:
     - '1'
