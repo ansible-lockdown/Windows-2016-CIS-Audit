@@ -71,12 +71,11 @@ command:
     {{ end }}
   manage_audit_sec_log_MS:
     {{ if .Vars.win2016cis_2_2_38 }}
-    title: 2.2.38 | L1 | Ensure 'Manage auditing and security log' is set to 'Administrators'  (MS only)| SCORED
-    exec: { .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname SecurityPrivilege
+    title: 2.2.38 | L1 | Ensure 'Manage auditing and security log' is set to 'Administrators' (MS only)| SCORED
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname SecurityPrivilege
     exit-status: 0
     stdout:
     - 'Administrators'
     {{ end }}
-    
   {{ end }}
 {{ end }}

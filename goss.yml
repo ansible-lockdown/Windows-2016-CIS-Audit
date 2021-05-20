@@ -26,6 +26,6 @@ gossfile:
   {{ end }}
 
 # Section 17
-  {{ if .Vars.win2016cis_section_17 }}
-  section_17/cis_*/*.yml: {}
-  {{ end }}
+#  {{ if .Vars.win2016cis_section_17 }}
+#  section_17/cis_*/*.yml: {}
+#  {{ end }}

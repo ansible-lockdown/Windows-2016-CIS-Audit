@@ -80,7 +80,7 @@ command:
 ## Level 2
 {{ if .Vars.win2016cis_level_2}}
 no_passwd_store:
-    {{ if .Vars.win2016cis_2_3_10_14 }}
+    {{ if .Vars.win2016cis_2_3_10_4 }}
     title: 2.3.10.4 | L2 | Ensure 'Network access - Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled' | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.DisableDomainCreds"
     exit-status: 0
