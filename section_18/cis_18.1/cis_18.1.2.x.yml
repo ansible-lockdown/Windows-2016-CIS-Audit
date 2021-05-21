@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  {{ if .Vars.win2016cis_18_1_2_2 }}
+  disable_allow_online_speech:
+    title: 18.1.2.2 | L1 | Ensure 'Allow users to enable online speech recognition services' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/InputPersonalization' -Name AllowInputPersonalization
+    exit-status: 0
+    stdout:
+    - '0'
+  {{ end }}
+{{ end }}

@@ -29,3 +29,7 @@ gossfile:
   {{ if .Vars.win2016cis_section_17 }}
   section_17/cis_*/*.yml: {}
   {{ end }}
+# Section 18
+  {{ if .Vars.win2016cis_section_18 }}
+  section_18/cis_*/*.yml: {}
+  {{ end }}

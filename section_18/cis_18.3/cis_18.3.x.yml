@@ -1,0 +1,43 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_smb1_driver:
+    {{ if .Vars.win2016cis_18_3_2 }}
+    title: 18.3.2 | L1 |  Ensure 'Configure SMB v1 client driver' is set to 'Enabled - Disable driver (recommended) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} -get-itemPropertyValue 'HKLM:/SYSTEM/CurrentControlSet/Services/mrxsmb10' -Name Start
+    exit-status: 0
+    stdout:
+    - '4'
+    {{ end }}
+  disable_smb1_server:
+    {{ if .Vars.win2016cis_18_3_3 }}
+    title: 18.3.3 | L1 | Ensure 'Configure SMB v1 server' is set to 'Disabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name SMB1
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  enable_SEHOP:
+    {{ if .Vars.win2016cis_18_3_4 }}
+    title: 18.3.4 | L1 | Ensure 'Enable Structured Exception Handling Overwrite Protection (SEHOP)' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Session Manager/kernel' -Name DisableExceptionChainValidation
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  NetBT_node_type:
+    {{ if .Vars.win2016cis_18_3_6 }}
+    title: 18.3.6 | L1 | Ensure 'NetBT NodeType configuration' is set to 'Enabled - P-node (recommended)' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/NetBT/Parameters' -Name NodeType
+    exit-status: 0
+    stdout:
+    - '2'
+    {{ end }}
+  disable_wdigest_auth:
+    {{ if .Vars.win2016cis_18_3_7 }}
+    title: 18.3.7 | L1 | Ensure 'WDigest Authentication' is set to 'Disabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/SecurityProviders/WDigest' -Name NodeType
+    exit-status: 0
+    stdout:
+    - 'Not Defined'
+    {{ end }}
+{{ end }}

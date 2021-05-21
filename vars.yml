@@ -39,6 +39,7 @@ win2016cis_section_1: true
 win2016cis_section_2: true
 win2016cis_section_9: true
 win2016cis_section_17: true
+win2016cis_section_18: true
 
 ########################
 ## Section_1_Controls ##
@@ -294,9 +295,40 @@ win2016cis_17_9_3: true
 win2016cis_17_9_4: true
 win2016cis_17_9_5: true
 
-
 ###################
 # Section_17_Vars #
+###################
+
+#########################
+## Section_18_Controls ##
+#########################
+# 18 Administrative Templates
+# 18.1 Control Panel
+# 18.1.1 Personalization
+win2016cis_18_1_1_1: true
+win2016cis_18_1_1_2: true
+# 18.1.2 Regional and Language Options
+# 18.1.2.1 Handwriting Personalization
+win2016cis_18_1_2_2: true
+win2016cis_18_1_3: true
+# 18.2 LAPS - Needs LAPS installed per host
+win2016cis_18_2_1: true
+win2016cis_18_2_2: true
+win2016cis_18_2_3: true
+win2016cis_18_2_4: true
+win2016cis_18_2_5: true
+win2016cis_18_2_6: true
+# 18.3 MS Security 
+win2016cis_18_3_1: true
+win2016cis_18_3_2: true
+win2016cis_18_3_3: true
+win2016cis_18_3_4: true
+win2016cis_18_3_5: true
+win2016cis_18_3_6: true
+win2016cis_18_3_6: true
+win2016cis_18_3_7: true
+###################
+# Section_18_Vars #
 ###################
 
 
@@ -318,7 +350,9 @@ HKLM_CCS_LANWORK: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Se
 HKLM_CCS_LANSERVER: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanServer/Parameters'
 HKLM_CCS_LDAP: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LDAP/'
 HKLM_CCS_LSA: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/'
-HKLM_CCS_NETLOGON: 'HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters'
+HKLM_CCS_NETLOGON: 'HKLM:/SYSTEM/CurrentControlSet/Services/Netlogon/Parameters'
 HKLM_CV_SYSTEM: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/'
 HKLM_KERB: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/Kerberos/Parameters'
-HKLM_NT_WINLOGON: get-itempropertyValue -path 'HKLM://SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon'
+HKLM_NT_WINLOGON: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon'
+HKLM_WIN_PERSON: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Personalization'
+HKLM_MS_SVCS: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft Services/AdmPwd'
