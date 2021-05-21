@@ -65,8 +65,8 @@ command:
     - '/\b[5-9][0-9]\b/'
     {{ end }}
 {{ end }}
-{{ if .Vars.win2016cis_level_1 }}
-keepalive_ms_enabled:
+{{ if .Vars.win2016cis_level_2 }}
+  keepalive_ms_enabled:
     {{ if .Vars.win2016cis_18_4_5 }}
     title: 18.4.5 | L2 | Ensure 'MSS - (KeepAliveTime) How often keep-alive packets are sent in milliseconds' is set to 'Enabled - 300,000 or 5 minutes (recommended)' | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4 }} -Name KeepAliveTime
@@ -93,7 +93,7 @@ keepalive_ms_enabled:
   max_retransmit_ipv4:
     {{ if .Vars.win2016cis_18_4_11 }}
     title: 18.4.11 | L2 | Ensure 'MSS - (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted' is set to 'Enabled - 3' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4}} -Name TcpMaxDataRetransmissions
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4 }} -Name TcpMaxDataRetransmissions
     exit-status: 0
     stdout:
     - '3'
