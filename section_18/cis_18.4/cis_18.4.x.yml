@@ -1,0 +1,101 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_auto_logon:
+    {{ if .Vars.win2016cis_18_4_1 }}
+    title: 18.4.1 | L1 | Ensure 'MSS - (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name AutoAdminLogon
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_ip6_source_route:
+    {{ if .Vars.win2016cis_18_4_2 }}
+    title: 18.4.2 | L1 | Ensure 'MSS - (DisableIPSourceRouting IPv6) IP source routing protection level (protects against packet spoofing)' is set to 'Enabled- Highest protection, source routing is completely disabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP6 }} -Name DisableIPSourceRouting
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_ip4_source_route:
+    {{ if .Vars.win2016cis_18_4_3 }}
+    title: 18.4.3 | L1 |  Ensure 'MSS - (DisableIPSourceRouting) IP source routing protection level (protects against packet spoofing)' is set to 'Enabled- Highest protection, source routing is completely disabled | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4 }} -Name DisableIPSourceRouting
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_icmp_ospf_redirects:
+    {{ if .Vars.win2016cis_18_4_4 }}
+    title: 18.4.4 | L1 | Ensure 'MSS - (EnableICMPRedirect) Allow ICMP redirects to override OSPF generated routes' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4 }} -Name EnableICMPRedirect
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  ignore_netbios_except_wins:
+    {{ if .Vars.win2016cis_18_4_6 }}
+    title: 18.4.6 | L1 | Ensure 'MSS - (NoNameReleaseOnDemand) Allow the computer to ignore NetBIOS name release requests except from WINS servers' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/NetBT/Parameters' -Name NoNameReleaseOnDemand
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  enable_safe_dll:
+    {{ if .Vars.win2016cis_18_4_8 }}
+    title: 18.4.8 | L1 | Ensure 'MSS - (SafeDllSearchMode) Enable Safe DLL search mode (recommended)' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Session Manager' -Name SafeDllSearchMode
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  screensaver_grace_secs:
+    {{ if .Vars.win2016cis_18_4_9 }}
+    title: 18.4.9 | L1 | Ensure 'MSS - (ScreenSaverGracePeriod) The time in seconds before the screen saver grace period expires (0 recommended)' is set to 'Enabled - 5 or fewer seconds' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name ScreenSaverGracePeriod
+    exit-status: 0
+    stdout:
+    - '/\b[0-5]\b/'
+    {{ end }}
+  percent_sec_eventlog_warn:
+    {{ if .Vars.win2016cis_18_4_12 }}
+    title: 18.4.12 | L1 | Ensure 'MSS - (WarningLevel) Percentage threshold for the security event log at which the system will generate a warning' is set to 'Enabled - 90% or less'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/Eventlog/Security' -Name WarningLevel
+    exit-status: 0
+    stdout:
+    - '/\b[5-9][0-9]\b/'
+    {{ end }}
+{{ end }}
+{{ if .Vars.win2016cis_level_1 }}
+keepalive_ms_enabled:
+    {{ if .Vars.win2016cis_18_4_5 }}
+    title: 18.4.5 | L2 | Ensure 'MSS - (KeepAliveTime) How often keep-alive packets are sent in milliseconds' is set to 'Enabled - 300,000 or 5 minutes (recommended)' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4 }} -Name KeepAliveTime
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_router_discovery:
+    {{ if .Vars.win2016cis_18_4_7 }}
+    title: 18.4.7 | L2 | Ensure 'MSS - (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses (could lead to DoS)' is set to 'Disabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4 }} -Name PerformRouterDiscovery
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  max_retransmit_ipv6:
+    {{ if .Vars.win2016cis_18_4_10 }}
+    title: 18.4.10 | L2 |  Ensure 'MSS - (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is retransmitted' is set to 'Enabled - 3'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP6 }} -Name TcpMaxDataRetransmissions
+    exit-status: 0
+    stdout:
+    - '3'
+    {{ end }}
+  max_retransmit_ipv4:
+    {{ if .Vars.win2016cis_18_4_11 }}
+    title: 18.4.11 | L2 | Ensure 'MSS - (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted' is set to 'Enabled - 3' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4}} -Name TcpMaxDataRetransmissions
+    exit-status: 0
+    stdout:
+    - '3'
+    {{ end }}
+{{ end }}
