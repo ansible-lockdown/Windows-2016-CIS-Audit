@@ -80,3 +80,4 @@ command:
     stdout:
     - '1'
   {{ end }}
+{{ end }}
