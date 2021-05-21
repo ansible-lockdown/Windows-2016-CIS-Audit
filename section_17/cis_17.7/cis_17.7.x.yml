@@ -1,0 +1,43 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_audit_policy_change:
+    {{ if .Vars.win2016cis_17_7_1 }}
+    title: 17.6.1 | L1 | Ensure 'Audit Audit Policy Change' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Audit Policy Change'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_auth_pol_change:
+    {{ if .Vars.win2016cis_17_7_2 }}
+    title: 17.7.2 | L1 | Ensure 'Audit Authentication Policy Change' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Authentication Policy Change'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_auth_pol_change:
+    {{ if .Vars.win2016cis_17_7_3 }}
+    title: 17.7.3 | L1 | Ensure 'Audit Authorization Policy Change' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Authorization Policy Change'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_MPSSVC_rule_change:
+    {{ if .Vars.win2016cis_17_7_4 }}
+    title: 17.7.4 | L1 |  Ensure 'Audit MPSSVC Rule-Level Policy Change' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'MPSSVC Rule-Level Policy Change'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_other_policy_change:
+    {{ if .Vars.win2016cis_17_7_5 }}
+    title: 17.7.5 | L1 | Ensure 'Audit Other Policy Change Events' is set to include 'Failure'  | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Other Policy Change Events'
+    exit-status: 0
+    stdout:
+    - '/.*Failure/'
+    {{ end }}
+{{ end }}

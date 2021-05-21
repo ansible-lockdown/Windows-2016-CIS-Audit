@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_sensitive_priv_use:
+    {{ if .Vars.win2016cis_17_8_1 }}
+    title: 17.8.1 | L1 | Ensure 'Audit Sensitive Privilege Use' is set to 'Success and Failure'  | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Sensitive Privilege Use'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+{{ end }}

@@ -265,6 +265,35 @@ win2016cis_17_2_6: true
 win2016cis_17_3_1: true
 win2016cis_17_3_2: true
 # 17.4 DS Access
+win2016cis_17_4_1: true  # DC Only
+win2016cis_17_4_2: true  # DC Only
+# 17.5 logon/off
+win2016cis_17_5_1: true
+win2016cis_17_5_2: true
+win2016cis_17_5_3: true
+win2016cis_17_5_4: true
+win2016cis_17_5_5: true
+win2016cis_17_5_6: true
+# 17.6 Object Access
+win2016cis_17_6_1: true
+win2016cis_17_6_2: true
+win2016cis_17_6_3: true
+win2016cis_17_6_4: true
+# 17.7 Policy Change
+win2016cis_17_7_1: true
+win2016cis_17_7_2: true
+win2016cis_17_7_3: true
+win2016cis_17_7_4: true
+win2016cis_17_7_5: true
+# 17.8 Privilege Use
+win2016cis_17_8_1: true
+# 17.9 System
+win2016cis_17_9_1: true
+win2016cis_17_9_2: true
+win2016cis_17_9_3: true
+win2016cis_17_9_4: true
+win2016cis_17_9_5: true
+
 
 ###################
 # Section_17_Vars #

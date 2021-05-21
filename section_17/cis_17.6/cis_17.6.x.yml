@@ -1,0 +1,35 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_detailed_file_share:
+    {{ if .Vars.win2016cis_17_6_1 }}
+    title: 17.6.1 | L1 | Ensure 'Audit Detailed File Share' is set to include 'Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Detailed File Share'
+    exit-status: 0
+    stdout:
+    - '/.*Failure/'
+    {{ end }}
+  audit_file_share:
+    {{ if .Vars.win2016cis_17_6_2 }}
+    title: 17.6.2 | L1 | Ensure 'Audit File Share' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern '^\s+File Share'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_other_obj_access:
+    {{ if .Vars.win2016cis_17_6_3 }}
+    title: 17.6.3 | L1 | Ensure 'Audit Other Object Access Events' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Other Object Access Events'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_removable_storage:
+    {{ if .Vars.win2016cis_17_6_4 }}
+    title: 17.6.4 | L1 | Ensure 'Audit Removable Storage' is set to 'Success and Failure | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Removable Storage'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+{{ end }}
