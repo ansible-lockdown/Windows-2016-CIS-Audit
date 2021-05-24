@@ -516,6 +516,15 @@ win2016cis_18_8_52_1_2: true
 # 18.9.3 Add features to Windows 8 / 8.1 / 10 (formerly Windows Anytime Upgrade)
 # 18.9.4 App Package Deployment
 win2016cis_18_9_4_1: true
+# 18.9.5 App Privacy
+# 18.9.6 App runtime
+win2016cis_18_9_6_1: true
+# 18.9.7 Application Compatibility
+# 18.9.8 AutoPlay Policies
+win2016cis_18_9_8_1: true
+win2016cis_18_9_8_2: true
+win2016cis_18_9_8_3: true
+# 18.9.9 Backup
 
 ###################
 # Section_18_Vars #
@@ -550,3 +559,4 @@ HKLM_TCPIP4: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Service
 HKLM_TCPIP6: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/Tcpip6/Parameters'
 HKLM_DEV_GUARD: get-ItempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/DeviceGuard'
 HKLM_WIN_SYSTEM: get-ItempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System'
+HKLM_EXPLORER: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer'
