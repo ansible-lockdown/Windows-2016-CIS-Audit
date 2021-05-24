@@ -612,7 +612,32 @@ win2016cis_18_9_59_2_2: true
 # 18.9.59.3 Remote Desktop Session Host (formerly Terminal Server)
 # 18.9.59.3.1 Application Compatibility
 # 18.9.59.3.2 Connections
-
+win2016cis_18_9_59_3_2_1: true
+# 18.9.59.3.3 Device and Resource Redirection
+win2016cis_18_9_59_3_3_1: true
+win2016cis_18_9_59_3_3_2: true
+win2016cis_18_9_59_3_3_3: true
+win2016cis_18_9_59_3_3_4: true
+# 18.9.59.3.4 Licensing
+# 18.9.59.3.5 Printer Redirection
+# 18.9.59.3.6 Profiles
+# 18.9.59.3.7 RD Connection Broker (formerly TS Connection Broker)
+# 18.9.59.3.8 Remote Session Environment
+# 18.9.59.3.9 Security
+win2016cis_18_9_59_3_9_1: true
+win2016cis_18_9_59_3_9_2: true
+win2016cis_18_9_59_3_9_3: true
+win2016cis_18_9_59_3_9_4: true
+win2016cis_18_9_59_3_9_5: true
+# 18.9.59.3.10 Session Time Limits
+win2016cis_18_9_59_3_10_1: true
+win2016cis_18_9_59_3_10_2: true
+# 18.9.59.3.11 Temporary Folders
+win2016cis_18_9_59_3_11_1: true
+win2016cis_18_9_59_3_11_2: true
+# 18.9.60 RSS Feeds
+win2016cis_18_9_60_1: true
+# 18.9.61 Search
 ###################
 # Section_18_Vars #
 ###################
@@ -649,3 +674,4 @@ HKLM_TCPIP6: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Service
 HKLM_DEV_GUARD: get-ItempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/DeviceGuard'
 HKLM_WIN_SYSTEM: get-ItempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System'
 HKLM_EXPLORER: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer'
+HKLM_TERM_SVCS: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Terminal Services'

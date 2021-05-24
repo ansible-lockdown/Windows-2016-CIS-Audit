@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  dont_allow_password_saving_terminal_services:
+    {{ if .Vars.win2016cis_18_9_60_1 }}
+    title: 18.9.60.1 | L1 | Ensure 'Prevent downloading of enclosures' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Internet Explorer/Feeds' -Name DisableEnclosureDownload
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

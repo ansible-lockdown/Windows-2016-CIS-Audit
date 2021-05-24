@@ -3,7 +3,7 @@ command:
   dont_allow_password_saving_terminal_services:
     {{ if .Vars.win2016cis_18_9_59_2_2 }}
     title: 18.9.59.2.2 | L1 | Ensure 'Do not allow passwords to be saved' is set to 'Enabled'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Terminal Services' -Name DisablePasswordSaving
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name DisablePasswordSaving
     exit-status: 0
     stdout:
     - '1'
