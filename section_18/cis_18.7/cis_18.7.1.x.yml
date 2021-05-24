@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_font_providers:
+    {{ if .Vars.win2016cis_18_7_1_1 }}
+    title: 18.7.1.1 | L2 | Ensure 'Turn off notifications network usage' is set to 'Enabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/CurrentVersion/PushNotifications' -Name NoCloudApplicatonNotification
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

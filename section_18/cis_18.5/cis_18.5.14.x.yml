@@ -1,0 +1,13 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  harden_unc_auth and integrity:
+    {{ if .Vars.win2016cis_18_5_14_1 }}
+    title: 18.5.14.1 | L1 | Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/NetworkProvider/HardenPaths' -Name EnableMulticast
+    exit-status: 0
+    stdout:
+    - '1'
+    - '/\\*\NETLOGON RequireMutualAuthentication=1, RequireIntegrity=1/'
+    - '/\\*\SYSVOL RequireMutualAuthentication=1, RequireIntegrity=1/'
+    {{ end }}
+{{ end }}

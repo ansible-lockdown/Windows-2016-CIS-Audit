@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  credssp_encrpyt_oracle_force:
+    {{ if .Vars.win2016cis_18_8_4_1 }}
+    title: 18.8.4.1 | L1 | Ensure 'Encryption Oracle Remediation' is set to 'Enabled - Force Updated Clients'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/CurrentVersion/Policies/System/CredSSP/Parameters' -Name AllowEncryptionOracle
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  credssp_encrypt_oracle_force:
+    {{ if .Vars.win2016cis_18_8_4_2 }}
+    title: 18.8.4.2 | L1 | Ensure 'Remote host allows delegation of non-exportable credentials' is set to 'Enabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/CredentialsDelegation' -Name AllowProtyectedCreds
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

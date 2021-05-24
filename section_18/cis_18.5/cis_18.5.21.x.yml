@@ -1,0 +1,21 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  conn_mgr_minimize_conns:
+    {{ if .Vars.win2016cis_18_5_21_1 }}
+    title: 18.5.21.1 | L1 | Ensure 'Minimize the number of simultaneous connections to the Internet or a Windows Domain' is set to 'Enabled - 1 = Minimize simultaneous connections' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WcmSvc/GroupPolicy' -Name fMinimizeConnections
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
+{{ if .Vars.win2016cis_level_2 }}
+  prohibit_other_dom_conns:
+    {{ if .Vars.win2016cis_18_5_21_1 }}
+    title: 18.5.21.1 | L2 | Ensure 'Minimize the number of simultaneous connections to the Internet or a Windows Domain' is set to 'Enabled - 1 = Minimize simultaneous connections' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WcmSvc/GroupPolicy' -Name fBlockNonDomain
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

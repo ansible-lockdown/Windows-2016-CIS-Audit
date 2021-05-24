@@ -17,6 +17,7 @@ exchange_server_group: false
 ##############
 win2016cis_level_1: true
 win2016cis_level_2: true
+win2016cis_NG: true # Note this needs UEFI and virtualication enabled systems - rollback is very manual
 
 ################
 # Server Roles #
@@ -341,8 +342,104 @@ win2016cis_18_4_9: true
 win2016cis_18_4_10: true
 win2016cis_18_4_11: true
 win2016cis_18_4_12: true
-
-
+# 18.5 Network
+# 18.5.1 Background Intelligent Transfer
+# 18.5.2 Branch Cache
+# 18.5.3 DirectAccess Client Experience Settings
+# 18 5.4 DNS Client
+win2016cis_18_5_4_1: true
+# 18.5.5 Fonts
+win2016cis_18_5_5_1: true
+# 18.5.6 Hotspot Authentication
+# 18.5.7 lanwamn Server
+# 18.5.8 Lanman WorkStation
+win2016cis_18_5_8_1: true
+# 18.5.9 Link-Layer Topology Discovery
+win2016cis_18_5_9_1: true
+win2016cis_18_5_9_2: true
+# 18.5.10 Microsoft Peer-To-Peer Networking Services
+# 18.5.10.1 Peer Name Resolution Protocol
+win2016cis_18_5_10_1: true
+# 18.5.11 Network Connections
+# 18.5.11.1 Windows Defender Firewall (formally Windows Firewall)
+win2016cis_18_5_11_2: true
+win2016cis_18_5_11_3: true
+win2016cis_18_5_11_4: true
+# 18.5.12 Network Connectivity Status Indicator
+# 18.5.13 Network Isolation
+# 18.5.14 Network Provider
+win2016cis_18_5_14_1: true  # NOte Network Paths will need to ne configured for this to pass
+# 18.5.15 Offline Files
+# 18.5.16 QoS Packet Scheduler
+# 18.5.17 SNMP
+# 18.5.18 SSL Configuration Settings
+# 18.15.9 TCPIP Settings
+# 18.5.19.1 IPv6 Transitoin Technologies
+# 18.5.19.2 Paranters
+win2016cis_18_5_19_2_1: true
+# 18.5 20 Windows Connect Now
+win2016cis_18_5_20_1: true
+win2016cis_18_5_20_2: true
+# 18.5.21 Windows Connection Manager
+win2016cis_18_5_21_1: true
+win2016cis_18_5_21_2: true
+# 18.5.6 Printers
+# 18.7.Start Menu and Taskbar
+# 18.7.1 Notifications
+win2016cis_18_7_1_1: true
+# 18.8 System
+# 18.8.1 Access-Denied Assistance
+# 18.8.2 App-V
+# 18.8.3 Audit Process Creation
+win2016cis_18_8_3_1: true
+# 18.8.4 Credential Delegation
+win2016cis_18_8_4_1: true
+win2016cis_18_8_4_2: true
+# 18.8.5 Device Guard
+win2016cis_18_8_5_1: true
+win2016cis_18_8_5_2: true
+win2016cis_18_8_5_3: true
+win2016cis_18_8_5_4: true
+win2016cis_18_8_5_5: true
+win2016cis_18_8_5_6: true
+win2016cis_18_8_5_7: true
+# 18.8.6 Device Health Attenstation Servic
+# 18.8.7 Device Installation
+# 18.8.8 Device Redirection
+# 18.8.9 Disk NV Cache
+# 18.8.10 Disk Quotas
+# 18.8.11 Display
+# 18.8.12 Distributed COM
+# 18.8.13 Driver Installation
+# 18.8.14 Early Launch AntiMalware
+win2016cis_18_8_14_1: true
+# 18.8.15 Enhanced Storage Access
+# 18.8.16 DFile Classification Infrastructure
+# 18.7.17 File Share Shadow Copy Agent
+# 18.8.18 File Share Shadow Copy Provider
+# 18.8.19 FileSystems (Formerly NTFS FileSystem)
+# 18.8.20 Folder Redirecion
+# 18.8.21 Group Policy
+# 18.8.21.1 Logging and Tracing
+win2016cis_18_8_21_2: true
+win2016cis_18_8_21_3: true
+win2016cis_18_8_21_4: true
+win2016cis_18_8_21_5: true
+# 18.8.22 Internet Communication Managemnet
+# 18.8.22.1 Internet Communication Settings
+win2016cis_18_8_21_1_1: true
+win2016cis_18_8_21_1_2: true
+win2016cis_18_8_21_1_3: true
+win2016cis_18_8_21_1_4: true
+win2016cis_18_8_21_1_5: true
+win2016cis_18_8_21_1_6: true
+win2016cis_18_8_21_1_7: true
+win2016cis_18_8_21_1_8: true
+win2016cis_18_8_21_1_9: true
+win2016cis_18_8_21_1_10: true
+win2016cis_18_8_21_1_11: true
+win2016cis_18_8_21_1_12: true
+win2016cis_18_8_21_1_13: true
 ###################
 # Section_18_Vars #
 ###################
@@ -373,4 +470,5 @@ HKLM_NT_WINLOGON: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows 
 HKLM_WIN_PERSON: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Personalization'
 HKLM_MS_SVCS: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft Services/AdmPwd'
 HKLM_TCPIP4: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/Tcpip/Parameters'
-HKLM_TCPIP6: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/Tcpip/Parameters'
+HKLM_TCPIP6: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/Tcpip6/Parameters'
+HKLM_DEV_GUARD: get-ItempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/DeviceGuard'

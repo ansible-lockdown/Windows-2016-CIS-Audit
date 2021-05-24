@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_font_providers:
+    {{ if .Vars.win2016cis_18_5_5_1 }}
+    title: 18.5.5.1 | L2 | Ensure 'Enable Font Providers' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System' -Name EnableFontProviders
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

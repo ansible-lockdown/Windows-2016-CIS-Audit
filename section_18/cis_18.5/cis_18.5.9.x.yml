@@ -1,0 +1,55 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  {{ if .Vars.win2016cis_18_5_9_1 }}
+  disable_LLTDIO_Domain:
+    title: 18.5.9.1 | L2 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'  | (SCORED) | reg_check - AllowLLTDIOOnDomain
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name AllowLLTDIOOnDomain
+    exit-status: 0
+    stdout:
+    - '0'
+  disable_LLTDIO_PublicNet:
+    title: 18.5.9.1 | L2 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'  | (SCORED) | reg_check - AllowLLTDIOOnPublicNet
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name AllowLLTDIOOnPublicNet
+    exit-status: 0
+    stdout:
+    - '0'
+  disable_LLTDIO:
+    title: 18.5.9.1 | L2 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'  | (SCORED) | reg_check - EnableLLTDIO
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name EnableLLTDIO
+    exit-status: 0
+    stdout:
+    - '0'
+  disable_LLTDIO_PrivateNet:
+    title: 18.5.9.1 | L2 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'  | (SCORED) | reg_check - ProhibitLLTDIOOnPrivateNet
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name ProhibitLLTDIOOnPrivateNet
+    exit-status: 0
+    stdout:
+    - '0'
+  {{ end }}
+  {{ if .Vars.win2016cis_18_5_9_2 }}
+  disable_rspndr_Domain:
+    title: 18.5.9.2 | L2 | Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled'  | (SCORED) | reg_check - AllowRspndrOnDomain
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name AllowRspndrOnDomain
+    exit-status: 0
+    stdout:
+    - '0'
+  disable_rspndr_PublicNet:
+    title: 18.5.9.2 | L2 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'  | (SCORED) | reg_check - AllowRspndrOnPublicNet
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name AllowRspndrOnPublicNet
+    exit-status: 0
+    stdout:
+    - '0'
+  disable_rspndr:
+    title: 18.5.9.2 | L2 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'  | (SCORED) | reg_check - EnableRspndr
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name EnableRspndr
+    exit-status: 0
+    stdout:
+    - '0'
+  disable_rspndr_PrivateNet:
+    title: 18.5.9.2 | L2 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'  | (SCORED) | reg_check - ProhibitRspndrOnPrivateNet
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/LLTD' -Name ProhibitRspndrOnPrivateNet
+    exit-status: 0
+    stdout:
+    - '0'
+  {{ end }}
+{{ end }}

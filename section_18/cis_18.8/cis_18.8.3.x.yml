@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_cli_proc_creation_evts:
+    {{ if .Vars.win2016cis_18_8_3_1 }}
+    title: 18.8.3.1 | L1 | Ensure 'Include command line in process creation events' is set to 'Disabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/CurrentVersion/Policies/System/Audit' -Name ProcessCreationIncludeCmdLine_Enabled
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

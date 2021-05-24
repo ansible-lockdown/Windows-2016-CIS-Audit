@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_tcpipv6:
+    {{ if .Vars.win2016cis_18_5_19_2_1 }}
+    title: 18.5.19.2.1 | L1 |  Disable IPv6 (Ensure TCPIP6 Parameter 'DisabledComponents' is set to '0xff (255)') | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/TCPIP6/Parameters' -Name DisabledComponents
+    exit-status: 0
+    stdout:
+    - '255'
+    {{ end }}
+{{ end }}
