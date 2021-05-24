@@ -525,7 +525,34 @@ win2016cis_18_9_8_1: true
 win2016cis_18_9_8_2: true
 win2016cis_18_9_8_3: true
 # 18.9.9 Backup
-
+# 18.9.10 Biometrics
+# 18.9.10.1 Facial Features
+win2016cis_18_9_10_1: true
+# 18.9.11 BitLocker Drive Encryption
+# 18.9.12 Camera
+win2016cis_18_9_12_1: true
+# 18.9.13 Cloud Content
+# 18.9.14 Connect
+win2016cis_18_9_14_1: true
+# 18.9.15 Credential User Interface
+win2016cis_18_9_15_1: true
+win2016cis_18_9_15_2: true
+# 18.9.16 Data Collection and Preview Builds
+win2016cis_18_9_16_1: true
+win2016cis_18_9_16_2: true
+win2016cis_18_9_16_3: true
+win2016cis_18_9_16_4: true
+# 18.9.17 Delivery Optimization
+# 18.9.18 Desktop Gadgets
+# 18.9.19 Desktop Window Manager
+# 18.9.20 Device and Driver Compatibility
+# 18.9.21 Device Registration (formerly Workplace Join)
+# 18.9.22 Digital Locker
+# 18.9.23 Edge UI
+# 18.9.24 EMET
+# 18.9.25 Event Forwarding
+# 18.9.26 Event Log Service
+# 18.9.26.1 Application
 ###################
 # Section_18_Vars #
 ###################

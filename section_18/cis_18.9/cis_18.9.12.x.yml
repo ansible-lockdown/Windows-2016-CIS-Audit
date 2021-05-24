@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_camera:
+    {{ if .Vars.win2016cis_18_9_12_1 }}
+    title: 18.9.12.1 | L2 | Ensure 'Configure enhanced anti-spoofing' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Camera' -Name AllowCamera
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
