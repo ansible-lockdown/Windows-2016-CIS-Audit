@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_cloud_msg_sync:
+    {{ if .Vars.win2016cis_18_9_43_1 }}
+    title: 18.9.43.1 | L2 | Ensure 'Allow Message Service Cloud Sync' is set to 'Disabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Messaging' -Name AllowMessageSync
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

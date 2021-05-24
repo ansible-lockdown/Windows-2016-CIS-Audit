@@ -553,11 +553,73 @@ win2016cis_18_9_16_4: true
 # 18.9.25 Event Forwarding
 # 18.9.26 Event Log Service
 # 18.9.26.1 Application
+win2016cis_18_9_26_1_1: true
+win2016cis_18_9_26_1_2: true
+# 18.9.26.2 Security
+win2016cis_18_9_26_2_1: true
+win2016cis_18_9_26_2_2: true
+# 18.9.26.3 Setup
+win2016cis_18_9_26_3_1: true
+win2016cis_18_9_26_3_2: true
+# 18.9.26.4 System
+win2016cis_18_9_26_4_1: true
+win2016cis_18_9_26_4_2: true
+# 18.9.27 Event Logging
+# 18.9.28 Event Viewer
+# 18.9.29 Family Safety (formerly Parental Controls)
+# 18.9.30 File Explorer (formerly Windows Explorer)
+# 18.9.30.1 Previous Versions
+win2016cis_18_9_30_2: true
+win2016cis_18_9_30_3: true
+win2016cis_18_9_30_4: true
+# 18.9.31 File History
+# 18.9.32 Find My Device
+# 18.9.33 Game Explorer
+# 18.9.34 Handwriting
+# 18.9.35 HomeGroup
+# 18.9.36 Import Video
+# 18.9.37 Internet Explorer
+# 18.9.38 Internet Information Services
+# 18.9.39 Location and Sensors
+win2016cis_18_9_39_1: true
+# 18.9.40 Maintenance Scheduler
+# 18.9.41 Maps
+# 18.9.42 MDM
+# 18.9.43 Messaging
+win2016cis_18_9_43_1: true
+# 18.9.44 Microsoft account
+win2016cis_18_9_44_1: true
+# 18.9.45 Microsoft Edge
+# 18.9.46 Microsoft FIDO Authentication
+# 18.9.47 Microsoft Secondary Authentication Factor
+# 18.9.48 Microsoft User Experience Virtualization
+# 18.9.49 NetMeeting
+# 18.9.50 Network Access Protection
+# 18.9.51 Network Projector
+# 18.9.52 OneDrive (formerly SkyDrive)
+win2016cis_18_9_52_1: true
+# 18.9.53 Online Assistance
+# 18.9.54 OOBE
+# 18.9.55 Password Synchronization
+# 18.9.56 Portable Operating System
+# 18.9.57 Presentation Settings
+# 18.9.58 Push To Install
+# 18.9.59 Remote Desktop Services (formerly Terminal Services)
+# 18.9.59.1 RD Licensing (formerly TS Licensing)
+# 18.9.59.2 Remote Desktop Connection Client
+# 18.9.59.2.1 RemoteFX USB Device Redirection
+win2016cis_18_9_59_2_2: true
+# 18.9.59.3 Remote Desktop Session Host (formerly Terminal Server)
+# 18.9.59.3.1 Application Compatibility
+# 18.9.59.3.2 Connections
+
 ###################
 # Section_18_Vars #
 ###################
-
-
+win2016_eventlog_app_max_size:
+win2016_eventlog_sec_max_size:
+win2016_eventlog_setup_max_size:
+win2016_eventlog_sys_max_size:
 ##############################
 ## Global command Variables ##
 ##############################

@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  prevent_one_drive_for_file_storage:
+    {{ if .Vars.win2016cis_18_9_52_1 }}
+    title: 18.9.52.1 | L1 | Ensure 'Prevent the usage of OneDrive for file storage' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/OneDrive' -Name DisableFileSyncNGSC
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
