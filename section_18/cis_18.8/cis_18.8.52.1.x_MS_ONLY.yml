@@ -1,0 +1,13 @@
+{{ if not .Vars.is_domain_controller }}  
+  {{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_ntp_server_ms_only:
+    {{ if .Vars.win2016cis_18_8_52_1_2 }}
+    title: 18.8.52.1.1 | L2 | Ensure 'Enable Windows NTP Server' is set to 'Disabled' (MS only) | reg_check - behaviour
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/W32Time/TimeProviders/NtpServer' -Name Enabled
+    exit-status: 0
+    stdout:
+    - 'o'
+    {{ end }}
+  {{ end }}
+{{ end }}

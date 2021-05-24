@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  enable_ntp_client:
+    {{ if .Vars.win2016cis_18_8_52_1_1 }}
+    title: 18.8.52.1.1 | L2 | Ensure 'Enable Windows NTP Client' is set to 'Enabled' | (SCORED) | reg_check - behaviour
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/W32Time/TimeProviders/NtpClient' -Name Enabled
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

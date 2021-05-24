@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  enable_ntp_client:
+    {{ if .Vars.win2016cis_18_9_4_1 }}
+    title: 18.9.4.1 | L2 | Ensure 'Allow a Windows app to share application data between users' is set to 'Disabled' | (SCORED) | reg_check - behaviour
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/CurrentVersion/AppModel/StateManager' -Name AllowSharedLocalAppData
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_advertising:
+    {{ if .Vars.win2016cis_18_8_47_11_1 }}
+    title: 18.8.47.11.1 | L2 | Ensure 'Enable/Disable PerfTrack' is set to 'Disabled' | (SCORED) | reg_check - behaviour
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/AdvertisingInfo' -Name DisabledByGroupPolicy
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
