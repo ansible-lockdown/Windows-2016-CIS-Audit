@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_turn_off_defender:
+    {{ if .Vars.win2016cis_18_9_77_15 }}
+    title: 18.9.77.15 | L1 |  Ensure 'Turn off Windows Defender AntiVirus' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender' -Name DisableAntiSpyware
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

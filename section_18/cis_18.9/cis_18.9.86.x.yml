@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_auto_signin:
+    {{ if .Vars.win2016cis_18_9_86_1 }}
+    title: 18.9.86.1 | L1 | Ensure 'Sign-in and lock last interactive user automatically after a restart' is set to 'Disabled' | (SCORED) | reg_check - smartscreen
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name DisableAutomaticRestartSignOn
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

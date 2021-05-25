@@ -1,0 +1,21 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_MAPS_reporting:
+    {{ if .Vars.win2016cis_18_9_77_3_1 }}
+    title: 18.9.77.3.1 | L1 | Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender/Spynet' -Name LocalSettingOverrideSpynetReporting
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
+{{ if .Vars.win2016cis_level_2 }}
+  disable_join_MS_MAPS:
+    {{ if .Vars.win2016cis_18_9_77_3_2 }}
+    title: 18.9.77.3.2 | L2 | Ensure 'Join Microsoft MAPS' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender/Spynet' -Name SpynetReporting
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

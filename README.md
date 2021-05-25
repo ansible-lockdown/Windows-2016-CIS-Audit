@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Goss to be on the host running the audit
+- Goss to be on the host running the audit _ note its current alpha but works well
 - Permissions to run all the commands may need admin to run this
 - top of vars file to state the type of server
 - if reboots are outstanding on the host this may change results

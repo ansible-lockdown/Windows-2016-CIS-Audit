@@ -1,0 +1,29 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_install_user_control:
+    {{ if .Vars.win2016cis_18_9_85_1 }}
+    title: 18.9.85.1 | L1 | Ensure 'Allow user control over installs' is set to 'Disabled' | (SCORED) | reg_check - smartscreen
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Installer' -Name EnableUserControl
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_install_with_elevated:
+    {{ if .Vars.win2016cis_18_9_85_2 }}
+    title: 18.9.85.2 | L1 |  Ensure 'Always install with elevated privileges' is set to 'Disabled' | (SCORED) | reg_check - smartscreenlevel
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System' -Name AlwaysInstallElevated
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
+{{ if .Vars.win2016cis_level_2 }}
+  disable_IE_sec_prompt_install_scripts:
+    {{ if .Vars.win2016cis_18_9_85_3 }}
+    title: 18.9.85.3 | L2 | Ensure 'Prevent Internet Explorer security prompt for Windows Installer scripts' is set to 'Disabled' | (SCORED) | reg_check - smartscreen
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Installer' -Name SafeForScripting
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

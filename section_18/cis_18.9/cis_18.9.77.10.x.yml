@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_removeable_drive_scan:
+    {{ if .Vars.win2016cis_18_9_77_10_1 }}
+    title: 18.9.77.10.1 | L1 | Ensure 'Scan removable drives' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender/Scan' -Name DisableRemovableDriveScanning
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  turn_on_email_scan:
+    {{ if .Vars.win2016cis_18_9_77_10_2 }}
+    title: 18.9.77.10.2 | L1 | Ensure 'Turn on e-mail scanning' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender/Scan' -Name DisableEmailScanning
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

@@ -1,0 +1,27 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  auto_updates:
+    {{ if .Vars.win2016cis_18_9_102_2 }}
+    title: 18.9.102.2 | L1 | Ensure 'Configure Automatic Updates' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate/AU' -Name NoAutoUpdate
+    exit-status: 0
+    stdout:
+    - '{{ .Vars.win2016cis_autoupdate_enabled }}'
+      {{ if eq .Vars.win2016cis_autoupdate_enabled "4" }}  
+  auto_update_sched_days:
+    title: 18.9.102.3 | L1 |  Ensure 'Configure Automatic Updates - Scheduled install day' is set to '0 - Every day' | (SCORED) | reg_check - if 18.9.102.4  == 4
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate/AU' -Name ScheduledInstallDay
+    exit-status: 0
+    stdout:
+    - '{{ .Vars.win2016cis_autoupdate_day }}'
+      {{ end }}
+    {{ end }}
+  no_autoreboot_if_user:
+    {{ if .Vars.win2016cis_18_9_102_4}}
+    title: 18.9.102.4 | L1 | Ensure 'No auto-restart with logged on users for scheduled automatic updates installations' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate/AU' -Name NoAutoRebootWithLoggedOnUsers
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

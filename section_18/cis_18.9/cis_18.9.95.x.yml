@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_script_block_logging:
+    {{ if .Vars.win2016cis_18_9_95_1 }}
+    title: 18.9.95.1 | L1 | Ensure 'Turn on PowerShell Script Block Logging' is set to 'Disabled' | (SCORED) | reg_check - smartscreen
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/PowerShell/ScriptBlockLogging' -Name EnableScriptBlockLogging
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_ps_transcript:
+    {{ if .Vars.win2016cis_18_9_95_2 }}
+    title: 18.9.95.2 | L1 | Ensure 'Turn on PowerShell Transcription' is set to 'Disabled' | (SCORED) | reg_check - smartscreen
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/PowerShell/Transcription' -Name EnableTranscripting
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

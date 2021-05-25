@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_watson_events:
+    {{ if .Vars.win2016cis_18_9_77_9_1 }}
+    title: 18.9.77.9.1 | L2 | Ensure 'Configure Watson events' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender/Reporting' -Name DisableGenericReports
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  turn_off_kms_AVS_validate:
+    {{ if .Vars.win2016cis_18_9_66_1 }}
+    title: 18.9.66.1 | L2 | Ensure 'Turn off KMS Client Online AVS Validation' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/CurrentVersion/Software Protection Platform' -Name NoGenTicket
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
