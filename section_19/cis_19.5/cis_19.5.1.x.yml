@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  screensaver_enabled:
+    {{ if .Vars.win2016cis_19_5_1_1 }}
+    title: 19.5.1.1 | L1 | Ensure 'Enable screen saver' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKCU_CP_DESKTOP }} -Name ScreenSaveActive
+    exit-status: 0
+    stdout:
+    - '1'
+   {{ end }}
+{{ end }}
