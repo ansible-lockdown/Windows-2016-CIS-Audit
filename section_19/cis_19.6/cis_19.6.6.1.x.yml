@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_help_improvement_prog:
+    {{ if .Vars.win2016cis_19_6_6_1_1 }}
+    title: 19.6.6.1.1 | L2 | Ensure 'Turn off Help Experience Improvement Program' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Assistance\Client\1.0' - Name NoImplicitFeedback
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

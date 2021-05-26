@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_preserve_zone_info:
+    {{ if .Vars.win2016cis_19_7_4_1 }}
+    title: 19.7.4.1 | L1 | Ensure 'Do not preserve zone information in file attachments' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Microsoft/Policies/Attachments' -Name SaveZoneInformation
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_preserve_zone_info:
+    {{ if .Vars.win2016cis_19_7_4_2 }}
+    title: 19.7.4.2 | L1 | Ensure 'Notify antivirus programs when opening attachments' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/Attachments' -Name ScanWithAntiVirus
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

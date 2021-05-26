@@ -1,5 +1,8 @@
 gossfile:
 
+# Test if reboot requires
+  prereq_check/*.yml: {}
+
 # Section 1 Account and Password
   {{ if .Vars.win2016cis_section_1 }}
   section_1/cis_1.1/*.yml: {}
@@ -32,4 +35,8 @@ gossfile:
 # Section 18
   {{ if .Vars.win2016cis_section_18 }}
   section_18/cis_*/*.yml: {}
+  {{ end }}
+# Section 19
+  {{ if .Vars.win2016cis_section_19 }}
+  section_19/cis_*/*.yml: {}
   {{ end }}

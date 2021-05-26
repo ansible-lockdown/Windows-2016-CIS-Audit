@@ -41,6 +41,7 @@ win2016cis_section_2: true
 win2016cis_section_9: true
 win2016cis_section_17: true
 win2016cis_section_18: true
+win2016cis_section_19: true
 
 ########################
 ## Section_1_Controls ##
@@ -765,6 +766,74 @@ win2016cis_19_1_3_4: true
 # 19.5 Start Menu and Taskbar
 # 19.5.1 Notifications
 win2016cis_19_5_1_1: true
+# 19.6 System
+# 19.6.1 Ctrl+Alt+Del Options
+# 19.6.2 Display
+# 19.6.3 Driver Installation
+# 19.6.4 Folder Redirection
+# 19.6.5 Group Policy
+# 19.6.6 Internet Communication Management
+# 19.6.6.1 Internet Communication settings
+win2016cis_19_6_6_1_1: true
+# 19.7 Windows Components
+# 19.7.1 Add features to Windows 8 / 8.1 / 10 (formerly Windows Anytime Upgrade)
+# 19.7.2 App runtime
+# 19.7.3 Application Compatibility
+# 19.7.4 Attachment Manager
+win2016cis_19_7_4_1: true
+win2016cis_19_7_4_2: true
+# 19.7.5 AutoPlay Policies
+# 19.7.6 Backup
+# 19.7.7 Cloud Content
+win2016cis_19_7_7_1: true
+win2016cis_19_7_7_2: true
+win2016cis_19_7_7_3: true
+win2016cis_19_7_7_4: true
+# 19.7.8 Credential User Interface
+# 19.7.9 Data Collection and Preview Builds
+# 19.7.10 Desktop Gadgets
+# 19.7.11 Desktop Window Manager
+# 19.7.12 Digital Locker
+# 19.7.13 Edge UI
+# 19.7.14 File Explorer (formerly Windows Explorer)
+# 19.7.15 File Revocation
+# 19.7.16 IME
+# 19.7.17 Import Video
+# 19.7.18 Instant Search
+# 19.7.19 Internet Explorer
+# 19.7.20 Location and Sensors
+# 19.7.21 Microsoft Edge
+# 19.7.22 Microsoft Management Console
+# 19.7.23 Microsoft User Experience Virtualization
+# 19.7.24 NetMeeting
+# 19.7.25 Network Projector
+# 19.7.26 Network Sharing
+win2016cis_19_7_26_1: true
+# 19.7.27 OOBE
+# 19.7.28 Presentation Settings
+# 19.7.29 Remote Desktop Services (formerly Terminal Services)
+# 19.7.30 RSS Feeds
+# 19.7.31 Search
+# 19.7.32 Sound Recorder
+# 19.7.33 Store
+# 19.7.34 Tablet PC
+# 19.7.35 Task Scheduler
+# 19.7.36 Windows Calendar
+# 19.7.37 Windows Color System
+# 19.7.38 Windows Defender SmartScreen
+# 19.7.39 Windows Error Reporting
+# 19.7.40 Windows Hello for Business (formerly Microsoft Passport for Work)
+# 19.7.41 Windows Installer
+win2016cis_19_7_41_1: true
+# 19.7.42 Windows Logon Options
+# 19.7.43 Windows Mail
+# 19.7.44 Windows Media Center
+# 19.7.45 Windows Media Player
+# 19.7.45.1 Networking
+# 19.7.45.2 Playback
+win2016cis_19_7_45_2_1: true
+
+
 ###################
 # Section_18_Vars #
 ###################
@@ -774,6 +843,7 @@ win2016cis_screensaver_timeout: '900'
 ## Global command Variables ##
 ##############################
 # powershell commands
+reboot_check: 'powershell (./scripts/pendingreboot.ps1 localhost).IsPendingReboot'
 ps_regcheck: 'powershell -noprofile -noninteractive -command'
 gpo_regex_script: 'powershell ./scripts/gpo_regex.ps1'
 audit_ps_cmd: Select-String -Path

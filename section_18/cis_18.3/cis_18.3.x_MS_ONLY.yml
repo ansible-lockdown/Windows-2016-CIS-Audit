@@ -4,7 +4,7 @@ command:
   UAC_restrict_local:
     {{ if .Vars.win2016cis_18_3_1 }}
     title: 18.3.1 | L1 | Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled' (MS only) | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ HKLM_CV_SYSTEM }} -Name LocalAccountTokenFilterPolicy
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name LocalAccountTokenFilterPolicy
     exit-status: 0
     stdout:
     - '1'

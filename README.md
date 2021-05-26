@@ -3,9 +3,16 @@
 ## Requirements
 
 - Goss to be on the host running the audit _ note its current alpha but works well
+  - need to set environment
+
+``` sh
+$env:GOSS_USE_ALPHA=1
+```
+
+- Suggest reboot and gpupdate is run prior to audit - will potentially give differing results
+
 - Permissions to run all the commands may need admin to run this
-- top of vars file to state the type of server
-- if reboots are outstanding on the host this may change results
+- top of vars file to state the type of server - if iis or exchange
 - gpresult /v /r > file_location.txt need to be created (variable gpresult_file  needs to be updated)
 - auditpol.exe /get /category:* > file_location.txt ( the variable auditresults_file needs to be updated)
 
@@ -16,8 +23,6 @@ Its has the following setup
 
 - goss.yml - the main goss file to run (has to be used with a -g) - this loads all the sections as required
 - vars.yml - These are the variable used as part of the goss file - this is split into sections to control the variables - will get BIG
-- test-goss.txt - a text file to test the file commands and contains options
-- testing.yml - a goss.yml file to test vars with
 
 - Try to reuse as much as possible
 - use variables where you can to shorten and be more efficient in the code
@@ -38,6 +43,11 @@ Its has the following setup
 - sign off on layout
 - write it
 - test it
+- section_19 full test due to sid maybe required - may need to find from command and set as variable
+
+```sh
+  [Security.Principal.WindowsIdentity]::GetCurrent().user.value
+```
 
 ## Example
 
