@@ -12,9 +12,17 @@ $env:GOSS_USE_ALPHA=1
 - Suggest reboot and gpupdate is run prior to audit - will potentially give differing results
 
 - Permissions to run all the commands may need admin to run this
-- top of vars file to state the type of server - if iis or exchange
+- top of vars file to state the type of server  Domain Controller, Domain Member or Standalone
+  - also if iis or exchange is installed
+
+## All server types
+
 - gpresult /v /r > file_location.txt need to be created (variable gpresult_file  needs to be updated)
 - auditpol.exe /get /category:* > file_location.txt ( the variable auditresults_file needs to be updated)
+
+### If standalone server will require this
+
+- secedit /export /cfg {{ file output location }} ( variable standalone_policies.txt )
 
 ### Overview
 

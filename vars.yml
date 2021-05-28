@@ -4,10 +4,17 @@
 ## Server Variables ##
 ######################
 is_domain_controller: false
+is_standalone: true
 reboot_required: false
 win2016cis_use_iis: false
 exchange_server_group: false
 
+###################
+# Reference files #
+###################
+gpresult_file: 'c:\goss\gpresult.txt'
+auditresult_file: 'c:\goss\audit_pol.txt'
+secedit_file: 'c:\goss\secedit_conf.txt'
 #########
 ## CIS ##
 #########
@@ -846,9 +853,8 @@ win2016cis_screensaver_timeout: '900'
 reboot_check: 'powershell (./scripts/pendingreboot.ps1 localhost).IsPendingReboot'
 ps_regcheck: 'powershell -noprofile -noninteractive -command'
 gpo_regex_script: 'powershell ./scripts/gpo_regex.ps1'
+standalone_script: 'powershell ./scripts/standalone.ps1'
 audit_ps_cmd: Select-String -Path
-gpresult_file: 'c:\goss\regex_testing\gpresult.txt'
-auditresult_file: 'c:\goss\regex_testing\audit_pol.txt'
 # Registry_paths
 # CurrentControlSet/Lsa
 # Get key

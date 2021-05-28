@@ -5,14 +5,25 @@ gossfile:
 
 # Section 1 Account and Password
   {{ if .Vars.win2016cis_section_1 }}
+    {{ if not .Vars.is_standalone }}
   section_1/cis_1.1/*.yml: {}
   section_1/cis_1.2/*.yml: {}
+    {{ end}}
+    {{ if .Vars.is_standalone }}
+  standalone_checks/section_1/cis_1.1/*.yml: {}
+  standalone_checks/section_1/cis_1.2/*.yml: {}
+    {{ end}}
   {{ end }}
 
 # Section 2 Local Policies
   {{ if .Vars.win2016cis_section_2 }}
+    {{ if not .Vars.is_standalone }}
   section_2/cis_2.2/*.yml: {}
   section_2/cis_2.3/*.yml: {}
+    {{ end }}
+    {{} if  .Vars.is_standalone }}
+  standalone_checks/section_2/cis_2.2/*.yml: {}
+  standalone_checks/section_2/cis_2.3/*.yml: {}
   {{ end }}
 
 # Section 9 - Firewalls
