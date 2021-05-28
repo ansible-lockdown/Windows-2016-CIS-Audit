@@ -1,0 +1,27 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  digi_sign_workstation_always:
+    {{ if .Vars.win2016cis_2_3_8_1 }}
+    title: 2.3.8.1 | L1 | Ensure 'Microsoft network client - Digitally sign communications (always)' is set to 'Enabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANWORK }} -Name RequireSecuritySignature
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  digi_sign_workstation_agree:
+    {{ if .Vars.win2016cis_2_3_8_2 }}
+    title: 2.3.8.2 | L1 | Ensure 'Microsoft network client - Digitally sign communications (if server agrees)' is set to 'Enabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANWORK }} -Name EnableSecuritySignature
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  3rd_party_unencrypt_disable_workstation:
+    {{ if .Vars.win2016cis_2_3_8_3 }}
+    title: 2.3.8.3 | L1 | Ensure 'Microsoft network client - Send unencrypted password to third-party SMB servers' is set to 'Disabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANWORK }} -Name EnablePlainTextPassword
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

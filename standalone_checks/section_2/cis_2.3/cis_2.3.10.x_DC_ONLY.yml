@@ -1,0 +1,15 @@
+{{ if .Vars.is_domain_controller }}
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  no_enum_anon_sam:
+    {{ if .Vars.win2016cis_2_3_10_6}}
+    title: 2.3.10.6 | L1 | Configure 'Network access - Named Pipes that can be accessed anonymously' (DC only) | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name NullSessionPipes
+    exit-status: 0
+    stdout:
+    - 'LSARPC'
+    - 'NETLOGON'
+    - 'SAMR'
+    {{ end }}
+  {{ end }}
+{{ end }}

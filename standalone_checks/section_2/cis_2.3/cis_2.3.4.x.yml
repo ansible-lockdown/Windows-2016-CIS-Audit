@@ -1,0 +1,21 @@
+{{ if not .Vars.is_domain_controller}}
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  format_eject_media_reg:
+    {{ if .Vars.win2016cis_2_3_4_1}}
+    title: 2.3.4.1 | L1 | Ensure 'Devices - Allowed to format and eject removable media' is set to 'Administrators' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_NT_WINLOGON }} -Name AllocateDASD
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  user_add_print_drivers_reg:
+    {{ if .Vars.win2016cis_2_3_4_2 }}
+    title: 2.3.4.2 | L1 | Ensure 'Devices - Prevent users from installing printer drivers' is set to 'Enabled' | SCORED | reg_check
+    exec:  {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers' -Name AddPrinterDrivers
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  {{ end }}
+{{ end }}
