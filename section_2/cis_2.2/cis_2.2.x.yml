@@ -22,7 +22,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname IncreaseQuotaPrivilege
     exit-status: 0
     stdout:
-    - '^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE/'
+    - '/^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE/'
     {{ end }}
   backup_users:
     {{ if .Vars.win2016cis_2_2_10 }}
@@ -70,7 +70,7 @@ command:
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname CreateGlobalPrivilege
     exit-status: 0
     stdout:
-    - '/^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE SERVICE'
+    - '/^Policy:.*:\sAdministrators LOCAL SERVICE NETWORK SERVICE SERVICE/'
     {{ end }}
   perm_shared_object_users:
     {{ if .Vars.win2016cis_2_2_16 }}
@@ -218,7 +218,7 @@ command:
     {{ end }}
   take_file_ownership:
     {{ if .Vars.win2016cis_2_2_48 }}
-    title: Ensure 'Take ownership of files or other objects' is set to 'Administrators'| SCORED
+    title: 2.2.48 | L1 | Ensure 'Take ownership of files or other objects' is set to 'Administrators'| SCORED
     exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname TakeOwnershipPrivilege
     exit-status: 0
     stdout:
