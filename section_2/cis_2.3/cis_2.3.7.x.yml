@@ -30,7 +30,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name LegalNoticeText
     exit-status: 0
     stdout:
-    - {{ .Vars.win2016_logon_text }}
+    - {{ .Vars.win2016cis_logon_text }}
     {{ end }}
   interactive_logon_title:
     {{ if .Vars.win2016cis_2_3_7_5 }}
@@ -38,7 +38,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name LegalNoticeCaption
     exit-status: 0
     stdout:
-    - {{ .Vars.win2016_logon_title }}
+    - {{ .Vars.win2016cis_logon_title }}
     {{ end }}
   password_change_warn:
     {{ if .Vars.win2016cis_2_3_7_7 }}
