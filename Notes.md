@@ -125,3 +125,10 @@ This file could get very big on large enterprise setups with multiple GPOs
 if a big forest access is needed to query all
 May get resource intensive if above and loops
 xml get more complex to debug.
+
+---
+
+Notes for standalone:
+
+- sections 2 looking for 0 return code as ability to match on * with powershell & go causing shell based errors
+- win2016cis_2_2_28 - not defined in standalone so marking as not defined

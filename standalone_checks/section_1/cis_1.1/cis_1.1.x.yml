@@ -30,7 +30,7 @@ command:
     exec: {{ .Vars.standalone_script }} -filename {{ .Vars.secedit_file }} -localname MinimumPasswordLength
     exit-status: 0
     stdout:
-    - '/^MinimumPasswordLength = [14:100]/'
+    - '/MinimumPasswordLength = [14:100]/'
     {{ end }}
   passwd_complex:
     {{ if .Vars.win2016cis_1_1_5 }}
@@ -38,7 +38,7 @@ command:
     exec: {{ .Vars.standalone_script }} -filename {{ .Vars.secedit_file }} -localname PasswordComplexity
     exit-status: 0
     stdout:
-    - '/^PasswordComplexity = 1/'
+    - '/PasswordComplexity = 1/'
     {{ end }}
   passwd_rev_encrypt:
     {{ if .Vars.win2016cis_1_1_6 }}
@@ -46,6 +46,6 @@ command:
     exec: {{ .Vars.standalone_script }} -filename {{ .Vars.secedit_file }} -localname ClearTextPassword
     exit-status: 0
     stdout:
-    - '/^ClearTextPassword = 0/'
+    - '/ClearTextPassword = 0/'
     {{ end }}
 {{ end }}

@@ -25,6 +25,7 @@ $result = $pattern.line
         $output = echo $result
         Write-Output $output
     } Else {
-        "Not Defined"
+        $output = "Not Defined"
+        Write-Output $output
     }
 }

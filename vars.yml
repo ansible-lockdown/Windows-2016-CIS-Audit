@@ -881,3 +881,16 @@ HKLM_WINRM_SVC: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/W
 HKLM_WIN_UPDATE: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate'
 HKCU_CP_PERSONAL: get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/Personalization/'
 HKCU_CP_DESKTOP: get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/Control Panel/Desktop'
+
+# Known Security identified names 
+## https://docs.microsoft.com/en-us/troubleshoot/windows-server/identity/security-identifiers-in-windows
+everyone_sid: '*S-1-1-0'
+auth_users_sid: '*S-1-5-11'
+local_svc_sid: '*S-1-5-19'
+local_net_sid: '*S-1-5-20'
+admin_sid: '*S-1-5-32-544'
+user_sid: '*S-1-5-32-545'
+guest_sid: '*S-1-5-32-546'
+backup_sid: '*S-1-5-32-551'
+remote_desktop_sid: '*S-1-5-32-555'
+nt_svc_sid: '*S-1-5-80-'
