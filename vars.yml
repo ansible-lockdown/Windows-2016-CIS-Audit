@@ -216,8 +216,8 @@ win2016cis_DC_allow_logon_RDP_users: Administrators
 win2016cis_MS_allow_logon_RDP_users: Administrators Remote Desktop Users
 win2016_admin_renamed_as: renamed_admin
 win2016_guest_renamed_as: renamed_guest
-win2016cis_logon_text: 'You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS)'
-win2016cis_logon_title: DoD Notice and Consent Banner
+win2016cis_logon_text: 'You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.'
+win2016cis_logon_title: 'DoD Notice and Consent Banner'
 
 ########################
 ## Section_9_Controls ##
