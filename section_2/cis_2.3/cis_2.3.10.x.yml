@@ -6,7 +6,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} -filename {{ .Vars.gpresult_file }} -policyname LSAAnonymousNameLookup
     exit-status: 0
     stdout:
-    - '/[1:15]/'
+    - '0'
   {{ end }}
   {{ if .Vars.win2016cis_2_3_10_5 }}
   disable_everyone_inc_anon:

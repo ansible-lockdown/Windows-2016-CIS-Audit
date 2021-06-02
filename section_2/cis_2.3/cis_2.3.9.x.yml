@@ -27,7 +27,7 @@ command:
   disconnect_client_hrs_expire:
     {{ if .Vars.win2016cis_2_3_9_4 }}
     title: 2.3.9.4 | L1 |  Ensure 'Microsoft network server - Disconnect clients when logon hours expire' is set to 'Enabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name enableforcelogoff
+    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name enableforcedlogoff
     exit-status: 0
     stdout:
     - '1'

@@ -11,18 +11,18 @@ command:
   {{ if .Vars.win2016cis_2_3_11_2 }}
   disable_null_session_fallback:
     title: 2.3.11.2 | L1 | Ensure 'Network security - Allow LocalSystem NULL session fallback' is set to 'Disabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/MSV1_0 -Name AllowNullSessionFallback
+    exec:  {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa//MSV1_0' -Name AllowNullSessionFallback
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
   {{ end }}
   {{ if .Vars.win2016cis_2_3_11_3 }}
   disable_pku2u_identities:
     title: 2.3.11.3 | L1 | Ensure 'Network security - Allow PKU2U authentication requests to this computer to use online identities' is set to 'Disabled' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/pku2u -Name AllowOnlineID
+    exec:  {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa//pku2u' -Name AllowOnlineID
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
   {{ end }}
   {{ if .Vars.win2016cis_2_3_11_4 }}
   encryption_types_kerberos:
@@ -67,7 +67,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_9 }}
   NTLM_128bit_client:
     title: 2.3.11.9 | L1 | Ensure 'Network security - Minimum session security for NTLM SSP based (including secure RPC) clients' is set to 'Require NTLMv2 session security, Require 128-bit encryption' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/MSV1_0 -Name NTLMMinClientSec
+    exec:  {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa//MSV1_0' -Name NTLMMinClientSec
     exit-status: 0
     stdout:
     - '537395200'
@@ -75,7 +75,7 @@ command:
   {{ if .Vars.win2016cis_2_3_11_10 }}
   NTLM_128bit_server:
     title: 2.3.11.10 | L1 | Ensure 'Network security - Minimum session security for NTLM SSP based (including secure RPC) servers' is set to 'Require NTLMv2 session security, Require 128-bit encryption' | SCORED | reg_check
-    exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }}/MSV1_0 -Name NTLMMinServerSec
+    exec:  {{ .Vars.ps_regcheck }} {get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa//MSV1_0' -Name NTLMMinServerSec
     exit-status: 0
     stdout:
     - '537395200'
