@@ -1,0 +1,37 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  allow_telemetry:
+    {{ if .Vars.win2016cis_18_9_16_1 }}
+    title: 18.9.16.1 | L1 | Ensure 'Allow Telemetry' is set to 'Enabled - 0 - Security [Enterprise Only]' or 'Enabled - 1 - Basic'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/DataCollection' -Name AllowTelemetry
+    exit-status: 0
+    stdout:
+    - '/[0-1]/'
+    {{ end }}
+  do_not_show_feedback:
+    {{ if .Vars.win2016cis_18_9_16_3 }}
+    title: 18.9.16.3 | L1 | Ensure 'Do not show feedback notifications' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/DataCollection' -Name DoNotShowFeedbackNotifications
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_insider_builds:
+    {{ if .Vars.win2016cis_18_9_16_4 }}
+    title: 18.9.16.4 | L1 | Ensure 'Toggle user control over Insider builds' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/PreviewBuilds' -Name AllowBuildPreview
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
+{{ if .Vars.win2016cis_level_2 }}
+  auth_proxy_for_telemetry:
+    {{ if .Vars.win2016cis_18_9_16_2 }}
+    title: 18.9.16.2 | L2 | Ensure 'Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service' is set to 'Enabled - Disable Authenticated Proxy usage' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/DataCollection' -Name DisableEnterpriseAuthProxy
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

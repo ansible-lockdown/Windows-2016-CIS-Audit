@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  enable_allow_MS_optional_accts:
+    {{ if .Vars.win2016cis_18_9_6_1 }}
+    title: 18.9.6.1 | L1 | Ensure 'Allow Microsoft accounts to be optional' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name MSAOptional
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

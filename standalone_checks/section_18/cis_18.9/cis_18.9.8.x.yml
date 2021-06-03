@@ -1,0 +1,27 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_autoplay_non-volumes:
+    {{ if .Vars.win2016cis_18_9_8_1 }}
+    title: 18.9.8.1 | L1 | Ensure 'Disallow Autoplay for non-volume devices' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_EXPLORER }} -Name NoAutoplayfornonVolume
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_autorun_commands:
+    {{ if .Vars.win2016cis_18_9_8_2 }}
+    title: 18.9.8.2 | L1 | Ensure 'Set the default behavior for AutoRun' is set to 'Enabled - Do not execute any autorun commands' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_EXPLORER }} -Name NoAutorun
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_autoplay_all:
+    {{ if .Vars.win2016cis_18_9_8_3 }}
+    title: 18.9.8.3 | L1 | Ensure 'Turn off Autoplay' is set to 'Enabled - All drives' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_EXPLORER }} -Name NoDriveTypeAutoRun
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
