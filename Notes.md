@@ -133,4 +133,6 @@ Notes for standalone:
 - sections 2 looking for 0 return code as ability to match on * with powershell & go causing shell based errors
 - win2016cis_2_2_28 - not defined in standalone so marking as not defined
 - whats next
-  - 2.3.5, 2.3.6, 2.3.7 (text) ->
+  - 2.3.10 - MS is this needed for Standalone??
+  - firewalls to be tested
+  - section 18
