@@ -1,0 +1,17 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  device_auth_using_cert_behaviour:
+    {{ if .Vars.win2016cis_18_8_25_1 }}
+    title: 18.8.25.1 | L2 | Ensure 'Support device authentication using certificate' is set to 'Enabled - Automatic' | (SCORED) | reg_check - behaviour
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_KERB }} -Name DevicePKInitBehavior
+    exit-status: 0
+    stdout:
+    - '1'
+  device_auth_using_cert_enabled:
+    title: 18.8.25.1 | L2 | Ensure 'Turn off handwriting recognition error reporting' is set to 'Enabled' | (SCORED) | reg_check - enabled
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_KERB }} -Name DevicePKInitEnabled
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
