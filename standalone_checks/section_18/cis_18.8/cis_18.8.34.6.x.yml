@@ -1,0 +1,35 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  disable_network_conn_standby:
+    {{ if .Vars.win2016cis_18_8_34_6_1 }}
+    title: 18.8.34.6.1 | L2 | Ensure 'Allow network connectivity during connected-standby (on battery)' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Power/PowerSettings/f15576e8-98b7-4186-b944-eafa664402d9' -Name DCSettingIndex
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_network_conn_standby_pluggedin:
+    {{ if .Vars.win2016cis_18_8_34_6_2 }}
+    title: 18.8.34.6.2 | L2 | Ensure 'Allow network connectivity during connected-standby (plugged in)' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Power/PowerSettings/f15576e8-98b7-4186-b944-eafa664402d9' -Name ACSettingIndex
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  enable_require_passwd_standby:
+    {{ if .Vars.win2016cis_18_8_34_6_3 }}
+    title: 18.8.34.6.3 | L2 | Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Power/PowerSettings/0e796bdb-100d-47d6-a2d5-f7d2daa51f51' -Name DCSettingIndex
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  enable_require_passwd_standby_pluggedin:
+    {{ if .Vars.win2016cis_18_8_34_6_4 }}
+    title: 18.8.34.6.4 | L2 | Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Power/PowerSettings/0e796bdb-100d-47d6-a2d5-f7d2daa51f51' -Name ACSettingIndex
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

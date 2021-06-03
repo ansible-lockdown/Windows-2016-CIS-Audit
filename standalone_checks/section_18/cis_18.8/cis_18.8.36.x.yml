@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_allow_remote_assist_offer:
+    {{ if .Vars.win2016cis_18_8_36_1 }}
+    title: 18.8.36.1 | L1 | Ensure 'Configure Offer Remote Assistance' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Terminal Services' -Name fAllowUnsolicited
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_config_remote_assist:
+    {{ if .Vars.win2016cis_18_8_36_2 }}
+    title: 18.8.36.2 | L1 | Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Terminal Services' -Name fAllowToGetHelp
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
