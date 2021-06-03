@@ -12,6 +12,7 @@ command:
     {{ if .Vars.win2016cis_18_8_5_2 }}
     title: 18.8.5.2 | NG |  Ensure 'Turn On Virtualization Based Security - Select Platform Security Level' is set to 'Secure Boot and DMA Protection' | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_DEV_GUARD  }} -Name RequirePlatformSecurityFeatures
+    exit-status: 0
     stdout:
     - '1'
     {{ end }}
@@ -19,6 +20,7 @@ command:
     {{ if .Vars.win2016cis_18_8_5_3 }}
     title: 18.8.5.3 | NG | Ensure 'Turn On Virtualization Based Security - Virtualization Based Protection of Code Integrity' is set to 'Enabled with UEFI lock' | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_DEV_GUARD  }} -Name HypervisorEnforcedCodeIntegrity
+    exit-status: 0
     stdout:
     - '1'
     {{ end }}
@@ -26,14 +28,16 @@ command:
     {{ if .Vars.win2016cis_18_8_5_4 }}
     title: 18.8.5.4 | NG | Ensure 'Turn On Virtualization Based Security - Require UEFI Memory Attributes Table' is set to 'True (checked)' | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_DEV_GUARD  }} -Name HVCIMATRequired
+    exit-status: 0
     stdout:
     - '1'
     {{ end }}
   secure_launch:
     {{ if .Vars.win2016cis_18_8_5_7 }}
-    title: 18.8.5.6 | NG | Ensure 'Turn On Virtualization Based Security - Secure Launch Configuration' is set to 'Enabled' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_DEV_GUARD  }} -Name ConfigureSystemGuardLaunch 
+    title: 18.8.5.7 | NG | Ensure 'Turn On Virtualization Based Security - Secure Launch Configuration' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_DEV_GUARD  }} -Name ConfigureSystemGuardLaunch
+    exit-status: 0
     stdout:
-    - '0'
+    - '1'
     {{ end }}
 {{ end }}
