@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  MSDT_allow_interactive:
+    {{ if .Vars.win2016cis_18_8_47_5_1 }}
+    title: 18.8.47.5.1 | L2 | Ensure 'Microsoft Support Diagnostic Tool - Turn on MSDT interactive communication with support provider' is set to 'Disabled' | (SCORED) | reg_check - behaviour
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/ScriptedDiagnosticsProvider/Policy' -Name DisableQueryRemoteServer
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
