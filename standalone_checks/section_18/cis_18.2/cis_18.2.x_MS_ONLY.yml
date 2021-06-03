@@ -1,0 +1,58 @@
+{{ if not .Vars.is_domain_controller }}  
+  {{ if .Vars.win2016cis_level_1 }}
+file:
+  C:\Program Files\LAPS\CSE\AdmPwd.dll:
+    {{ if .Vars.win2016cis_18_2_1 }}
+    title: 18.2.1 | L1 | Ensure LAPS AdmPwd GPO Extension / CSE is installed (MS only) | (SCORED) | Check_file_exists
+    exists: true
+    filetype: file
+command:
+  LAPS_AdmPwd_GPO:
+    title: 18.2.1 | L1 | Ensure LAPS AdmPwd GPO Extension / CSE is installed (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path "'HKLM:/SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon/GPExtensions/{D76B9641-3288-4f75-942D-087DE603E3EA}'" -Name DllName
+    exit-status: 0
+    stdout:
+    - 'C:\Program Files\LAPS\CSE\AdmPwd.dll'
+    {{ end }}
+  dont_allow_pwd_expire_longer:
+    {{ if .Vars.win2016cis_18_2_2 }}
+    title: 18.2.2 | L1 | Ensure 'Do not allow password expiration time longer than required by policy' is set to 'Enabled' (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_MS_SVCS }} -Name PwdExpirationProtectionEnabled
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  enable_lap_mgmt:
+    {{ if .Vars.win2016cis_18_2_3 }}
+    title: 18.2.3 | L1 | Ensure 'Enable Local Admin Password Management' is set to 'Enabled' (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_MS_SVCS }} -Name AdmPwdEnabled
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  enable_lap_complex:
+    {{ if .Vars.win2016cis_18_2_4 }}
+    title: 18.2.4 | L1 | Ensure 'Password Settings - Password Complexity' is set to 'Enabled - Large letters + small letters + numbers + special characters' (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_MS_SVCS }} -Name PasswordComplexity
+    exit-status: 0
+    stdout:
+    - '4'
+    {{ end }}
+  enable_lap_length:
+    {{ if .Vars.win2016cis_18_2_5 }}
+    title: 18.2.5 | L1 | Ensure 'Password Settings - Password Length' is set to 'Enabled - 15 or more' (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_MS_SVCS }} -Name PasswordLength
+    exit-status: 0
+    stdout:
+    - '/\b(1[5-9]|[2-6][0-9])\b/'
+    {{ end }}
+  enable_lap_age:
+    {{ if .Vars.win2016cis_18_2_6 }}
+    title: 18.2.6 | L1 | Ensure 'Password Settings- Password Age (Days)' is set to 'Enabled- 30 or fewer' (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_MS_SVCS }} -Name PasswordLength
+    exit-status: 0
+    stdout:
+    - '/^\b([1-9]|[1-2][0-9]|30)\b/'
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,29 @@
+{{ if .Vars.is_domain_controller }} 
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_comp_ac_mgmt:
+    {{ if .Vars.win2016cis_17_2_2 }}
+    title: 17.2.2 | L1 | Ensure 'Audit Computer Account Management' is set to include 'Success' (DC only) | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Computer Account Management'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_dist_group_mgmt:
+    {{ if .Vars.win2016cis_17_2_3 }}
+    title: 17.2.3 | L1 | Ensure 'Audit Distribution Group Management' is set to include 'Success' (DC only) | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Computer Account Management'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_other_ac_mgmt:
+    {{ if .Vars.win2016cis_17_2_4 }}
+    title: 17.2.4 | L1 | Ensure 'Audit Other Account Management Events' is set to include 'Success' (DC only) | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Other Account Management Events'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  {{ end }}
+{{ end }}

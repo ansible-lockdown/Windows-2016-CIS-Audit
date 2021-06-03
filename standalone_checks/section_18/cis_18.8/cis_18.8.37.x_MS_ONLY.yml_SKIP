@@ -1,0 +1,23 @@
+{{ if not .Vars.is_domain_controller }}  
+  {{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_allow_remote_assist_offer:
+    {{ if .Vars.win2016cis_18_8_37_1 }}
+    title: 18.8.37.1 | L1 | Ensure 'Enable RPC Endpoint Mapper Client Authentication' is set to 'Enabled' (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Rpc' -Name EnableAuthEpResolution
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  {{ end }}
+  {{ if .Vars.win2016cis_level_2 }}
+  disable_config_remote_assist:
+    {{ if .Vars.win2016cis_18_8_37_2 }}
+    title: 18.8.37.2 | L2 | Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled - Authenticated' (MS only) | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Rpc' -Name RestrictRemoteClients
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  {{ end }}
+{{ end }}
