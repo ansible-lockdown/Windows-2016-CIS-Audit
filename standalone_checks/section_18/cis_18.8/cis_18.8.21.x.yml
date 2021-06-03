@@ -1,0 +1,35 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  conf_reg_policy_processing:
+    {{ if .Vars.win2016cis_18_8_21_2 }}
+    title: 18.8.21.2 | L1 | Ensure 'Configure registry policy processing - Do not apply during periodic background processing' is set to 'Enabled - FALSE' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path "'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Group Policy/{35378EAC-683F-11D2-A89A-00C04FBBCFA2}'" -Name NoBackgroundPolicy 
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  conf_reg_policy_processing_gpo_not_changed:
+    {{ if .Vars.win2016cis_18_8_21_3 }}
+    title: 18.8.21.3 | L1 | Ensure 'Configure registry policy processing - Process even if the Group Policy objects have not changed' is set to 'Enabled - TRUE' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path "'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Group Policy/{35378EAC-683F-11D2-A89A-00C04FBBCFA2}'" -Name NoGPOListChanges
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_cont_experiences:
+    {{ if .Vars.win2016cis_18_8_21_4 }}
+    title: 18.8.21.4 | L1 | Ensure 'Continue experiences on this device' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System' -Name EnableCDP
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_turn_off_background_GPO_refresh:
+    {{ if .Vars.win2016cis_18_8_21_5 }}
+    title: 18.8.21.5 | L1 | Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }}
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
