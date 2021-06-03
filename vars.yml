@@ -47,8 +47,8 @@ win2016cis_section_1: true
 win2016cis_section_2: true
 win2016cis_section_9: true
 win2016cis_section_17: true
-win2016cis_section_18: false
-win2016cis_section_19: false
+win2016cis_section_18: true
+win2016cis_section_19: true
 
 ########################
 ## Section_1_Controls ##
@@ -748,10 +748,10 @@ win2016cis_18_9_102_4: true
 ###################
 # Section_18_Vars #
 ###################
-win2016_eventlog_app_max_size:
-win2016_eventlog_sec_max_size:
-win2016_eventlog_setup_max_size:
-win2016_eventlog_sys_max_size:
+win2016_eventlog_app_max_size: 65538
+win2016_eventlog_sec_max_size: 196608
+win2016_eventlog_setup_max_size: 32768
+win2016_eventlog_sys_max_size: 65538
 win2016cis_autoupdate_enabled: '1'  # 2 - Notify for download and auto install # 3 -Auto download and notify for instal # 4 - Auto download and schedule the install
 win2016cis_autoupdate_day: 0 # 0 - everyday
 
@@ -875,6 +875,7 @@ HKLM_TCPIP6: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Service
 HKLM_DEV_GUARD: get-ItempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/DeviceGuard'
 HKLM_WIN_SYSTEM: get-ItempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System'
 HKLM_EXPLORER: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer'
+HKLM_CV_EXPLORER: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/Explorer'
 HKLM_TERM_SVCS: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Terminal Services'
 HKLM_WINRM_CLT: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WinRM/Client'
 HKLM_WINRM_SVC: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WinRM/Client'
