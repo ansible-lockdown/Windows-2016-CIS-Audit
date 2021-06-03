@@ -23,6 +23,7 @@ $env:GOSS_USE_ALPHA=1
 ### If standalone server will require this
 
 - secedit /export /cfg {{ file output location }} ( variable standalone_policies.txt )
+- auditpol.exe /get /category:* > file_location.txt
 - Due to the output we need to search for SID for std users using the MS doc below
   - https://docs.microsoft.com/en-us/troubleshoot/windows-server/identity/security-identifiers-in-windows
   - also added to vars for completeness
