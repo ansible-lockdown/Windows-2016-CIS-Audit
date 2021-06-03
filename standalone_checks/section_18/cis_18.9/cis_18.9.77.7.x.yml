@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  enable_behavior_reporting:
+    {{ if .Vars.win2016cis_18_9_77_7_1 }}
+    title: 18.9.77.7.1 | L1 |  Ensure 'Turn on behavior monitoring' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender/Real-Time Protection' -Name DisableBehaviorMonitoring
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

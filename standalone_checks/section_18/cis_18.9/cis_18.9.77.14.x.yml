@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  enable_unwated_app_protection:
+    {{ if .Vars.win2016cis_18_9_77_14 }}
+    title: 18.9.77.14 | L1 | Ensure 'Configure detection for potentially unwanted applications' is set to 'Enabled - Block' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender' -Name PUAProtection
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
