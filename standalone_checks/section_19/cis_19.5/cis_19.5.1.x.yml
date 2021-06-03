@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_toast_lockscreen:
+    {{ if .Vars.win2016cis_19_5_1_1 }}
+    title: 19.5.1.1 | L1 | Ensure 'Turn off toast notifications on the lock screen' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/CurrentVersion/PushNotifications' -Name NoToastApplicationNotificationOnLockScreen
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

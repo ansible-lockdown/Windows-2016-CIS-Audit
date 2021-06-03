@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_elevate_install:
+    {{ if .Vars.win2016cis_19_7_41_1 }}
+    title: 19.7.41.1 | L1 | Ensure 'Always install with elevated privileges' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/Installer' -Name AlwaysInstallElevated
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}

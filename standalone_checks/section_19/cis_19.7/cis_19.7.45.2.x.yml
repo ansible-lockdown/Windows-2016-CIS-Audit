@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  prevent_codec_download:
+    {{ if .Vars.win2016cis_19_7_45_2_1 }}
+    title: 19.7.45.2.1 | L2 | Ensure 'Prevent Codec Download' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/WindowsMediaPlayer' -Name PreventCodecDownload
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

@@ -1,0 +1,37 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_spotlight_on_lockscreen:
+    {{ if .Vars.win2016cis_19_7_7_1 }}
+    title: 19.7.7.1 | L1 | Ensure 'Configure Windows spotlight on lock screen' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/CloudContent' -Name ConfigureWindowsSpotlight
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  enable_do_not_suggest_3rd_party:
+    {{ if .Vars.win2016cis_19_7_7_2 }}
+    title: 19.7.7.2 | L1 | Ensure 'Do not suggest third-party content in Windows spotlight' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/CloudContent' -Name DisableThirdPartySuggestions
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
+{{ if .Vars.win2016cis_level_2 }}
+  enable_do_not_user_diag_data:
+    {{ if .Vars.win2016cis_19_7_7_3 }}
+    title: 19.7.7.3 | L2 | Ensure 'Do not use diagnostic data for tailored experiences' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/CloudContent' -Name DisableTailoredExperiencesWithDiagnosticData
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_windows_spotlight:
+    {{ if .Vars.win2016cis_19_7_7_4 }}
+    title: 19.7.7.4 | L2 | Ensure 'Turn off all Windows spotlight features' is set to 'Enabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/CloudContent' -Name DisableWindowsSpotlightFeatures
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
