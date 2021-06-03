@@ -1,0 +1,21 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_encrypted_file_index:
+    {{ if .Vars.win2016cis_18_9_61_3 }}
+    title: 18.9.61.3 | L1 | Ensure 'Allow indexing of encrypted files' is set to 'Disabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search' -Name AllowIndexingEncryptedStoresOrItems
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
+{{ if .Vars.win2016cis_level_2 }}
+  disable_cloud_search:
+    {{ if .Vars.win2016cis_18_9_61_2 }}
+    title: 18.9.61.2 | L2 | Ensure 'Allow Cloud Search' is set to 'Enabled - Disable Cloud Search' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search' -Name AllowCloudSearch
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
