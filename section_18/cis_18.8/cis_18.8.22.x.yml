@@ -11,7 +11,7 @@ command:
   turn_off_web_printer_download:
     {{ if .Vars.win2016cis_18_8_22_1_5 }}
     title: 18.8.22.1.5 | L1 | Ensure 'Turn off Internet download for Web publishing and online ordering wizards' is set to 'Enabled' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_EXPLORER }} -Name NoWebServices
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_EXPLORER }} -Name NoWebServices
     exit-status: 0
     stdout:
     - '1'
@@ -69,7 +69,7 @@ command:
   turn_off_search_companion:
     {{ if .Vars.win2016cis_18_8_22_1_9 }}
     title: 18.8.22.1.9 | L2 | Ensure 'Turn off the "Order Prints" picture task' is set to 'Enabled' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_EXPLORER }} -Name NoOnlinePrintWizard
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_EXPLORER }} -Name NoOnlinePrintsWizard
     exit-status: 0
     stdout:
     - '1'
@@ -77,7 +77,7 @@ command:
   turn_off_publish_to_web:
     {{ if .Vars.win2016cis_18_8_22_1_10 }}
     title: 18.8.22.1.10 | L2 | Ensure 'Turn off the "Publish to Web" task for files and folders' is set to 'Enabled' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_EXPLORER }} -Name NoPublishingWizard
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_EXPLORER }} -Name NoPublishingWizard
     exit-status: 0
     stdout:
     - '1'
