@@ -1,5 +1,3 @@
-
-
 {{ if .Vars.win2016cis_level_2 }}
 command:
   max_idle_time_terminal_services:
@@ -8,7 +6,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name MaxIdleTime
     exit-status: 0
     stdout:
-    - '/\b[1-15]\b/'
+    - '3600000'
     {{ end }}
   disconnect_time_terminal_services:
     {{ if .Vars.win2016cis_18_9_59_3_10_2 }}
@@ -16,6 +14,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name MaxDisconnectionTime
     exit-status: 0
     stdout:
-    - '1'
+    - '28800000'
     {{ end }}
 {{ end }}
