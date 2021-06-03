@@ -1,0 +1,27 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disable_data_execution_prevention:
+    {{ if .Vars.win2016cis_18_9_30_2 }}
+    title: 18.9.30.2 | L1 | Ensure 'Turn off Data Execution Prevention forExplorer' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_EXPLORER }} -Name NoDataExecutionPrevention
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_heap_twrm_corruption:
+    {{ if .Vars.win2016cis_18_9_30_3 }}
+    title: 18.9.30.3 | L1 | Ensure 'Turn off heap termination on corruption' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_EXPLORER }} -Name NoHeapTerminationOnCorruption
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+  disable_shell_proto_protected:
+    {{ if .Vars.win2016cis_18_9_30_4 }}
+    title: 18.9.30.4 | L1 | Ensure 'Turn off shell protocol protected mode' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_EXPLORER }} -Name PreXPSP2ShellProtocolBehavior
+    exit-status: 0
+    stdout:
+    - '0'
+    {{ end }}
+{{ end }}
