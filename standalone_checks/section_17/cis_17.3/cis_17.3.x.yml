@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_PNP_activity:
+    {{ if .Vars.win2016cis_17_3_1 }}
+    title: 17.3.1 | L1 | Ensure 'Audit PNP Activity' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Plug and Play Events'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_process_creation:
+    {{ if .Vars.win2016cis_17_3_2 }}
+    title: 17.3.2 | L1 | Ensure 'Audit Process Creation' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Process Creation'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+{{ end }}

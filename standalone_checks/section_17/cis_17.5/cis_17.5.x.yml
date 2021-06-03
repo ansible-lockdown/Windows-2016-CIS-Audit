@@ -1,0 +1,51 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_act_lockout:
+    {{ if .Vars.win2016cis_17_5_1 }}
+    title: 17.5.1 | L1 | Ensure 'Audit Account Lockout' is set to include 'Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Account Lockout'
+    exit-status: 0
+    stdout:
+    - '/.*Failure/'
+    {{ end }}
+  audit_group_membership:
+    {{ if .Vars.win2016cis_17_5_2 }}
+    title: 17.5.2 | L1 | Ensure 'Audit Group Membership' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Group Membership'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_logoff:
+    {{ if .Vars.win2016cis_17_5_3 }}
+    title: 17.5.3 | L1 | Ensure 'Audit Logoff' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern '^\s+Logoff'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_logon:
+    {{ if .Vars.win2016cis_17_5_4 }}
+    title: 17.5.4 | L1 | Ensure 'Audit Logon' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern '^\s+Logon'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_other_logon_off:
+    {{ if .Vars.win2016cis_17_5_5 }}
+    title: 17.5.5 | L1 | Ensure 'Audit Other Logon/Logoff Events' is set to 'Success and Failure | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Other Logon/Logoff Events'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_special_logon:
+    {{ if .Vars.win2016cis_17_5_6 }}
+    title: 17.5.6 | L1 | Ensure 'Audit Special Logon' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Special Logon'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+{{ end }}

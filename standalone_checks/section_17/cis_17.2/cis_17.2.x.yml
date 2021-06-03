@@ -1,0 +1,27 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_group_mgmt:
+    {{ if .Vars.win2016cis_17_2_1 }}
+    title: 17.2.1 | L1 | Ensure 'Audit Application Group Management' is set to 'Success and Failure'| SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Application Group Management'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_sec_group_mgmt:
+    {{ if .Vars.win2016cis_17_2_5 }}
+    title: 17.2.5 | L1 | Ensure 'Audit Security Group Management' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Security Group Management'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_user_acct_mgmt:
+    {{ if .Vars.win2016cis_17_2_6 }}
+    title: 17.2.6 | L1 | Ensure 'Audit User Account Management' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'User Account Management'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+{{ end }}

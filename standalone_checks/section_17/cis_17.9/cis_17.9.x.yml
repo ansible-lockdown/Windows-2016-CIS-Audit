@@ -1,0 +1,43 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_ipsec_driver:
+    {{ if .Vars.win2016cis_17_9_1 }}
+    title: 17.9.1 | L1 | Ensure 'Audit IPsec Driver' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'IPsec Driver'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_other_sys_events:
+    {{ if .Vars.win2016cis_17_9_2 }}
+    title: 17.9.2 | L1 |  Ensure 'Audit Other System Events' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Other System Events'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+  audit_sec_state_change:
+    {{ if .Vars.win2016cis_17_9_3 }}
+    title: 17.9.3 | L1 | Ensure 'Audit Security State Change' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Security State Change'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_sec_system_ext:
+    {{ if .Vars.win2016cis_17_9_4 }}
+    title: 17.9.4 | L1 | Ensure 'Audit Security System Extension' is set to include 'Success' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Security System Extension'
+    exit-status: 0
+    stdout:
+    - '/.*Success/'
+    {{ end }}
+  audit_sys_integrity:
+    {{ if .Vars.win2016cis_17_9_5 }}
+    title: 17.9.5 | L1 |  Ensure 'Audit System Integrity' is set to 'Success and Failure'  | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'System Integrity'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+{{ end }}

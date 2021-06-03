@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  audit_cred_valuation:
+    {{ if .Vars.win2016cis_17_1_1 }}
+    title: 17.1.1 | L1 | Ensure 'Audit Credential Validation' is set to 'Success and Failure' | SCORED
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.audit_ps_cmd }} {{ .Vars.auditresult_file }} -Pattern 'Credential Validation'
+    exit-status: 0
+    stdout:
+    - '/.*Success and Failure/'
+    {{ end }}
+{{ end }}
