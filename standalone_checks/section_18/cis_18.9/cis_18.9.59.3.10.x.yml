@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_2 }}
+command:
+  max_idle_time_terminal_services:
+    {{ if .Vars.win2016cis_18_9_59_3_10_1 }}
+    title: 18.9.59.3.10.1 | L2 | Ensure 'Set time limit for active but idle Remote Desktop Services sessions' is set to 'Enabled - 15 minutes or less' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name MaxIdleTime
+    exit-status: 0
+    stdout:
+    - '3600000'
+    {{ end }}
+  disconnect_time_terminal_services:
+    {{ if .Vars.win2016cis_18_9_59_3_10_2 }}
+    title: 18.9.59.3.10.2 | L2 | Ensure 'Set time limit for disconnected sessions' is set to 'Enabled - 1 minute'| (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name MaxDisconnectionTime
+    exit-status: 0
+    stdout:
+    - '28800000'
+    {{ end }}
+{{ end }}

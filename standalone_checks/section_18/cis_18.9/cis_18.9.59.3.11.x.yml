@@ -1,0 +1,19 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  del_tmpdirs_on_exit:
+    {{ if .Vars.win2016cis_18_9_59_3_11_1 }}
+    title: 18.9.59.3.11.1 | L1 | Ensure 'Do not delete temp folders upon exit' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name DeleteTempDirsOnExit
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disable_temp_folders_per_session:
+    {{ if .Vars.win2016cis_18_9_59_3_11_2 }}
+    title: 18.9.59.3.11.2 | L1 | Ensure 'Do not use temporary folders per session' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name fEncryptRPCTraffic
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
