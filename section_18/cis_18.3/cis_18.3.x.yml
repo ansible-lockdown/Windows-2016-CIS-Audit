@@ -3,7 +3,7 @@ command:
   disable_smb1_driver:
     {{ if .Vars.win2016cis_18_3_2 }}
     title: 18.3.2 | L1 |  Ensure 'Configure SMB v1 client driver' is set to 'Enabled - Disable driver (recommended) | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} -get-itemPropertyValue 'HKLM:/SYSTEM/CurrentControlSet/Services/mrxsmb10' -Name Start
+    exec: {{ .Vars.ps_regcheck }} get-itemPropertyValue 'HKLM:/SYSTEM/CurrentControlSet/Services/mrxsmb10' -Name Start
     exit-status: 0
     stdout:
     - '4'
@@ -35,7 +35,7 @@ command:
   disable_wdigest_auth:
     {{ if .Vars.win2016cis_18_3_7 }}
     title: 18.3.7 | L1 | Ensure 'WDigest Authentication' is set to 'Disabled'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/SecurityProviders/WDigest' -Name NodeType
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/SecurityProviders/WDigest' -Name UseLogonCredential
     exit-status: 0
     stdout:
     - 'Not Defined'

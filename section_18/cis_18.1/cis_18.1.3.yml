@@ -3,7 +3,7 @@ command:
   {{ if .Vars.win2016cis_18_1_3 }}
   disable_allow_online_tips:
     title: 18.1.3 | L1 | Ensure 'Allow Online Tips' is set to 'Disabled' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/CurrentVersion\Policies\Explorer' -Name AllowInputPersonalization
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/Explorer' -Name AllowInputPersonalization
     exit-status: 0
     stdout:
     - '0'
