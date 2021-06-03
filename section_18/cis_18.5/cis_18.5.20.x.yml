@@ -3,31 +3,31 @@ command:
   {{ if .Vars.win2016cis_18_5_20_1 }}
   wireless_via_win_connect_disabled:
     title: 18.5.20.1 | L2 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'  | (SCORED) | reg_check - EnableRegistrars
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registars' -Name EnableRegistrars
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registrars' -Name EnableRegistrars
     exit-status: 0
     stdout:
     - '0'
   wireless_uPnP_disabled:
     title: 18.5.20.1 | L2 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'  | (SCORED) | reg_check - DisableUPnPRegistrar
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registars' -Name DisableUPnPRegistrar
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registrars' -Name DisableUPnPRegistrar
     exit-status: 0
     stdout:
     - '0'
   wireless_802dot11_disabled:
     title: 18.5.20.1 | L2 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'  | (SCORED) | reg_check - DisableInBand802DOT11Registrar
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registars' -Name DisableInBand802DOT11Registrar
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registrars' -Name DisableInBand802DOT11Registrar
     exit-status: 0
     stdout:
     - '0'
   wireless_flash_config_disabled:
     title: 18.5.20.1 | L2 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'  | (SCORED) | reg_check - DisableFlashConfigRegistrar
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registars' -Name DisableFlashConfigRegistrar
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registrars' -Name DisableFlashConfigRegistrar
     exit-status: 0
     stdout:
     - '0'
   wireless_WPD_disabled:
     title: 18.5.20.1 | L2 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'  | (SCORED) | reg_check - Disable WPDRegistrar
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registars' -Name DisableWPDRegistrar
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/Registrars' -Name DisableWPDRegistrar
     exit-status: 0
     stdout:
     - '0'
@@ -38,6 +38,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WCN/UI' -Name DisableWcnUi
     exit-status: 0
     stdout:
-    - '0'
+    - '1'
   {{ end }}
 {{ end }}
