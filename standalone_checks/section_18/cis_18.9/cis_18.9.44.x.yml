@@ -1,0 +1,11 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  block_ms_consumer_acct:
+    {{ if .Vars.win2016cis_18_9_44_1 }}
+    title: 18.9.44.1 | L1 | Ensure 'Block all consumer Microsoft account user authentication' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/MicrosoftAccount' -Name DisableUserAuth
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}

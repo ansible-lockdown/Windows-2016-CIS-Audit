@@ -1,0 +1,38 @@
+{{ if .Vars.win2016cis_level_1 }}
+command:
+  disallow_drive_redirect_terminal_services:
+    {{ if .Vars.win2016cis_18_9_59_3_3_2 }}
+    title: 18.9.59.3.3.2 | L1 | Ensure 'Do not allow drive redirection' is set to 'Enabled'  | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Terminal Services' -Name fDisableCdm
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
+
+{{ if .Vars.win2016cis_level_2 }}
+  disallow_comport_redirect_terminal_services:
+    {{ if .Vars.win2016cis_18_9_59_3_3_1 }}
+    title: 18.9.59.3.3.1 | L2 | Ensure 'Do not allow COM port redirection' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name fDisableCcm
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disallow_lptport_redirect_terminal_services:
+    {{ if .Vars.win2016cis_18_9_59_3_3_3 }}
+    title: 18.9.59.3.3.3 | L2 | Ensure 'Do not allow LPT port redirection' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name fDisableLPT
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+  disallow_PnP_redirect_terminal_services:
+    {{ if .Vars.win2016cis_18_9_59_3_3_4 }}
+    title: 18.9.59.3.3.4 | L2 | Ensure 'Do not allow LPT port redirection' is set to 'Enabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name fDisablePNPRedir
+    exit-status: 0
+    stdout:
+    - '1'
+    {{ end }}
+{{ end }}
