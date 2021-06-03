@@ -11,7 +11,7 @@ command:
   disable_install_with_elevated:
     {{ if .Vars.win2016cis_18_9_85_2 }}
     title: 18.9.85.2 | L1 |  Ensure 'Always install with elevated privileges' is set to 'Disabled' | (SCORED) | reg_check - smartscreenlevel
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System' -Name AlwaysInstallElevated
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Installer' -Name AlwaysInstallElevated
     exit-status: 0
     stdout:
     - '0'

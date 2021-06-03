@@ -1,6 +1,6 @@
 {{ if .Vars.win2016cis_level_1 }}
 command:
-  disable_inkspace_suggested_apps:
+  allow_inkspace:
     {{ if .Vars.win2016cis_18_9_84_2 }}
     title: 18.9.84.2 | L1 | Ensure 'Allow Windows Ink Workspace' is set to 'Enabled - On, but disallow access above lock' OR 'Disabled' but not 'Enabled - On' | (SCORED) | reg_check - smartscreen
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsInkWorkSpace' -Name AllowWindowsInkWorkspace

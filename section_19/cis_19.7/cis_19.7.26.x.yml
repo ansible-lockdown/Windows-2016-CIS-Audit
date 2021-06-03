@@ -6,6 +6,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/Explorer' -Name NoInplaceSharing
     exit-status: 0
     stdout:
-    - '0'
+    - '1'
     {{ end }}
 {{ end }}

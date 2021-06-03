@@ -36,13 +36,13 @@ command:
     {{ end }}
   quality_updates_policy:
     {{ if .Vars.win2016cis_18_9_102_1_3 }}
-    title: 18.9.102.1.3 | L1 | Ensure 'Select when Preview Builds and Feature Updates are received' is set to 'Enabled- Semi-Annual Channel, 180 or more days' | (SCORED) | reg_check - deferquality
+    title: 18.9.102.1.3 | L1 | Ensure 'Select when Quality Updates are received' is set to 'Enabled 0 days' | (SCORED) | reg_check - deferquality
     exec: {{ .Vars.ps_regcheck }} {{.Vars.HKLM_WIN_UPDATE }} -Name DeferQualityUpdates
     exit-status: 0
     stdout:
     - '0'
   quality_deferindays_policy:
-    title: 18.9.102.1.3 | L1 | Ensure 'Select when Preview Builds and Feature Updates are received' is set to 'Enabled- Semi-Annual Channel, 180 or more days' | (SCORED) | reg_check - deferquality
+    title: 18.9.102.1.3 | L1 | Ensure 'Select when Quality Updates are received' is set to 'Enabled 0 days' | (SCORED) | reg_check - deferqualitydays
     exec: {{ .Vars.ps_regcheck }} {{.Vars.HKLM_WIN_UPDATE }} -Name DeferQualityUpdatesPeriodInDays
     exit-status: 0
     stdout:
