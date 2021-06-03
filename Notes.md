@@ -135,4 +135,7 @@ Notes for standalone:
 - whats next
   - 2.3.10 - MS is this needed for Standalone??
   - firewalls to be tested
-  - section 18
+  - section 18.2 MS?
+  - 18.8.21.5 in tasks - deletes the key??? why not 0?
+  
+
