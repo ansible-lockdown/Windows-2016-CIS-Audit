@@ -9,9 +9,9 @@ command:
     - '1'
     {{ end }}
   disable_enumerate_admin_accts_on_elevate:
-    {{ if .Vars.win2016cis_18_9_15_1 }}
-    title: 18.9.15.1 | L1 | Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/CredUI' -Name EnumerateAdministrators
+    {{ if .Vars.win2016cis_18_9_15_2 }}
+    title: 18.9.15.2 | L1 | Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled' | (SCORED) | reg_check
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/CredUI' -Name EnumerateAdministrators
     exit-status: 0
     stdout:
     - '0'
