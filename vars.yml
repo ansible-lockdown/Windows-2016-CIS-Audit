@@ -752,7 +752,7 @@ win2016_eventlog_app_max_size: 65538
 win2016_eventlog_sec_max_size: 196608
 win2016_eventlog_setup_max_size: 32768
 win2016_eventlog_sys_max_size: 65538
-win2016cis_autoupdate_enabled: '1'  # 2 - Notify for download and auto install # 3 -Auto download and notify for instal # 4 - Auto download and schedule the install
+win2016cis_autoupdate_enabled: 1  # 2 - Notify for download and auto install # 3 -Auto download and notify for instal # 4 - Auto download and schedule the install
 win2016cis_autoupdate_day: 0 # 0 - everyday
 
 ##############
@@ -878,7 +878,7 @@ HKLM_EXPLORER: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Wi
 HKLM_CV_EXPLORER: get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/Explorer'
 HKLM_TERM_SVCS: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows NT/Terminal Services'
 HKLM_WINRM_CLT: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WinRM/Client'
-HKLM_WINRM_SVC: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WinRM/Client'
+HKLM_WINRM_SVC: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WinRM/Service'
 HKLM_WIN_UPDATE: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate'
 HKCU_CP_PERSONAL: get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/Personalization/'
 HKCU_CP_DESKTOP: get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/Control Panel/Desktop'
