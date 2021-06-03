@@ -22,7 +22,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TERM_SVCS }} -Name SecurityLayer
     exit-status: 0
     stdout:
-    - '1'
+    - '2'
     {{ end }}
   user_auth_remote_conns:
     {{ if .Vars.win2016cis_18_9_59_3_9_4 }}
