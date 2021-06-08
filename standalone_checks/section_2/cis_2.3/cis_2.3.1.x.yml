@@ -1,12 +1,28 @@
 {{ if not .Vars.is_domain_controller}}
   {{ if .Vars.win2016cis_level_1 }}
 command:
+  access_dc_admins:
+    {{ if .Vars.win2016cis_2_3_1_1 }}
+    title: 2.3.1.1 | L1 | Ensure 'Accounts - Administrator account status' is set to 'Disabled' (MS only) | SCORED
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname EnableAdminAccount
+    exit-status: 0
+    stdout:
+    - '/^Policy:.*:\sNot Enabled/'
+    {{ end }}
   block_ms_accounts_regkey:
     title: 2.3.1.2 | L1 | Ensure Accounts- Block Microsoft accounts is set to Users cant add or log on with Microsoft accounts | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name NoConnectedUser
     exit-status: 0
     stdout:
     - '3'
+    {{ end }}
+  guest_account_disabled:
+    {{ if .Vars.win2016cis_2_3_1_3}}
+    title: 2.3.1.3 | L1 | Ensure 'Accounts - Guest account status' is set to 'Disabled' (MS only) | SCORED| GPO
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname EnableGuestAccount
+    exit-status: 0
+    stdout:
+    - '/^Policy:.*:\sNot Enabled/'
     {{ end }}
   Limit_ac_blank_pw_console_regkey:
     {{ if .Vars.win2016cis_2_3_1_4 }}
