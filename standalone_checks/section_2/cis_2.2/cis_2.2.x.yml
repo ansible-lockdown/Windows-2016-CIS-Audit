@@ -177,7 +177,7 @@ command:
   manage_audit_sec_log:
     {{ if .Vars.win2016cis_2_2_38 }}
     title: 2.2.38 | L1 | Ensure 'Manage auditing and security log' is set to 'Administrators' (MS only)| SCORED
-    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.gpresult_file }} -policyname 'SeSecurityPrivilege = {{ .Vars.admin_sid }}'
+    exec: {{ .Vars.gpo_regex_script }} -filename {{ .Vars.secedit_file }} -localname 'SeSecurityPrivilege = {{ .Vars.admin_sid }}'
     exit-status: 0
     {{ end }}
   modify_object_label:
