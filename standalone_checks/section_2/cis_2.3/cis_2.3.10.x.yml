@@ -73,7 +73,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name ForceGuest
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
   {{ end }}
 {{ end }}
 
