@@ -43,7 +43,7 @@ command:
   rename_guest_act:
     {{ if .Vars.win2016cis_2_3_1_6 }}
     title: 2.3.1.6 | L1 |  Configure Accounts- Rename guest account' | SCORED 
-    exec: powershell -c "$guests=Get-LocalGroupMember -Group guests; Write-Host $guests.Name"
+    exec: powershell -c '$guests=Get-LocalGroupMember -Group guests; Write-Host $guests.Name'
     stdout:
     - '!/[Gg]uest/'
     {{ end }}
