@@ -14,7 +14,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name EveryoneIncludesAnonymous
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
   {{ end }}
   {{ if .Vars.win2016cis_2_3_10_8 }}
   remote_access_reg_paths:
