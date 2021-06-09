@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.standalone_script  }} -filename {{ .Vars.secedit_file }} -localname LockoutDuration
     exit-status: 0
     stdout:
-    - '/LockoutDuration = \b(1[5-9]|[2-5][0-9]|60)\b/'
+    - '/^LockoutDuration = \b(1[5-9]|[2-5][0-9]|60)\b/'
     {{ end }}
   acct_lockout_threshold:
     {{ if .Vars.win2016cis_1_2_2 }}
@@ -14,7 +14,7 @@ command:
     exec: {{ .Vars.standalone_script  }} -filename {{ .Vars.secedit_file }} -localname LockoutBadCount
     exit-status: 0
     stdout:
-    - '/LockoutBadCount = \b([1-9]|10)\b/'
+    - '/^LockoutBadCount = \b([1-9]|10)\b/'
     {{ end }}
   reset_lockout_after:
     {{ if .Vars.win2016cis_1_2_3 }}
@@ -22,6 +22,6 @@ command:
     exec: {{ .Vars.standalone_script  }} -filename {{ .Vars.secedit_file }} -localname ResetLockoutCount
     exit-status: 0
     stdout:
-    - '/ResetLockoutCount = \b(1[5-9]|[2-5][0-9]|60)\b/'
+    - '/^ResetLockoutCount = \b(1[5-9]|[2-5][0-9]|60)\b/'
     {{ end }}
 {{ end }}
