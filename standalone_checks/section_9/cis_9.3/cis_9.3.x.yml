@@ -3,7 +3,7 @@ command:
   {{ if .Vars.win2016cis_9_3_1 }}
   Public_firewall_on:
     title: 9.3.1 | L1 | Ensure 'Windows Firewall - Public - Firewall state' is set to 'On (recommended)' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/".EnableFirewall
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name EnableFirewall
     exit-status: 0
     stdout:
     - '1'
@@ -11,7 +11,7 @@ command:
   {{ if .Vars.win2016cis_9_3_2 }}
   Public_firewall_block_inbound:
     title: 9.3.1 | L1 | Ensure 'Windows Firewall - Public - Inbound connections' is set to 'Block (default)'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/".DefaultInboundAction
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name DefaultInboundAction
     exit-status: 0
     stdout:
     - '1'
@@ -19,7 +19,7 @@ command:
   {{ if .Vars.win2016cis_9_3_3 }}
   Public_firewall_block_inbound:
     title: 9.3.3 | L1 | Ensure 'Windows Firewall - Public - Outbound connections' is set to 'Allow (default)'   | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/".DefaultOutboundAction
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name DefaultOutboundAction
     exit-status: 0
     stdout:
     - '1'
@@ -27,7 +27,7 @@ command:
   {{ if .Vars.win2016cis_9_3_4 }}
   Public_firewall_ldisable_notify:
     title: 9.3.4 | L1 | Ensure 'Windows Firewall - Public - Settings - Display a notification' is set to 'No'   | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/".DisableNotifications
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name DisableNotifications
     exit-status: 0
     stdout:
     - '1'
@@ -35,7 +35,7 @@ command:
   {{ if .Vars.win2016cis_9_3_5 }}
   Public_firewall_merge_local:
     title: 9.3.5 | L1 | Ensure 'Windows Firewall - Public - Settings - Apply local firewall rules' is set to 'No'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/.AllowLocalPolicyMerge"
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name AllowLocalPolicyMerge
     exit-status: 0
     stdout:
     - '0'
@@ -43,7 +43,7 @@ command:
   {{ if .Vars.win2016cis_9_3_6 }}
   Public_firewall_merge_ipsec_local:
     title: 9.3.6 | L1 | Ensure 'Windows Firewall - Public - Settings - Apply local connection security rules' is set to 'No' | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/.AllowLocalIPSecPolicyMerge"
+    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name AllowLocalIPSecPolicyMerge
     exit-status: 0
     stdout:
     - '0'
@@ -51,15 +51,15 @@ command:
   {{ if .Vars.win2016cis_9_3_7 }}
   Public_firewall_logpath:
     title: 9.3.7 | L1 | Ensure 'Windows Firewall - Public - Logging - Name' is set to '%SystemRoot%\System32\logfiles\firewall\publicfw.log'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/Logging".LogFilePath
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/PublicProfile/logging' -Name LogFilePath
     exit-status: 0
     stdout:
-    - '%systemroot%\system32\logfiles\firewall\publicfw.log'
+    - '%SystemRoot%\System32\logfiles\firewall\publicfw.log'
   {{ end }}
   {{ if .Vars.win2016cis_9_3_8 }}
   Public_firewall_logsize:
     title: 9.3.8 | L1 | Ensure 'Windows Firewall - Public - Logging - Size limit (KB)' is set to '16,384 KB or greater'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/Logging".LogFileSize
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/PublicProfile/logging' -Name LogFileSize
     exit-status: 0
     stdout:
     - '/(^[1-9][6-9][3-9][8-9][4-9])|(^1[7-9]\d{3,})|(^[2-9]\d{4,})|(^[1-9]\d{5,})/'
@@ -67,7 +67,7 @@ command:
   {{ if .Vars.win2016cis_9_3_9 }}
   Public_firewall_log_dropped:
     title: 9.3.9 | L1 | Ensure 'Windows Firewall - Public - Logging - Log dropped packets' is set to 'Yes'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/Logging".LogDroppedPackets
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/PublicProfile/logging' -Name LogDroppedPackets
     exit-status: 0
     stdout:
     - '1'
@@ -75,7 +75,7 @@ command:
   {{ if .Vars.win2016cis_9_3_10 }}
   Public_firewall_log_success:
     title: 9.3.10 | L1 | Ensure 'Windows Firewall - Public - Logging - Log successful connections' is set to 'Yes'  | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_POL_FIREWALL }}PublicProfile/Logging".LogSuccessfulConnections
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/PublicProfile/logging' -Name LogSuccessfulConnections
     exit-status: 0
     stdout:
     - '1'

@@ -857,8 +857,7 @@ standalone_script: 'powershell ./scripts/standalone.ps1'
 audit_ps_cmd: Select-String -Path
 # Registry_paths
 # CurrentControlSet/Lsa
-# Get key
-HKLM_POL_FIREWALL: (get-itemproperty -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/')
+
 # Get Parameter
 HKLM_CCS_LANWORK: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanWorkStation/Parameters'
 HKLM_CCS_LANSERVER: get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Services/LanmanServer/Parameters'
@@ -882,7 +881,9 @@ HKLM_WINRM_SVC: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/W
 HKLM_WIN_UPDATE: get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate'
 HKCU_CP_PERSONAL: get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/Personalization/'
 HKCU_CP_DESKTOP: get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/Control Panel/Desktop'
-
+HKLM_POL_FW_DOM: get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/DomainProfile'
+HKLM_POL_FW_PRV: get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/PrivateProfile'
+HKLM_POL_FW_PUB: get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/PublicProfile'
 # Known Security identified names 
 ## https://docs.microsoft.com/en-us/troubleshoot/windows-server/identity/security-identifiers-in-windows
 everyone_sid: '*S-1-1-0'
