@@ -22,7 +22,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PRV  }} -Name DefaultOutboundAction
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
   {{ end }}
   {{ if .Vars.win2016cis_9_2_4 }}
   Private_firewall_ldisable_notify:
