@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Policies/Microsoft/Windows/CloudContent' -Name ConfigureWindowsSpotlight
     exit-status: 0
     stdout:
-    - '0'
+    - '2'
     {{ end }}
   enable_do_not_suggest_3rd_party:
     {{ if .Vars.win2016cis_19_7_7_2 }}

@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/Attachments' -Name SaveZoneInformation
     exit-status: 0
     stdout:
-    - '0'
+    - '2'
     {{ end }}
   enable_AV_attachements:
     {{ if .Vars.win2016cis_19_7_4_2 }}
@@ -14,6 +14,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKCU:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/Attachments' -Name ScanWithAntiVirus
     exit-status: 0
     stdout:
-    - '1'
+    - '3'
     {{ end }}
 {{ end }}
