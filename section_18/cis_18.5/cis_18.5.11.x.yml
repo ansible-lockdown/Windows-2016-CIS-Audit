@@ -14,7 +14,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Network Connections' -Name NC_ShowSharedAccessUI
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
   elevate_req_network_setting_location:
     {{ if .Vars.win2016cis_18_5_11_4 }}

@@ -6,6 +6,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/W32Time/TimeProviders/NtpClient' -Name Enabled
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
 {{ end }}
