@@ -15,7 +15,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name restrictanonymous
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
     {{ if .Vars.win2016cis_2_3_10_7 }}
   named_pipes_anon:
@@ -23,7 +23,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name NullSessionPipes
     exit-status: 0
     stdout:
-    - '!/.*/'
+    - '/\s*/'
     {{ end }}
   {{ if .Vars.win2016cis_2_3_10_11 }}
   restrict_client_remote_SAM:
@@ -31,7 +31,7 @@ command:
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name restrictremotesam
     exit-status: 0
     stdout:
-    - '1'
+    - 'O:BAG:BAD:(A;;RC;;;BA)'
   {{ end }}
  {{ end }}
 {{ end }}
