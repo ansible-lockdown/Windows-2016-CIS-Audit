@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows Defender/Scan' -Name DisableRemovableDriveScanning
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
   turn_on_email_scan:
     {{ if .Vars.win2016cis_18_9_77_10_2 }}
