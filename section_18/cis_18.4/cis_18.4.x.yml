@@ -14,7 +14,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP6 }} -Name DisableIPSourceRouting
     exit-status: 0
     stdout:
-    - '1'
+    - '2'
     {{ end }}
   disable_ip4_source_route:
     {{ if .Vars.win2016cis_18_4_3 }}

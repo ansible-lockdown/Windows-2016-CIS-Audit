@@ -14,6 +14,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/EventLog/Setup' -Name MaxSize
     exit-status: 0
     stdout:
-    - '{{ .Vars.win2016_eventlog_setup_max_size }}'
+    - '/(32[7-9][6-9][8-9]|3[8-9][0-9]{3,}|[4-9][0-9]{3,}|[1-9][0-9]{5,})/'
     {{ end }}
 {{ end }}

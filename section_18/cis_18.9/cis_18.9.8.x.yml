@@ -22,6 +22,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_EXPLORER }} -Name NoDriveTypeAutoRun
     exit-status: 0
     stdout:
-    - '1'
+    - '255'
     {{ end }}
 {{ end }}

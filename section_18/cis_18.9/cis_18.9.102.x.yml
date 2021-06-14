@@ -22,6 +22,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate/AU' -Name NoAutoRebootWithLoggedOnUsers
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
 {{ end }}
