@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Network Connections' -Name NC_AllowNetBridge_NLA
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
   prohibit_int_connect_share_dns:
     {{ if .Vars.win2016cis_18_5_11_3 }}

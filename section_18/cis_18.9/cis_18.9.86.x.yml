@@ -6,6 +6,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CV_SYSTEM }} -Name DisableAutomaticRestartSignOn
     exit-status: 0
     stdout:
-    - '0'
+    - '1'
     {{ end }}
 {{ end }}

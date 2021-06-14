@@ -22,7 +22,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_TCPIP4 }} -Name DisableIPSourceRouting
     exit-status: 0
     stdout:
-    - '1'
+    - '2'
     {{ end }}
   disable_icmp_ospf_redirects:
     {{ if .Vars.win2016cis_18_4_4 }}

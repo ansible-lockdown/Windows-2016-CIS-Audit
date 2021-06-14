@@ -12,6 +12,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/System' -Name ShellSmartScreenLevel
     exit-status: 0
     stdout:
-    - '0'
+    - 'Block'
     {{ end }}
 {{ end }}

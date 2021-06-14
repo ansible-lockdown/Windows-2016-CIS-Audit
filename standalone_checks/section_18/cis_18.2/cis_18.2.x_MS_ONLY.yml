@@ -9,7 +9,7 @@ file:
 command:
   LAPS_AdmPwd_GPO:
     title: 18.2.1 | L1 | Ensure LAPS AdmPwd GPO Extension / CSE is installed (MS only) | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path "'HKLM:/SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon/GPExtensions/{D76B9641-3288-4f75-942D-087DE603E3EA}'" -Name DllName
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon/GPExtensions/{D76B9641-3288-4f75-942D-087DE603E3EA}' -Name DllName
     exit-status: 0
     stdout:
     - 'C:\Program Files\LAPS\CSE\AdmPwd.dll'

@@ -6,6 +6,6 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/OneDrive' -Name DisableFileSyncNGSC
     exit-status: 0
     stdout:
-    - '0'
+    - '1'
     {{ end }}
 {{ end }}
