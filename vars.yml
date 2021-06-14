@@ -752,7 +752,7 @@ win2016_eventlog_app_max_size: 65538
 win2016_eventlog_sec_max_size: 196608
 win2016_eventlog_setup_max_size: 32768
 win2016_eventlog_sys_max_size: 65538
-win2016cis_autoupdate_enabled: '1'  # 2 - Notify for download and auto install # 3 -Auto download and notify for instal # 4 - Auto download and schedule the install
+win2016cis_autoupdate_option: '0'  # 2 - Notify for download and auto install # 3 -Auto download and notify for instal # 4 - Auto download and schedule the install
 win2016cis_autoupdate_day: 0 # 0 - everyday
 
 ##############
