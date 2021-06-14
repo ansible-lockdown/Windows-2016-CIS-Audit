@@ -22,7 +22,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Session Manager/kernel' -Name DisableExceptionChainValidation
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
   NetBT_node_type:
     {{ if .Vars.win2016cis_18_3_6 }}

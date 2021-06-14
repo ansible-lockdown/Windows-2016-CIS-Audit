@@ -1,24 +1,24 @@
 {{ if not .Vars.is_domain_controller }}
   {{ if .Vars.win2016cis_level_1 }}
 command:
-  no_enum_anon_sam:
     {{ if .Vars.win2016cis_2_3_10_2 }}
+  no_enum_anon_sam:
     title: 2.3.10.2 | L1 | Ensure 'Network access - Do not allow anonymous enumeration of SAM accounts' is set to 'Enabled' (MS only) | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name restrictanonymoussam
     exit-status: 0
     stdout:
     - '1'
     {{ end }}
-  no_anon_enum:
     {{ if .Vars.win2016cis_2_3_10_3 }}
+  no_anon_enum:
     title: 2.3.10.3 | L1 | Ensure 'Network access - Do not allow anonymous enumeration of SAM accounts and shares' is set to 'Enabled' (MS only) | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LSA }} -Name restrictanonymous
     exit-status: 0
     stdout:
     - '1'
     {{ end }}
-  named_pipes_anon:
     {{ if .Vars.win2016cis_2_3_10_7 }}
+  named_pipes_anon:
     title: 2.3.10.7 | L1 | Configure 'Network access - Named Pipes that can be accessed anonymously' (MS only) | SCORED | reg_check
     exec:  {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_CCS_LANSERVER }} -Name NullSessionPipes
     exit-status: 0

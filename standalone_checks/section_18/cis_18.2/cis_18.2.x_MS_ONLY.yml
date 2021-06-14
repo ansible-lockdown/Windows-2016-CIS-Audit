@@ -17,7 +17,7 @@ command:
   dont_allow_pwd_expire_longer:
     {{ if .Vars.win2016cis_18_2_2 }}
     title: 18.2.2 | L1 | Ensure 'Do not allow password expiration time longer than required by policy' is set to 'Enabled' (MS only) | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_MS_SVCS }} -Name PwdExpirationProtectionEnabled
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft Services/AdmPwd' -Name PwdExpirationProtectionEnabled
     exit-status: 0
     stdout:
     - '1'
@@ -25,7 +25,7 @@ command:
   enable_lap_mgmt:
     {{ if .Vars.win2016cis_18_2_3 }}
     title: 18.2.3 | L1 | Ensure 'Enable Local Admin Password Management' is set to 'Enabled' (MS only) | (SCORED) | reg_check
-    exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_MS_SVCS }} -Name AdmPwdEnabled
+    exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft Services/AdmPwd' -Name AdmPwdEnabled
     exit-status: 0
     stdout:
     - '1'

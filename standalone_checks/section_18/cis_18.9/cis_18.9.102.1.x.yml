@@ -6,7 +6,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} {{.Vars.HKLM_WIN_UPDATE }} -Name ManagePreviewBuilds
     exit-status: 0
     stdout:
-    - '0'
+    - '1'
   disable_manage_preview_policy:
     title: 18.9.102.1.1 | L1 | Ensure 'Manage preview builds' is set to 'Enabled- Disable preview builds' | (SCORED) | reg_check - managepreviewpolicy
     exec: {{ .Vars.ps_regcheck }} {{.Vars.HKLM_WIN_UPDATE }} -Name ManagePreviewBuildsPolicyValue

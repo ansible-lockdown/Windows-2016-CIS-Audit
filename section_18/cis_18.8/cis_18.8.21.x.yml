@@ -14,7 +14,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path "'HKLM:/SOFTWARE/Policies/Microsoft/Windows/Group Policy/{35378EAC-683F-11D2-A89A-00C04FBBCFA2}'" -Name NoGPOListChanges 
     exit-status: 0
     stdout:
-    - '1'
+    - '0'
     {{ end }}
   disable_cont_experiences:
     {{ if .Vars.win2016cis_18_8_21_4 }}
