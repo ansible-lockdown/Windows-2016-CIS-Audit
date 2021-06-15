@@ -86,3 +86,13 @@ gossfile:
   section_19/cis_*/*.yml: {}
     {{ end }}
   {{ end }}
+command:
+  output_meta:
+    title: Benchmark MetaData
+    exec: echo BenchMark MetaData
+    exit-status: 0
+    {{ range .Vars.win2016cis_benchmark }}
+    meta:
+      benchmark_{{ . }}
+    {{ end }}
+      host_os: {{ .Vars.win2016cis_os_distribution }}

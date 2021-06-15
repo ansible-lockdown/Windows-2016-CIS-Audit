@@ -1,5 +1,12 @@
 ## Variables file
+## metadata for benchmark
+win2016cis_benchmark:
+- "type: CIS"
+- "version: '1.2'"
+- "os: Windows2016"
 
+# Please change if trying on different release
+win2016cis_os_distribution: Windows2016
 ######################
 ## Server Variables ##
 ######################
