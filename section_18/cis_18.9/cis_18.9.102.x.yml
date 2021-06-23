@@ -6,14 +6,16 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate/AU' -Name NoAutoUpdate
     exit-status: 0
     stdout:
-    - '0'
-      {{ if eq .Vars.win2016cis_autoupdate_option "4" }}  
+    - {{ .Vars.win2016cis_autoupdate_enabled }}
+    {{ end }}
+    {{ if .Vars.win2016cis_18_9_102_3 }}
+      {{ if eq .Vars.win2016cis_autoupdate_enabled "4" }}  
   auto_update_sched_days:
     title: 18.9.102.3 | L1 |  Ensure 'Configure Automatic Updates - Scheduled install day' is set to '0 - Every day' | (SCORED) | reg_check - if 18.9.102.4  == 4
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Windows/WindowsUpdate/AU' -Name ScheduledInstallDay
     exit-status: 0
     stdout:
-    - '{{ .Vars.win2016cis_autoupdate_day }}'
+    - {{ .Vars.win2016cis_autoupdate_day }}
       {{ end }}
     {{ end }}
   no_autoreboot_if_user:
