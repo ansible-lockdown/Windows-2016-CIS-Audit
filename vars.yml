@@ -4,6 +4,8 @@ win2016cis_benchmark:
 - "type: CIS"
 - "version: '1.2'"
 - "os: Windows2016"
+- "epoch: {{ ansible_date_time.epoch }}"
+- "hostname: {{ ansible_hostname }}"
 
 # Please change if trying on different release
 win2016cis_os_distribution: Windows2016
