@@ -852,10 +852,11 @@ win2016cis_19_7_45_2_1: true
 
 
 ###################
-# Section_18_Vars #
+# Section_19_Vars #
 ###################
 win2016cis_lockscreen_file: c:\windows\lockscreen.jpg
 win2016cis_screensaver_timeout: '900'
+win2016cis_screensaver_file: scrnsave.scr
 ##############################
 ## Global command Variables ##
 ##############################
