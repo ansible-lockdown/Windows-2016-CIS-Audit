@@ -15,12 +15,12 @@ $env:GOSS_USE_ALPHA=1
 - top of vars file to state the type of server  Domain Controller, Domain Member or Standalone
   - also if iis or exchange is installed
 
-## All server types
+## Domain members and domain controllers
 
 - gpresult /v /r > file_location.txt need to be created (variable gpresult_file  needs to be updated)
 - auditpol.exe /get /category:* > file_location.txt ( the variable auditresults_file needs to be updated)
 
-### If standalone server will require this
+### If standalone server will require the following commands
 
 - secedit /export /cfg {{ file output location }} ( variable standalone_policies.txt )
 - auditpol.exe /get /category:* > file_location.txt
