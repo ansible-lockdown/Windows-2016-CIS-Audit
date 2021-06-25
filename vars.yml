@@ -4,8 +4,8 @@ win2016cis_benchmark:
 - "type: CIS"
 - "version: '1.2'"
 - "os: Windows2016"
-- "epoch: {{ ansible_date_time.epoch }}"
-- "hostname: {{ ansible_hostname }}"
+#- "epoch: {{ ansible_date_time.epoch }}" # To be populated via wrapper script using inline vars
+#- "hostname: {{ ansible_hostname }}" # To be populated via wrapper script using inline vars
 
 # Please change if trying on different release
 win2016cis_os_distribution: Windows2016
@@ -854,7 +854,7 @@ win2016cis_19_7_45_2_1: true
 ###################
 # Section_19_Vars #
 ###################
-win2016cis_screensaver_file: c:\windows\lockscreen.jpg
+win2016cis_screensaver_file: scrnsave.scr
 win2016cis_screensaver_timeout: '900'
 ##############################
 ## Global command Variables ##
