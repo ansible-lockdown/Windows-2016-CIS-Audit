@@ -1,8 +1,8 @@
 {{ if .Vars.win2016cis_level_1 }}
 command:
   config_enhanced_anti_spoof:
-    {{ if .Vars.win2016cis_18_9_10_1 }}
-    title: 18.9.10.1 | L1 | Ensure 'Configure enhanced anti-spoofing' is set to 'Enabled' | (SCORED) | reg_check
+    {{ if .Vars.win2016cis_18_9_10_1_1 }}
+    title: 18.9.10.1.1 | L1 | Ensure 'Configure enhanced anti-spoofing' is set to 'Enabled' | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} get-itempropertyValue -path 'HKLM:/SOFTWARE/Policies/Microsoft/Biometrics/FacialFeatures' -Name EnhancedAntiSpoofing
     exit-status: 0
     stdout:
