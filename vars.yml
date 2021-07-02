@@ -376,7 +376,7 @@ win2016cis_18_5_9_1: true
 win2016cis_18_5_9_2: true
 # 18.5.10 Microsoft Peer-To-Peer Networking Services
 # 18.5.10.1 Peer Name Resolution Protocol
-win2016cis_18_5_10_1: true
+win2016cis_18_5_10_2: true
 # 18.5.11 Network Connections
 # 18.5.11.1 Windows Defender Firewall (formally Windows Firewall)
 win2016cis_18_5_11_2: true
@@ -544,7 +544,7 @@ win2016cis_18_9_8_3: true
 # 18.9.9 Backup
 # 18.9.10 Biometrics
 # 18.9.10.1 Facial Features
-win2016cis_18_9_10_1: true
+win2016cis_18_9_10_1_1: true
 # 18.9.11 BitLocker Drive Encryption
 # 18.9.12 Camera
 win2016cis_18_9_12_1: true
