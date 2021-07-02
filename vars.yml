@@ -8,7 +8,7 @@ win2016cis_benchmark:
 #- "hostname: {{ ansible_hostname }}" # To be populated via wrapper script using inline vars
 
 # Please change if trying on different release
-win2016cis_os_distribution: Windows2016
+win2016_os_distribution: Windows2016
 ######################
 ## Server Variables ##
 ######################

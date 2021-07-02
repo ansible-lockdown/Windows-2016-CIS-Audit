@@ -95,4 +95,4 @@ command:
     meta:
       benchmark_{{ . }}
     {{ end }}
-      host_os: {{ .Vars.win2016cis_os_distribution }}
+      host_os: {{ .Vars.win2016_os_distribution }}
