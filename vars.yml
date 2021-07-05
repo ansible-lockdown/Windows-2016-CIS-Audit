@@ -6,6 +6,8 @@ win2016cis_benchmark:
 - "os: Windows2016"
 #- "epoch: {{ ansible_date_time.epoch }}" # To be populated via wrapper script using inline vars
 #- "hostname: {{ ansible_hostname }}" # To be populated via wrapper script using inline vars
+# - "server_type: Standalone Server" # To be populated via wrapper script using inline vars
+
 
 # Please change if trying on different release
 win2016_os_distribution: Windows2016
