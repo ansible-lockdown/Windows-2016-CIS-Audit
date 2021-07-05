@@ -2,10 +2,13 @@
 
 ## Requirements
 
+- download goss (current version 0.3.6 - Alpha for windows)
+  - [x86_64-goss](https://github.com/aelsabbahy/goss/releases/download/v0.3.goss-alpha-windows-amd64.exe)
+  - validate SHA
 - Goss to be on the host running the audit _ note its current alpha but works well
   - need to set environment
 
-``` sh
+```txt
 $env:GOSS_USE_ALPHA=1
 ```
 
@@ -52,7 +55,7 @@ Its has the following setup
 
 - Where registry keys can be found and aligned this is run directly in goss to capture output
 
-```sh
+```txt
   [Security.Principal.WindowsIdentity]::GetCurrent().user.value
 ```
 
@@ -60,13 +63,13 @@ Its has the following setup
 
 ### Manual powershell reg check command
 
-```script
+```txt
 powershell -noprofile -noninteractive -command "(get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/').restrictanonymous"
 ```
 
 ### Broken into variables - make it easier to reuse and read
 
-```script
+```txt
 ps_regcheck: powershell -noprofile -noninteractive -command
 
 HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Lsa/')
@@ -74,6 +77,34 @@ HKLM_CCS_LSA: (get-itemproperty -path 'HKLM:/SYSTEM/CurrentControlSet/Control/Ls
 
 ### Command - note the quotes around the regpath
 
-```script
+```txt
 {{ .Vars.ps_regcheck }} "{{ .Vars.HKLM_CCS_LSA }}.restrictanonymous"
+```
+
+## Example of manually running the audit
+
+e.g. standalone server test
+
+- Ensure the var.yml file is set for server type and relative paths to files are updated
+
+e.g. file structure
+```txt
+- c:
+  |- audit
+   +-- goss.exe # assuming you have downloaded goss already
+   +-- secedit_conf.txt
+   +-- audit_pol.txt
+   \--- Windows-2016-Audit
+       +- goss.yml
+       +- vars.yml
+       +- <... other audit config ...>
+```
+
+Using powershell prompt on the host - will need to run as admin
+```txt
+PS > cd C:\audit\
+PS C:\audit> secedit /export /cfg secedit_conf.txt
+PS C:\audit> auditpol.exe /get /category:* > audit_pol.txt
+PS C:\audit> cd .\Win2016-CIS-Audit\
+PS C:\audit\Win2016-CIS-Audit> .\goss.exe -g .\Win2016-CIS-Audit\goss.yml --vars .\Win2016-CIS-Audit\vars.yml v
 ```
