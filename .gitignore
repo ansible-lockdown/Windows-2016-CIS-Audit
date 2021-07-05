@@ -10,7 +10,7 @@ tests/Dockerfile
 packer_cache
 delete*
 ignore*
-*.xls
+*.xlsx
 testing.yml
 Notes.md
 standalone_goss.yml
