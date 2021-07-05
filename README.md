@@ -44,18 +44,13 @@ Its has the following setup
 
 ### How it works
 
+#### NOTE: Its expected to run from audit dir or to amend the script paths in vars accordingly
+
 - GPO settings goss runs the powershell script ./scripts/gpo_regex.ps1 with arguments is run to search for the matching policy name
   - Will output the details if defined
   - if nothing is found will output "Not Defined"
 
 - Where registry keys can be found and aligned this is run directly in goss to capture output
-
-## To be done
-
-- sign off on layout
-- write it
-- test it
-- section_19 full test due to sid maybe required - may need to find from command and set as variable
 
 ```sh
   [Security.Principal.WindowsIdentity]::GetCurrent().user.value
