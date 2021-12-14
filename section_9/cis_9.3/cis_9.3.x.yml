@@ -10,14 +10,14 @@ command:
   {{ end }}
   {{ if .Vars.win2016cis_9_3_2 }}
   Public_firewall_block_inbound:
-    title: 9.3.1 | L1 | Ensure 'Windows Firewall - Public - Inbound connections' is set to 'Block (default)'  | (SCORED) | reg_check
+    title: 9.3.2 | L1 | Ensure 'Windows Firewall - Public - Inbound connections' is set to 'Block (default)'  | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name DefaultInboundAction
     exit-status: 0
     stdout:
     - '1'
   {{ end }}
   {{ if .Vars.win2016cis_9_3_3 }}
-  Public_firewall_block_inbound:
+  Public_firewall_block_oubound:
     title: 9.3.3 | L1 | Ensure 'Windows Firewall - Public - Outbound connections' is set to 'Allow (default)'   | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PUB }} -Name DefaultOutboundAction
     exit-status: 0
@@ -62,7 +62,7 @@ command:
     exec: {{ .Vars.ps_regcheck }} get-itempropertyvalue -path 'HKLM:/SOFTWARE/Policies/Microsoft/WindowsFirewall/PublicProfile/logging' -Name LogFileSize
     exit-status: 0
     stdout:
-    - '/(^[1-9][6-9][3-9][8-9][4-9])|(^1[7-9]\d{3,})|(^[2-9]\d{4,})|(^[1-9]\d{5,})/'
+    - '/(^16[3-9][8-9][4-9]|1[7-9]\d{3,}|[2-9][0-9]{4,}|[1-9][0-9]{5,})/'
   {{ end }}
   {{ if .Vars.win2016cis_9_3_9 }}
   Public_firewall_log_dropped:
