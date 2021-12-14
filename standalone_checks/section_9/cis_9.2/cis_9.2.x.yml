@@ -10,14 +10,14 @@ command:
   {{ end }}
   {{ if .Vars.win2016cis_9_2_2 }}
   Private_firewall_block_inbound:
-    title: 9.2.1 | L1 | Ensure 'Windows Firewall - Private - Inbound connections' is set to 'Block (default)'  | (SCORED) | reg_check
+    title: 9.2.2 | L1 | Ensure 'Windows Firewall - Private - Inbound connections' is set to 'Block (default)'  | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PRV  }} -Name DefaultInboundAction
     exit-status: 0
     stdout:
     - '1'
   {{ end }}
   {{ if .Vars.win2016cis_9_2_3 }}
-  Private_firewall_block_inbound:
+  Private_firewall_block_outbound:
     title: 9.2.3 | L1 | Ensure 'Windows Firewall - Private - Outbound connections' is set to 'Allow (default)'   | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PRV  }} -Name DefaultOutboundAction
     exit-status: 0
@@ -25,7 +25,7 @@ command:
     - '0'
   {{ end }}
   {{ if .Vars.win2016cis_9_2_4 }}
-  Private_firewall_ldisable_notify:
+  Private_firewall_disable_notify:
     title: 9.2.4 | L1 | Ensure 'Windows Firewall - Private - Settings - Display a notification' is set to 'No'   | (SCORED) | reg_check
     exec: {{ .Vars.ps_regcheck }} {{ .Vars.HKLM_POL_FW_PRV  }} -Name DisableNotifications
     exit-status: 0
