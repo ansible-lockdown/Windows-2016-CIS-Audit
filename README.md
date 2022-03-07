@@ -4,6 +4,8 @@
 
 **This is a BETA release.**
 
+***Version 1.3 is available but not showing as latest release this is based on version 1.2***
+
 ### How it works
 
 - The audit is designed to run as part of the ansible remediation playbook (coming soon) or as a standalone configurable script contained within this repo (run_audit.ps1)
