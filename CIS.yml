@@ -9,8 +9,6 @@ win2016cis_benchmark:
 # - "server_type: Standalone Server" # To be populated via wrapper script using inline vars
 
 
-# Please change if trying on different release
-win2016_os_distribution: Windows2016
 ######################
 ## Server Variables ##
 ######################
