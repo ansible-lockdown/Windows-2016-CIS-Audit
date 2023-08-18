@@ -76,7 +76,7 @@ $AUDIT_BRANCH   = "main"
 # Set Variables for Audit
 
 $DEFAULT_CONTENT_DIR = "C:\remediation_audit_logs"  # This can be changed using cli
-$DEFAULT_VARS_FILE = "$BENCHMARK.yml"  # This can be changed using cli
+$DEFAULT_VARS_FILE = "$BENCHMARK.yml"  # This can be changed using cli option
 $DEFAULT_AUDIT_BIN = "$DEFAULT_CONTENT_DIR\goss.exe"  # This can be changed using cli option
 
 ### Shouldn't need to change anything past this point apart from tidy up the code
