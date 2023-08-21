@@ -4,7 +4,7 @@
 
 **This is a BETA release.**
 
-***Version 1.3 is available but not showing as latest release this is based on version 1.2. Recent updates to the remediation repo have now outdated this audit.***
+***Version 1.3 is available but not showing as latest release this is based on version 1.2. Recent updates to the remediation repo have now caused this audit to be outdated.***
 
 ### How it works
 
