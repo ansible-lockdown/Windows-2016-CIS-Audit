@@ -1,10 +1,10 @@
-# Windows 2016 CIS audit
+# Windows 2016 CIS Audit
 
 ## Overview
 
 **This is a BETA release.**
 
-***Version 1.3 is available but not showing as latest release this is based on version 1.2***
+***Version 1.3 is available but not showing as latest release this is based on version 1.2. Recent updates to the remediation repo have now outdated this audit.***
 
 ### How it works
 
@@ -46,17 +46,17 @@ It has been tested on base installation
 - Some controls only work on DC or MS - The settings in Vars will determine if host is DC or MS (will be populated by ansible when run from task)
 - some controls written twice, this is due to different vars for a DC or MS (e.g. 2.2.7)
 
-## Join us
+### Community
 
-On our [Discord Server](https://discord.gg/JFxpSgPFEJ) to ask questions, discuss features, or just chat with other Ansible-Lockdown users
+Join us on our [Discord Server](https://discord.io/ansible-lockdown) to ask questions, discuss features, or just chat with other Ansible-Lockdown users.
 
 ## Requirements
 
 - Permissions to run all the commands may need admin to run this
   - also if iis or exchange is installed
 
-- download goss (current version 0.3.6 - Alpha for windows)
-  - [x86_64-goss](https://github.com/aelsabbahy/goss/releases/download/v0.3.goss-alpha-windows-amd64.exe)
+- download goss (current version v0.3.23 - Alpha for windows)
+  - [x86_64-goss](https://github.com/goss-org/goss/releases/download/v0.3.goss-alpha-windows-amd64.exe)
   - validate SHA
 
 - Suggest reboot and gpupdate is run prior to audit - will potentially give differing results
